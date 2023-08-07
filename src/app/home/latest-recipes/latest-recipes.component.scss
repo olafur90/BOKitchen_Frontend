@@ -1,0 +1,52 @@
+@import '../../scss-variables';
+
+.recent-recipes {
+    @include flexcolumn;
+
+    background-color: lighten(#E3CDB1, 10%);
+    margin: 1rem auto;
+    padding-left: 4rem;
+    padding-top: 2rem;
+
+    > legend {
+        color: darken(#E3CDB1, 20%);
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    > h2 {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 500;
+    }
+
+    & .title-first-half {
+        color: $header-nav-text-color;
+    }
+}
+
+.recent-recipe-card-container {
+    margin-bottom: 1rem;
+}
+
+.recipe-card {
+    margin-top: 1rem;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/pumpkin_pie.jpg');
+    background-size: cover;
+}
+
+.example-card {
+    background-color: lighten(#E3CDB1, 16%);
+    border: 1px solid #E3CDB1;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    max-width: 31%;
+    margin: 0.5rem;
+
+    & img {
+        max-height: 10rem;
+        max-width: 10rem;
+    }
+}

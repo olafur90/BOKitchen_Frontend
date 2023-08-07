@@ -1,0 +1,21 @@
+<section class="row recent-recipes">
+    <h2><span class="title-first-half">Nýjustu</span> uppskriftirnar</h2>
+    <div class="row recent-recipe-card-container">
+        <mat-card *ngFor="let recipe of recipes" class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{recipe}}</mat-card-title>
+                <mat-card-subtitle>Flokkur</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content style="display: flex; flex-direction: row;">
+                <p style="margin-right: 0.5rem;">
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                </p>
+                <img mat-card-image src="../../assets/pumpkin_pie.jpg" alt="Photo of recipe">
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>View</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</section>
