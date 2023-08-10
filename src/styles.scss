@@ -1,5 +1,8 @@
+@import './app/scss-variables';
+
 * {
     box-sizing: border-box;
+    font-family: $font-primary;
     margin: 0;
     padding: 0;
 }

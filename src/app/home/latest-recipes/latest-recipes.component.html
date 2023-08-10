@@ -1,20 +1,31 @@
+<section class="col latest-recipe-info">
+    <legend>Our Latest Recipe</legend>
+    <h2>{{ singleLatestRecipe.name }}</h2>
+    <p>{{ singleLatestRecipe.shortDescription }}</p>
+    <button class="btn" mat-button routerLink="/uppskriftir/{{singleLatestRecipe.id}}" routerActive>Meira</button>
+</section>
+
 <section class="row recent-recipes">
     <h2><span class="title-first-half">Nýjustu</span> uppskriftirnar</h2>
     <div class="row recent-recipe-card-container">
-        <mat-card *ngFor="let recipe of recipes" class="example-card">
+        <mat-card *ngFor="let recipe of recentRecipes" class="recipe-card">
             <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{recipe}}</mat-card-title>
-                <mat-card-subtitle>Flokkur</mat-card-subtitle>
+                <div mat-card-avatar 
+                    class="card-header-image" 
+                    style="background-image: url('{{ recipe.categories && recipe.categories[0] ? recipe.categories[0].imageUri : null }}')"
+                    >
+                </div>
+                <mat-card-title>{{recipe.name}}</mat-card-title>
+                <mat-card-subtitle>{{ recipe.categories && recipe.categories[0] ? recipe.categories[0].icelandicName : '' }}</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content style="display: flex; flex-direction: row;">
-                <p style="margin-right: 0.5rem;">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+            <mat-card-content class="recipe-card-content">
+                <p class="recipe-short-description">
+                    {{ recipe?.shortDescription?.slice(0, 100) }}
                 </p>
                 <img mat-card-image src="../../assets/pumpkin_pie.jpg" alt="Photo of recipe">
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button>View</button>
+                <button mat-button routerLink="/uppskriftir/{{recipe.id}}" routerActive>Meira</button>
             </mat-card-actions>
         </mat-card>
     </div>

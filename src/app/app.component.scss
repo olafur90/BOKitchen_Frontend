@@ -1,4 +1,14 @@
 body {
     background-color: lighten(#E3CDB1, 16%);
-    padding-top: 1rem;
+    width: 100%;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+.container {
+    background-color: lighten(#E3CDB1, 14%);
+    margin: auto;
+    min-height: 85vh;
+    padding-bottom: 1rem;
+    width: 70%;
 }

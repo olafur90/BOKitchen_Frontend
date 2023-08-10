@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from '../components/header/header.component';
 import { LatestRecipesComponent } from './latest-recipes/latest-recipes.component';
 
 @Component({
@@ -14,7 +14,5 @@ import { LatestRecipesComponent } from './latest-recipes/latest-recipes.componen
     ]
 })
 export class HomeComponent {
-    constructor(private http: HttpClient) { 
-
-    }
+    
 }

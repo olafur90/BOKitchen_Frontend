@@ -1,23 +1,73 @@
 @import '../../scss-variables';
 
+.latest-recipe-info {
+    @include flexcolumn;
+
+    background-image: url('../../../assets/pumpkin_pie.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: lighten($color-primary, 10%);
+    background-size: 20% 100%;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    padding-left: 5rem;
+
+    > legend {
+        color: darken($color-primary, 20%);
+        font-weight: 500;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    > h2 {
+        font-family: $font-primary;
+    }
+
+    > p {
+        font-family: $font-primary;
+        max-width: 50%;
+    }
+
+    > button {
+        border: 1px solid;
+        border-color: darken($color-primary, 10%);
+        background-color: darken($color-primary, 10%);
+        color: lighten($color-primary, 10%);
+        width: 15%;
+
+        &:hover {
+            background-color: lighten($color-primary, 10%);
+            border-color: darken($color-primary, 10%);
+            color: darken($color-primary, 10%);
+        }
+    }
+}
+
 .recent-recipes {
     @include flexcolumn;
 
-    background-color: lighten(#E3CDB1, 10%);
+    background: linear-gradient(to right, lighten($color-primary, 10%), (lighten($color-primary, 5%)) 92%);
+    border: 1px transparent $color-primary;
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     margin: 1rem auto;
     padding-left: 4rem;
     padding-top: 2rem;
 
     > legend {
-        color: darken(#E3CDB1, 20%);
+        color: darken($color-primary, 20%);
         font-size: 1.1rem;
         font-weight: 500;
         margin-bottom: 0;
     }
 
     > h2 {
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: 500;
+        font-family: $font-primary;
     }
 
     & .title-first-half {
@@ -29,18 +79,19 @@
     margin-bottom: 1rem;
 }
 
-.recipe-card {
-    margin-top: 1rem;
+.card-header-image {
+    //background-image: url('../../../assets/pumpkin_pie.jpg');
+    background-size: cover;
 }
 
-.example-header-image {
+.meat {
     background-image: url('../../../assets/pumpkin_pie.jpg');
     background-size: cover;
 }
 
-.example-card {
-    background-color: lighten(#E3CDB1, 16%);
-    border: 1px solid #E3CDB1;
+.recipe-card {
+    background-color: lighten($color-primary, 16%);
+    border: 1px solid $color-primary;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     max-width: 31%;
     margin: 0.5rem;
@@ -48,5 +99,37 @@
     & img {
         max-height: 10rem;
         max-width: 10rem;
+    }
+
+    &:hover {
+        scale: 1.005;
+    }
+
+    & button {
+        background: radial-gradient(circle, lighten($color-primary, 15%), lighten($color-primary, 5%) 99%);
+        border: 1px solid $color-primary;
+    }
+
+    & .recipe-short-description {
+        color: darken($color-primary, 45%);
+    }
+
+    & .recipe-card-content {
+        @include flexrow;
+
+        justify-content: space-between;
+
+        > p {
+            margin-right: 0.5rem;
+            word-break: break-word;
+        }
+    }
+
+    @media (width <= 1400px) {
+        max-width: 45%;
+    }
+
+    @media (width <= 1000px) {
+        max-width: 95%;
     }
 }

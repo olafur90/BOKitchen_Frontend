@@ -1,0 +1,28 @@
+<header>
+    <nav class="nav">
+        <div class="nav-left">
+            <a class="nav-logo" href="/">BÓLA</a>
+        </div>
+        <div class="nav-middle">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Sláðu inn leitarorð" [(ngModel)]="searchTerm">
+            <button class="btn" (click)="onSearch()">Leita</button>
+        </div>
+        <div class="nav-right">
+            <button mat-button [matMenuTriggerFor]="beforeMenu">
+                Flokkar 
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <!-- TODO: Add menu items dynamically from categories -->
+            <button mat-menu-item>Hakk</button>
+            <button mat-menu-item>Fiskur</button>
+            <button mat-menu-item>Kjöt</button>
+            <button mat-menu-item>Súpur</button>
+            <button mat-menu-item>Kjúklingur</button>
+            <button mat-menu-item>Asískt</button>
+            <button mat-menu-item>Meðlæti</button>
+            </mat-menu>
+        </div>
+    </nav>
+</header>
