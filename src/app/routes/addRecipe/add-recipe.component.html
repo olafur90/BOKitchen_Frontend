@@ -4,7 +4,11 @@
         <input formControlName="name" (ngModelChange)="onNameChange(name.value)" #name type="text" required placeholder="Nafn*">
 
         <div style="display: flex; flex-direction: row;">
-            <app-select-category-component style="margin-right: 1rem;" />
+            <app-select-category-component 
+                #cat 
+                (selectedCategory)="onCategoryChange($event)"
+                [formControl]="recipeFormGroup.controls['category']"
+                style="margin-right: 1rem;" />
             <app-select-serving-size-component />
         </div>
         <div style="display: flex; flex-direction: row;">
@@ -14,10 +18,11 @@
         
         <!-- TODO: Remove some unnecessary buttons from rich text editor -->
         <angular-editor 
-            (ngModelChange)="onContentChange()" 
+            [config]="editorConfig"
+            (ngModelChange)="onContentChange()"
             style="
                 background-color: white;
-            " 
+            "
             formControlName="description" 
             [placeholder]="'Enter text here...'" 
             [(ngModel)]="htmlContent">
