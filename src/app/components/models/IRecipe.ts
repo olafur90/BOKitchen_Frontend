@@ -12,4 +12,5 @@ export class IRecipe {
     public shortDescription?: string;
     public baseImage?: string;
     public categories?: Category[] = [];
+    public difficulty?: string;
 }

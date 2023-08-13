@@ -26,9 +26,8 @@ export class RecipeComponent implements OnInit{
 
     ngOnInit(): void {
         this.id = this.route.snapshot.params['recipeId'];
-        this.http.get<IRecipe>(`${API_URL}/uppskriftir/${this.id}`).subscribe((data: IRecipe) => {
+        this.http.get<IRecipe>(`${API_URL}/uppskriftir/recipe/${this.id}`).subscribe((data: IRecipe) => {
             this.recipe = data;
-            console.log('this.recipe >> ', this.recipe);
         });
     }
 }

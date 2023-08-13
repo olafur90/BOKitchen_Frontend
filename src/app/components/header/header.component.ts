@@ -14,13 +14,13 @@ import { Router } from '@angular/router';
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
         MatButtonModule,
         MatMenuModule,
         MatIconModule
     ]
 })
 export class HeaderComponent {
+    public loginLink: string = '';
     public searchTerm: string = '';
     constructor(private router: Router) { }
 

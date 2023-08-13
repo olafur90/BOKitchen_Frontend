@@ -23,6 +23,15 @@
             <button mat-menu-item>Asískt</button>
             <button mat-menu-item>Meðlæti</button>
             </mat-menu>
+
+            <!-- FIXME: Figure out what's wrong with ngModel, giving the console error:
+                ERROR Error: NG01203: No value accessor for form control unspecified name attribute.
+                <p [(ngModel)]="loginLink">Innskráning</p>
+
+                Will leave login text as visual <p> text just for now
+            -->
+            <p>Innskráning</p>
+
         </div>
     </nav>
 </header>

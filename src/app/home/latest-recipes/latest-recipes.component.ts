@@ -31,11 +31,8 @@ export class LatestRecipesComponent implements OnInit {
         await this.http.get<IRecipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
             .subscribe((data: IRecipe[]) => {
                 this.recentRecipes = data;
-            })
-            .add(() => {
                 console.log('this.recentRecipes >> ', this.recentRecipes);
-            });
-
+            })
             
         await this.http.get<IRecipe>(`${API_URL}/uppskriftir/latestRecipe`).subscribe((data: IRecipe) => {
             this.singleLatestRecipe = data;

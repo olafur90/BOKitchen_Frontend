@@ -1,0 +1,26 @@
+<div class="new-recipe-container">
+    <form [formGroup]="recipeFormGroup">
+        <legend>Bæta við uppskrift</legend>
+        <input formControlName="name" (ngModelChange)="onNameChange(name.value)" #name type="text" required placeholder="Nafn*">
+        <app-select-category-component />
+        <textarea [rows]="3" formControlName="summary" (ngModelChange)="onSummaryChange(summary.value)" #summary placeholder="Stutt lýsing, allt að 100 stafir og tákn"></textarea>
+        
+        <!-- TODO: Remove some unnecessary buttons from rich text editor -->
+        <angular-editor 
+            (ngModelChange)="onContentChange()" 
+            style="
+                background-color: white;
+            " 
+            formControlName="description" 
+            [placeholder]="'Enter text here...'" 
+            [(ngModel)]="htmlContent">
+        </angular-editor>
+
+        <button class="btn" (click)="onAddRecipe()">Bæta við</button>
+    </form>
+    <div class="recipe-preview">
+        <h1>{{ previewName }}</h1>
+        <p style="color: gray;">{{ previewSummary }}</p>
+        <p [innerHTML]="previewContent"></p>
+    </div>
+</div>

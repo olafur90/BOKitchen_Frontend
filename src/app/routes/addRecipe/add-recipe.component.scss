@@ -1,0 +1,37 @@
+@import '../../scss-variables';
+
+.new-recipe-container {
+    @include flexcolumn;
+
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 5rem;
+    width: 40rem;
+}
+
+form {
+    @include flexcolumn;
+
+    background-color: lighten($color-primary, 10%);
+    padding: 1rem;
+
+    > input {
+        padding: 0.3rem;
+    }
+
+    > textarea {
+        margin-bottom: 1rem;
+        padding: 0.3rem;
+    }
+
+    > button {
+        background-color: darken($color-primary, 15%);
+        border: 1px solid $color-primary;
+        margin-top: 1rem;
+        width: 9rem;
+    }
+}
+
+.recipe-preview {
+    width: 47%;
+}

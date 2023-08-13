@@ -12,10 +12,11 @@ import { RouterModule } from '@angular/router';
 import { RecipeComponent } from './routes/recipe/recipe.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './routes/search/search.component';
+import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,11 @@ import { SearchComponent } from './routes/search/search.component';
           component: HomeComponent
         },
         {
-          path: 'uppskriftir/:recipeId',
+          path: 'uppskriftir/add',
+          component: AddRecipeComponent
+        },
+        {
+          path: 'uppskriftir/recipe/:recipeId',
           component: RecipeComponent
         },
         {
