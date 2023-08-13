@@ -5,7 +5,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { OnInit } from "@angular/core";
 import { RouterLink, RouterModule } from "@angular/router";
-import { IRecipe } from "src/app/components/models/IRecipe";
+import { Recipe } from "src/app/components/models/Recipe";
 import { API_URL } from "src/environment/environment";
 
 @Component({
@@ -22,19 +22,18 @@ import { API_URL } from "src/environment/environment";
     ]
 })
 export class LatestRecipesComponent implements OnInit {
-    recentRecipes: IRecipe[] = [];
-    singleLatestRecipe: IRecipe = {}
+    recentRecipes: Recipe[] = [];
+    singleLatestRecipe: Recipe = {}
 
     constructor(private http: HttpClient) { }
 
     async ngOnInit(): Promise<void> {
-        await this.http.get<IRecipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
-            .subscribe((data: IRecipe[]) => {
+        await this.http.get<Recipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
+            .subscribe((data: Recipe[]) => {
                 this.recentRecipes = data;
-                console.log('this.recentRecipes >> ', this.recentRecipes);
             })
             
-        await this.http.get<IRecipe>(`${API_URL}/uppskriftir/latestRecipe`).subscribe((data: IRecipe) => {
+        await this.http.get<Recipe>(`${API_URL}/uppskriftir/latestRecipe`).subscribe((data: Recipe) => {
             this.singleLatestRecipe = data;
         })
     }

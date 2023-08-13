@@ -1,0 +1,9 @@
+<mat-form-field>
+  <mat-label>Erfiðleikastig</mat-label>
+  <mat-select [formControl]="selectFormControl" required>
+    <mat-option *ngFor="let diff of difficulties" [value]="diff">
+      {{diff}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="categoryControl.hasError('required')">Nauðsynlegt að velja flokk</mat-error>
+</mat-form-field>

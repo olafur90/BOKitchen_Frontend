@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IRecipe } from '../../components/models/IRecipe';
+import { Recipe } from '../../components/models/Recipe';
 import { API_URL } from 'src/environment/environment';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -19,14 +19,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 })
 export class RecipeComponent implements OnInit{
     private id: number = 0;
-    public recipe: IRecipe = {};
+    public recipe: Recipe = {};
 
     constructor(private route: ActivatedRoute, private http: HttpClient) {
     }
 
     ngOnInit(): void {
         this.id = this.route.snapshot.params['recipeId'];
-        this.http.get<IRecipe>(`${API_URL}/uppskriftir/recipe/${this.id}`).subscribe((data: IRecipe) => {
+        this.http.get<Recipe>(`${API_URL}/uppskriftir/recipe/${this.id}`).subscribe((data: Recipe) => {
             this.recipe = data;
         });
     }

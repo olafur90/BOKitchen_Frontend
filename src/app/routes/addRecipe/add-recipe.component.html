@@ -2,8 +2,15 @@
     <form [formGroup]="recipeFormGroup">
         <legend>Bæta við uppskrift</legend>
         <input formControlName="name" (ngModelChange)="onNameChange(name.value)" #name type="text" required placeholder="Nafn*">
-        <app-select-category-component />
-        <textarea [rows]="3" formControlName="summary" (ngModelChange)="onSummaryChange(summary.value)" #summary placeholder="Stutt lýsing, allt að 100 stafir og tákn"></textarea>
+
+        <div style="display: flex; flex-direction: row;">
+            <app-select-category-component style="margin-right: 1rem;" />
+            <app-select-serving-size-component />
+        </div>
+        <div style="display: flex; flex-direction: row;">
+            <app-select-time-component style="margin-right: 1rem;" />
+            <app-select-difficulty-component />
+        </div>
         
         <!-- TODO: Remove some unnecessary buttons from rich text editor -->
         <angular-editor 
@@ -19,8 +26,7 @@
         <button class="btn" (click)="onAddRecipe()">Bæta við</button>
     </form>
     <div class="recipe-preview">
-        <h1>{{ previewName }}</h1>
-        <p style="color: gray;">{{ previewSummary }}</p>
+        <h1>{{ name.value }}</h1>
         <p [innerHTML]="previewContent"></p>
     </div>
 </div>

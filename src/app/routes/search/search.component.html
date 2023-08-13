@@ -1,1 +1,36 @@
-<p *ngFor="let recipe of searchResults">{{recipe.shortDescription}}</p>
+<div class="search-result-container">
+<p>Leitarniðurstöður fyrir "<strong>{{searchTerm}}</strong>"</p>
+
+<mat-card *ngFor="let recipe of searchResults" class="recipe-card">
+    <div class="recipe-icon">
+        <mat-card-header>
+            <div mat-card-avatar 
+                class="card-header-image" 
+                [ngStyle]="{
+                    'background-image': 'url(' + (recipe.categories && recipe.categories[0] ? recipe.categories[0].imageUri : '../../assets/pumpkin_pie.jpg') + ')'
+                }">
+            </div>
+            <mat-card-title><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{recipe.name}}</a></mat-card-title>
+            <mat-card-subtitle>{{ recipe.categories && recipe.categories[0] ? recipe.categories[0].icelandicName : '' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="recipe-card-content">
+            <div class="recipe-icon">
+                <i class="bi bi-people-fill"></i>
+                {{recipe.forNumberOfPeople}}
+            </div>
+            <div class="recipe-icon">
+                <i class="bi bi-clock-fill"></i>
+                {{recipe.timeToCookInMinutes}}
+            </div>
+            <div class="recipe-icon">
+                <i class="bi bi-speedometer2"></i>
+                <!-- TODO: Make pipe to translate to Icelandic -->
+                {{recipe.difficulty}}
+            </div>
+        </mat-card-content>
+    </div>
+    <mat-card-actions>
+        <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{recipe.id}}" routerActive>Skoða</button>
+    </mat-card-actions>
+</mat-card>
+</div>

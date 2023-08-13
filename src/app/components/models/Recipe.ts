@@ -1,6 +1,6 @@
 import { Category } from "src/app/components/models/Category";
 
-export class IRecipe {
+export class Recipe {
     public id?: number;
     public name?: string;
     public dateAdded?: Date;
