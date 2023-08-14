@@ -1,31 +1,44 @@
 <div class="new-recipe-container">
     <form [formGroup]="recipeFormGroup">
         <legend>Bæta við uppskrift</legend>
-        <input formControlName="name" (ngModelChange)="onNameChange(name.value)" #name type="text" required placeholder="Nafn*">
+        
+        <input 
+            #name 
+            required 
+            formControlName="name" 
+            placeholder="Nafn*"
+            type="text" 
+            (keyup)="onNameChange(name.value)" >
 
         <div style="display: flex; flex-direction: row;">
             <app-select-category-component 
                 (selectedCategory)="onCategoryChange($event)"
                 [formControl]="recipeFormGroup.controls['category']"
-                style="margin-right: 1rem;" />
+                style="margin-right: 1rem;">
+            </app-select-category-component>
+
             <app-select-serving-size-component 
                 (selectedServingSize)="onSelectServingSize($event)" 
-                [formControl]="recipeFormGroup.controls['servingSize']" />
+                [formControl]="recipeFormGroup.controls['servingSize']">
+            </app-select-serving-size-component>
         </div>
+
         <div style="display: flex; flex-direction: row;">
             <app-select-time-component 
                 style="margin-right: 1rem;" 
                 (selectedTime)="onSelectTime($event)"
-                [formControl]="recipeFormGroup.controls['time']" />
+                [formControl]="recipeFormGroup.controls['time']">
+            </app-select-time-component>
+
             <app-select-difficulty-component 
                 (selectedDifficulty)="onSelectDifficulty($event)"
-                [formControl]="recipeFormGroup.controls['difficulty']" />
+                [formControl]="recipeFormGroup.controls['difficulty']">
+            </app-select-difficulty-component>
         </div>
         
-        <!-- TODO: Remove some unnecessary buttons from rich text editor -->
         <angular-editor 
             [config]="editorConfig"
-            (ngModelChange)="onContentChange()"
+            (keyup)="onContentChange()"
             style="
                 background-color: white;
             "
@@ -48,7 +61,7 @@
             </div>
             <div class="icon-group">
                 <i class="bi bi-speedometer2"></i>
-                <p>{{ selectedDifficulty }}</p>
+                <p>{{ (selectedDifficultyAsText) }}</p>
             </div>
         </div>
         <h1>{{ name.value }}</h1>

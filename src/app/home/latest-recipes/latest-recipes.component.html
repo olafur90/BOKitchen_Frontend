@@ -1,7 +1,6 @@
 <section class="col latest-recipe-info">
     <legend>Our Latest Recipe</legend>
     <h2>{{ singleLatestRecipe.name }}</h2>
-    <p>{{ singleLatestRecipe.shortDescription }}</p>
     <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{singleLatestRecipe.id}}" routerActive>Meira</button>
 </section>
 
@@ -30,8 +29,7 @@
                 </div>
                 <div class="recipe-icon">
                     <i class="bi bi-speedometer2"></i>
-                    <!-- TODO: Make pipe to translate to Icelandic -->
-                    {{recipe.difficulty}}
+                    {{ recipe.difficulty ? (recipe.difficulty | difficultyReverse) : '1' }}
                 </div>
             </mat-card-content>
             <mat-card-actions>

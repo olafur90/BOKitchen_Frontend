@@ -1,16 +1,22 @@
+@import './scss-variables';
+
 body {
-    background-color: lighten(#E3CDB1, 16%);
+    background-color: lighten($color-primary, 16%);
     width: 100%;
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
 .container {
-    background-color: lighten(#E3CDB1, 14%);
+    background-color: lighten($color-primary, 14%);
     margin: auto;
     min-height: 85vh;
     padding-bottom: 1rem;
     width: 70%;
 
     --bs-gutter-x: 0;
+
+    @media (width <= 1150px) {
+        width: 100%;
+    }
 }

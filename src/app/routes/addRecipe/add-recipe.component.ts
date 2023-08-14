@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -15,6 +15,8 @@ import { AngularEditorConfig } from '@kolkov/angular-editor/lib/config';
 import { Category } from 'src/app/components/models/Category';
 import { SelectCategoryComponent } from './select-category-component/select-category.component';
 import { Difficulty } from 'src/app/components/models/Difficulty';
+import { DifficultyPipe } from 'src/app/pipes/difficulty.pipe';
+import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 
 
 
@@ -34,6 +36,11 @@ import { Difficulty } from 'src/app/components/models/Difficulty';
         SelectCategoryComponent,
         SelectDifficultyComponent,
         SelectServingSizeComponent,
+        DifficultyReversePipe
+    ],
+    providers: [
+        DifficultyPipe,
+        DifficultyReversePipe
     ]
 })
 export class AddRecipeComponent{
@@ -46,6 +53,7 @@ export class AddRecipeComponent{
     public selectedServingSize: number = 0;
     public selectedTime: number = 0;
     public selectedDifficulty: Difficulty = Difficulty.EASY;
+    public selectedDifficultyAsText: string = '';
 
     public previewContent: SafeHtml = '';
     
@@ -98,7 +106,7 @@ export class AddRecipeComponent{
         ]
     }
 
-    constructor(private sanitizer: DomSanitizer, private http: HttpClient) { }
+    constructor(private sanitizer: DomSanitizer, private http: HttpClient, private diffPipe: DifficultyReversePipe) { }
 
     onNameChange(input: string) {
         this.name = input;
@@ -118,12 +126,11 @@ export class AddRecipeComponent{
 
     onSelectTime(event: any): void {
         this.selectedTime = event as number;
-        console.log('selectedTime >> ', this.selectedTime);
     }
 
     onSelectDifficulty(event: any): void {
         this.selectedDifficulty = event as Difficulty;
-        console.log('selectedDifficulty >> ', this.selectedDifficulty);
+        this.selectedDifficultyAsText = this.diffPipe.transform(this.selectedDifficulty);
     }
 
     onAddRecipe() {

@@ -13,6 +13,7 @@ import { RecipeComponent } from './routes/recipe/recipe.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './routes/search/search.component';
 import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
+import { LoginComponent } from './routes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,10 @@ import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
         {
           path: 'search',
           component: SearchComponent
+        },
+        {
+          path: 'login',
+          component: LoginComponent
         }
       ]
     ),
