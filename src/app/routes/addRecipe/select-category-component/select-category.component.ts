@@ -37,7 +37,9 @@ export class SelectCategoryComponent implements OnInit {
 
     ngOnInit(): void {
         this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
-            this.categories = data;
+            if (data) {
+                this.categories = data;
+            }
         });
     }
 

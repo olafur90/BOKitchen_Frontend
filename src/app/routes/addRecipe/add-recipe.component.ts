@@ -14,6 +14,7 @@ import { SelectDifficultyComponent } from './select-difficulty-component copy/se
 import { AngularEditorConfig } from '@kolkov/angular-editor/lib/config';
 import { Category } from 'src/app/components/models/Category';
 import { SelectCategoryComponent } from './select-category-component/select-category.component';
+import { Difficulty } from 'src/app/components/models/Difficulty';
 
 
 
@@ -37,18 +38,15 @@ import { SelectCategoryComponent } from './select-category-component/select-cate
 })
 export class AddRecipeComponent{
 
-    @Input()
-    public cat: Category | null = null
-
     public name: string = '';
     public shortDescription: string = '';
     public htmlContent = '';
-    public category: string = '';
+    
     public selectedCategory: Category | null = null;
+    public selectedServingSize: number = 0;
+    public selectedTime: number = 0;
+    public selectedDifficulty: Difficulty = Difficulty.EASY;
 
-    // Preview vars
-    public previewName: string = '';
-    public previewSummary: string = '';
     public previewContent: SafeHtml = '';
     
     // Form group for controlling the input fields
@@ -57,6 +55,9 @@ export class AddRecipeComponent{
         summary: new FormControl(''),
         description: new FormControl(''),
         category: new FormControl(null),
+        servingSize: new FormControl(null),
+        time: new FormControl(null),
+        difficulty: new FormControl(null)
     });
 
     // Editor config for Rich Text editor
@@ -103,25 +104,37 @@ export class AddRecipeComponent{
         this.name = input;
     }
 
-    onSummaryChange(input: string) {
-        this.previewSummary = input;
-    }
-
     onContentChange() {
         this.previewContent = this.sanitizer.bypassSecurityTrustHtml(this.htmlContent);
     }
 
     onCategoryChange(event: any): void {
-        console.log(event);
+        this.selectedCategory = event as Category;
+    }
+
+    onSelectServingSize(event: any): void {
+        this.selectedServingSize = event as number;
+    }
+
+    onSelectTime(event: any): void {
+        this.selectedTime = event as number;
+        console.log('selectedTime >> ', this.selectedTime);
+    }
+
+    onSelectDifficulty(event: any): void {
+        this.selectedDifficulty = event as Difficulty;
+        console.log('selectedDifficulty >> ', this.selectedDifficulty);
     }
 
     onAddRecipe() {
         const recipe: Recipe = {
             name: this.name,
-            instructions: this.htmlContent
+            instructions: this.htmlContent,
+            category: this.selectedCategory ? this.selectedCategory.name : undefined,
+            timeToCookInMinutes: this.selectedTime,
+            forNumberOfPeople: this.selectedServingSize,
+            difficulty: this.selectedDifficulty
         }
-
-        console.log('recipe >> ', recipe);
 
         this.http.post<Recipe>(`${API_URL}/uppskriftir/add`, recipe).subscribe((data: Recipe) => {
             console.log('data >> ', data);

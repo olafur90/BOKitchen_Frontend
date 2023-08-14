@@ -5,15 +5,21 @@
 
         <div style="display: flex; flex-direction: row;">
             <app-select-category-component 
-                #cat 
                 (selectedCategory)="onCategoryChange($event)"
                 [formControl]="recipeFormGroup.controls['category']"
                 style="margin-right: 1rem;" />
-            <app-select-serving-size-component />
+            <app-select-serving-size-component 
+                (selectedServingSize)="onSelectServingSize($event)" 
+                [formControl]="recipeFormGroup.controls['servingSize']" />
         </div>
         <div style="display: flex; flex-direction: row;">
-            <app-select-time-component style="margin-right: 1rem;" />
-            <app-select-difficulty-component />
+            <app-select-time-component 
+                style="margin-right: 1rem;" 
+                (selectedTime)="onSelectTime($event)"
+                [formControl]="recipeFormGroup.controls['time']" />
+            <app-select-difficulty-component 
+                (selectedDifficulty)="onSelectDifficulty($event)"
+                [formControl]="recipeFormGroup.controls['difficulty']" />
         </div>
         
         <!-- TODO: Remove some unnecessary buttons from rich text editor -->
@@ -31,6 +37,20 @@
         <button class="btn" (click)="onAddRecipe()">Bæta við</button>
     </form>
     <div class="recipe-preview">
+        <div class="icon-preview">
+            <div class="icon-group">
+                <i class="bi bi-people"></i>
+                <p>{{ selectedServingSize }}</p>
+            </div>
+            <div class="icon-group">
+                <i class="bi bi-clock"></i>
+                <p>{{ selectedTime }}</p>
+            </div>
+            <div class="icon-group">
+                <i class="bi bi-speedometer2"></i>
+                <p>{{ selectedDifficulty }}</p>
+            </div>
+        </div>
         <h1>{{ name.value }}</h1>
         <p [innerHTML]="previewContent"></p>
     </div>

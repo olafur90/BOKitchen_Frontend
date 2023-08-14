@@ -7,11 +7,11 @@
             <div mat-card-avatar 
                 class="card-header-image" 
                 [ngStyle]="{
-                    'background-image': 'url(' + (recipe.categories && recipe.categories[0] ? recipe.categories[0].imageUri : '../../assets/pumpkin_pie.jpg') + ')'
+                    'background-image': 'url(' + (recipe.category ? recipe.category : '../../assets/pumpkin_pie.jpg') + ')'
                 }">
             </div>
             <mat-card-title><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{recipe.name}}</a></mat-card-title>
-            <mat-card-subtitle>{{ recipe.categories && recipe.categories[0] ? recipe.categories[0].icelandicName : '' }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ recipe.category ? recipe.category : '' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="recipe-card-content">
             <div class="recipe-icon">

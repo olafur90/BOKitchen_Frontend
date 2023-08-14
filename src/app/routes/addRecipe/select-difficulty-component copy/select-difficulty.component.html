@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>Erfiðleikastig</mat-label>
-  <mat-select [formControl]="selectFormControl" required>
+  <mat-select #selectedDifficulty [formControl]="selectFormControl" required (ngModelChange)="onChange(selectedDifficulty.value)">
     <mat-option *ngFor="let diff of difficulties" [value]="diff">
       {{diff}}
     </mat-option>
