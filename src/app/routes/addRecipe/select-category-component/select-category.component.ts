@@ -38,7 +38,7 @@ export class SelectCategoryComponent implements OnInit, ControlValueAccessor {
     // Recipe category selection
     categoryControl = new FormControl<Category | null>(null, Validators.required);
     selectFormControl = new FormControl('', Validators.required);
-    categories: Category[] = [];
+    availableCategories: Category[] = [];
 
     constructor(private http: HttpClient) { }
     registerOnChange(fn: any): void {
@@ -58,7 +58,7 @@ export class SelectCategoryComponent implements OnInit, ControlValueAccessor {
     ngOnInit(): void {
         this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
             if (data) {
-                this.categories = data;
+                this.availableCategories = data;
             }
         });
     }

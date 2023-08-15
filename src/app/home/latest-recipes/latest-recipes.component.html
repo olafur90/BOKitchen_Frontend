@@ -1,22 +1,47 @@
 <section class="col latest-recipe-info">
-    <legend>Our Latest Recipe</legend>
-    <h2>{{ singleLatestRecipe.name }}</h2>
-    <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{singleLatestRecipe.id}}" routerActive>Meira</button>
+    <div class="latest-recipe-text">
+        <legend>Nýjasta uppskriftin</legend>
+        <div>
+            <h2>{{ singleLatestRecipe.name }}</h2>
+            <div class="single-latest-recipe-category">
+                <img [src]="singleLatestRecipe.cat?.imagePath" alt="">
+                <p>{{ singleLatestRecipe.cat?.icelandicName }}</p>
+            </div>
+        </div>
+        <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{singleLatestRecipe.id}}" routerActive>Meira</button>
+    </div>
+    <div class="icon-view">
+        <div class="icon-group">
+            <i class="bi bi-people-fill"></i>
+            <p>{{ singleLatestRecipe.forNumberOfPeople }}</p>
+        </div>
+        <div class="icon-group">
+            <i class="bi bi-clock"></i>
+            <p>{{ singleLatestRecipe.timeToCookInMinutes }}</p>
+        </div>
+        <div class="icon-group">
+            <i class="bi bi-speedometer2"></i>
+            <p>{{ singleLatestRecipe.difficulty ? (singleLatestRecipe.difficulty | difficultyReverse) : '1' }}</p>
+        </div>
+    </div>
+    <div>
+        <img src="../../../assets/pumpkin_pie.jpg" alt="">
+    </div>
 </section>
 
 <section class="row recent-recipes">
-    <h2><span class="title-first-half">Nýjustu</span> uppskriftirnar</h2>
+    <h2><span class="title-first-half">Nýjustu</span> uppskriftir</h2>
     <div class="row recent-recipe-card-container">
         <mat-card *ngFor="let recipe of recentRecipes" class="recipe-card">
             <mat-card-header>
                 <div mat-card-avatar 
                     class="card-header-image" 
                     [ngStyle]="{
-                        'background-image': 'url(' + (recipe.category ? recipe.category : '../../assets/pumpkin_pie.jpg') + ')'
+                        'background-image': 'url(' + (recipe.cat?.imagePath ? recipe.cat?.imagePath : '../../assets/pumpkin_pie.jpg') + ')'
                     }">
                 </div>
                 <mat-card-title><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{recipe.name}}</a></mat-card-title>
-                <mat-card-subtitle>{{ recipe.category ? recipe.category : '' }}</mat-card-subtitle>
+                <mat-card-subtitle>{{ recipe?.cat ? recipe.cat?.icelandicName : '' }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="recipe-card-content">
                 <div class="recipe-icon">

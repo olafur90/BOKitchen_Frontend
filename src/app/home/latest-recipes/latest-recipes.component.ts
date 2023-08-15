@@ -8,6 +8,7 @@ import { RouterLink, RouterModule } from "@angular/router";
 import { Recipe } from "src/app/components/models/Recipe";
 import { API_URL } from "src/environment/environment";
 import { DifficultyReversePipe } from "src/app/pipes/difficulty-reverse.pipe";
+import { Category } from "src/app/components/models/Category";
 
 @Component({
     selector: "app-latest-recipes",
@@ -32,14 +33,23 @@ export class LatestRecipesComponent implements OnInit {
 
     constructor(private http: HttpClient) { }
 
-    async ngOnInit(): Promise<void> {
-        await this.http.get<Recipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
+    ngOnInit(): void {
+        this.http.get<Recipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
             .subscribe((data: Recipe[]) => {
                 if (data) {
                     this.recentRecipes = data;
-                    this.singleLatestRecipe = data[0];
-                    console.log('data >> ', data);
                 }
+            }).add(() => {
+                this.recentRecipes.forEach(recipe => {
+                    if (recipe.category) {
+                        this.http.get<Category>(`${API_URL}/flokkar/` + recipe.category).subscribe((category: Category) => {
+                            recipe.cat = category;
+                        });
+                    }
+                });
+
+                this.singleLatestRecipe = this.recentRecipes[0];
+                this.recentRecipes = this.recentRecipes.slice(1);
             });
     }
 }

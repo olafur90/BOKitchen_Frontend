@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Category } from '../models/Category';
+import { HttpClient } from '@angular/common/http';
+import { API_URL } from 'src/environment/environment';
 
 @Component({
     selector: 'app-header-component',
@@ -19,12 +22,23 @@ import { Router } from '@angular/router';
         MatIconModule
     ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
     public loginLink: string = '';
     public searchTerm: string = '';
-    constructor(private router: Router) { }
+
+    public categories: Category[] = [];
+
+    constructor(private router: Router, private http: HttpClient) { }
 
     async onSearch() {
         this.router.navigate(['/search'], { queryParams: { query: this.searchTerm } });
+    }
+
+    ngOnInit(): void {
+        this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
+            if (data) {
+                this.categories = data;
+            }
+        })
     }
 }

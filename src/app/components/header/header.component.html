@@ -5,7 +5,7 @@
         </div>
         <div class="nav-middle">
             <i class="bi bi-search"></i>
-            <input type="text" placeholder="Sláðu inn leitarorð" [(ngModel)]="searchTerm">
+            <input type="text" (keyup.enter)="onSearch()" placeholder="Sláðu inn leitarorð" [(ngModel)]="searchTerm">
             <button class="btn" (click)="onSearch()">Leita</button>
         </div>
         <div class="nav-right">
@@ -15,13 +15,7 @@
             </button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
             <!-- TODO: Add menu items dynamically from categories -->
-            <button mat-menu-item>Hakk</button>
-            <button mat-menu-item>Fiskur</button>
-            <button mat-menu-item>Kjöt</button>
-            <button mat-menu-item>Súpur</button>
-            <button mat-menu-item>Kjúklingur</button>
-            <button mat-menu-item>Asískt</button>
-            <button mat-menu-item>Meðlæti</button>
+            <button mat-menu-item *ngFor="let category of categories">{{category.icelandicName}}</button>
             </mat-menu>
 
             <!-- FIXME: Figure out what's wrong with ngModel, giving the console error:

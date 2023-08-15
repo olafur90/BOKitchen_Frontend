@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { RecipeComponent } from './routes/recipe/recipe.component';
@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './routes/search/search.component';
 import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
 import { LoginComponent } from './routes/login/login.component';
+import { provideToastr } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,10 @@ import { LoginComponent } from './routes/login/login.component';
       ]
     ),
   ],
-  providers: [],
+  providers: [
+    provideAnimations(), // required animations providers
+    provideToastr(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

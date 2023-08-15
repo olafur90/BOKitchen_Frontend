@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Recipe } from 'src/app/components/models/Recipe';
 import { API_URL } from 'src/environment/environment';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,7 @@ import { SelectCategoryComponent } from './select-category-component/select-cate
 import { Difficulty } from 'src/app/components/models/Difficulty';
 import { DifficultyPipe } from 'src/app/pipes/difficulty.pipe';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -43,7 +44,7 @@ import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
         DifficultyReversePipe
     ]
 })
-export class AddRecipeComponent{
+export class AddRecipeComponent {
 
     public name: string = '';
     public shortDescription: string = '';
@@ -106,7 +107,12 @@ export class AddRecipeComponent{
         ]
     }
 
-    constructor(private sanitizer: DomSanitizer, private http: HttpClient, private diffPipe: DifficultyReversePipe) { }
+    constructor(
+        private sanitizer: DomSanitizer, 
+        private http: HttpClient, 
+        private diffPipe: DifficultyReversePipe,
+        private toastService: ToastrService
+    ) { }
 
     onNameChange(input: string) {
         this.name = input;
@@ -143,8 +149,14 @@ export class AddRecipeComponent{
             difficulty: this.selectedDifficulty
         }
 
-        this.http.post<Recipe>(`${API_URL}/uppskriftir/add`, recipe).subscribe((data: Recipe) => {
-            console.log('data >> ', data);
+        this.http.post<HttpResponse<string>>(`${API_URL}/uppskriftir/add`, recipe).subscribe((data: HttpResponse<string>) => {
+            if (data.toString() === "CREATED") {
+                // FIXME: This is no bueno, check better way for response codes
+                this.toastService.success("Recipe added", "Success");
+            }
+            else {
+                this.toastService.error("Recipe not added", "Error");
+            }
         })
     }
 }

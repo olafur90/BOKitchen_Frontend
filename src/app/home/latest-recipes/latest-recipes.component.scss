@@ -1,9 +1,8 @@
 @import '../../scss-variables';
 
 .latest-recipe-info {
-    @include flexcolumn;
+    @include flexrow;
 
-    background-image: url('../../../assets/pumpkin_pie.jpg');
     background-repeat: no-repeat;
     background-position: right;
     background-color: lighten($color-primary, 10%);
@@ -12,33 +11,81 @@
     border-radius: 3px;
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
-    justify-content: center;
+    justify-content: space-between;
     margin: 1rem;
     margin-bottom: 3rem;
     padding: 1rem;
     padding-left: 5rem;
 
-    > legend {
-        color: darken($color-primary, 20%);
+    > .latest-recipe-text {
+        @include flexcolumn;
+
+        justify-content: space-between;
+    }
+
+    > .icon-view {
+        @include flexrow;
+
+        align-items: center;
+        justify-content: space-between;
+        scale: 1.5;
+        width: 20%;
+
+        > .icon-group {
+            @include flexcolumn;
+
+            width: fit-content;
+
+            > i {
+                margin: auto;
+            }
+        }
+    }
+
+    & .single-latest-recipe-category {
+        @include flexrow;
+
+        > img {
+            border-radius: 50%;
+            height: 2rem;
+            margin-right: 0.5rem;
+            width: 2rem;
+        }
+
+        > p {
+            color: darken($color-primary, 50%);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: auto 0;
+        }
+    }
+
+    & img {
+        max-height: 10rem;
+    }
+
+    & legend {
+        color: darken($color-primary, 35%);
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 1.3rem;
         margin: 0;
     }
 
-    > h2 {
+    & h2 {
         font-family: $font-primary;
     }
 
-    > p {
+    & p {
         font-family: $font-primary;
         max-width: 50%;
     }
 
-    > button {
+    & button {
         border: 1px solid;
         border-color: darken($color-primary, 10%);
         background-color: darken($color-primary, 10%);
         color: lighten($color-primary, 10%);
+        margin-top: 2rem;
         width: 15%;
 
         &:hover {

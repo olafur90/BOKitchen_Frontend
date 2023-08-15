@@ -12,4 +12,5 @@ export class Recipe {
     public baseImage?: string;
     public category?: string;
     public difficulty?: Difficulty;
+    public cat?: Category
 }
