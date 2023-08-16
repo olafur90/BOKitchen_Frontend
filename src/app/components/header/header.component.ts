@@ -41,4 +41,10 @@ export class HeaderComponent implements OnInit {
             }
         })
     }
+
+    onCategoryClick(categoryName: any) {
+        this.router.navigate(['/']).then(() => {
+            this.router.navigate(['/uppskriftir/flokkar', categoryName]);
+        });
+    }
 }

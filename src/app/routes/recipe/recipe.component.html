@@ -10,7 +10,7 @@
         </div>
         <div class="icon-group">
             <i class="bi bi-speedometer2"></i>
-            <p>{{ (recipe.difficulty) }}</p>
+            <p>{{ (recipe.difficulty ? (recipe.difficulty | difficultyReverse) : '1') }}</p>
         </div>
     </div>
     <div class="recipe">

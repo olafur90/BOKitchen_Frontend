@@ -15,7 +15,13 @@
             </button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
             <!-- TODO: Add menu items dynamically from categories -->
-            <button mat-menu-item *ngFor="let category of categories">{{category.icelandicName}}</button>
+            <button 
+                mat-menu-item
+                #category
+                (click)="onCategoryClick(category.name)" 
+                *ngFor="let category of categories">
+                    {{category.icelandicName}}
+                </button>
             </mat-menu>
 
             <!-- FIXME: Figure out what's wrong with ngModel, giving the console error:

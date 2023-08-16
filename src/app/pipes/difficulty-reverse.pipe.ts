@@ -7,7 +7,6 @@ import { Difficulty } from '../components/models/Difficulty';
 })
 export class DifficultyReversePipe implements PipeTransform {
     transform(value: Difficulty): string {
-        console.log('value >> ', value);
         switch (value) {
             case Difficulty.HARD:
                 return 'Erfitt';

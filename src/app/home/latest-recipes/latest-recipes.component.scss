@@ -14,6 +14,7 @@
     justify-content: space-between;
     margin: 1rem;
     margin-bottom: 3rem;
+    max-height: 30vh;
     padding: 1rem;
     padding-left: 5rem;
 
@@ -21,13 +22,16 @@
         @include flexcolumn;
 
         justify-content: space-between;
+        max-width: 30%;
     }
 
     > .icon-view {
         @include flexrow;
 
         align-items: center;
+        color: darken($color-primary, 50%);
         justify-content: space-between;
+        margin-right: 5rem;
         scale: 1.5;
         width: 20%;
 
@@ -40,10 +44,23 @@
                 margin: auto;
             }
         }
+
+        @media (width <= 990px) {
+            @include flexcolumn;
+
+            justify-content: center;
+            margin-right: 1rem;
+
+            & p {
+                margin-bottom: 0.3rem;
+            }
+        }
     }
 
     & .single-latest-recipe-category {
         @include flexrow;
+
+        margin-top: 1rem;
 
         > img {
             border-radius: 50%;
@@ -60,10 +77,6 @@
         }
     }
 
-    & img {
-        max-height: 10rem;
-    }
-
     & legend {
         color: darken($color-primary, 35%);
         font-weight: 500;
@@ -71,8 +84,9 @@
         margin: 0;
     }
 
-    & h2 {
+    & h3 {
         font-family: $font-primary;
+        margin-top: 1rem;
     }
 
     & p {
@@ -94,6 +108,25 @@
             color: darken($color-primary, 10%);
         }
     }
+
+    > .latest-recipe-image-container {
+        display: flex;
+
+        > img {
+            border: 2px solid $color-primary;
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+            max-height: 25vh;
+            margin: auto 0;
+        }
+
+        @media (width <= 770px) {
+            display: none;
+        }
+    }
+
+    @media (width <= 770px) {
+        max-height: fit-content;
+    }
 }
 
 .recent-recipes {
@@ -106,20 +139,21 @@
     padding-left: 4rem;
     padding-top: 2rem;
 
-    > legend {
-        color: darken($color-primary, 20%);
-        font-size: 1.1rem;
+    & legend {
+        color: darken($color-primary, 35%);
         font-weight: 500;
-        margin-bottom: 0;
+        font-size: 1.3rem;
+        margin: 0;
     }
 
     > h2 {
         font-family: $font-primary;
     }
 
-    & .title-first-half {
-        color: $header-nav-text-color;
-    }
+}
+
+.title-first-half {
+    color: $header-nav-text-color;
 }
 
 .recent-recipe-card-container {

@@ -15,6 +15,7 @@ import { SearchComponent } from './routes/search/search.component';
 import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
 import { LoginComponent } from './routes/login/login.component';
 import { provideToastr } from 'ngx-toastr';
+import { CategoriesComponent } from './routes/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,10 @@ import { provideToastr } from 'ngx-toastr';
         {
           path: 'uppskriftir/recipe/:recipeId',
           component: RecipeComponent
+        },
+        {
+          path: 'uppskriftir/flokkar/:category',
+          component: CategoriesComponent
         },
         {
           path: 'search',

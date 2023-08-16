@@ -1,18 +1,18 @@
 <section class="col latest-recipe-info">
     <div class="latest-recipe-text">
-        <legend>Nýjasta uppskriftin</legend>
+        <legend><span class="title-first-half">Nýjasta </span>uppskriftin</legend>
         <div>
-            <h2>{{ singleLatestRecipe.name }}</h2>
             <div class="single-latest-recipe-category">
                 <img [src]="singleLatestRecipe.cat?.imagePath" alt="">
                 <p>{{ singleLatestRecipe.cat?.icelandicName }}</p>
             </div>
+            <h3>{{ singleLatestRecipe.name }}</h3>
         </div>
         <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{singleLatestRecipe.id}}" routerActive>Meira</button>
     </div>
     <div class="icon-view">
         <div class="icon-group">
-            <i class="bi bi-people-fill"></i>
+            <i class="bi bi-people"></i>
             <p>{{ singleLatestRecipe.forNumberOfPeople }}</p>
         </div>
         <div class="icon-group">
@@ -24,13 +24,13 @@
             <p>{{ singleLatestRecipe.difficulty ? (singleLatestRecipe.difficulty | difficultyReverse) : '1' }}</p>
         </div>
     </div>
-    <div>
-        <img src="../../../assets/pumpkin_pie.jpg" alt="">
+    <div class="latest-recipe-image-container">
+        <img [src]="singleLatestRecipe.baseImage ? singleLatestRecipe.baseImage : (singleLatestRecipe.cat?.imagePath ? singleLatestRecipe.cat?.imagePath : '../../assets/pumpkin_pie.jpg')" alt="">
     </div>
 </section>
 
 <section class="row recent-recipes">
-    <h2><span class="title-first-half">Nýjustu</span> uppskriftir</h2>
+    <legend><span class="title-first-half">Aðrar nýjar</span> uppskriftir</legend>
     <div class="row recent-recipe-card-container">
         <mat-card *ngFor="let recipe of recentRecipes" class="recipe-card">
             <mat-card-header>

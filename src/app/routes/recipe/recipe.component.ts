@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../../components/models/Recipe';
 import { API_URL } from 'src/environment/environment';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 
 @Component({
     selector: 'app-recipe-component',
@@ -14,7 +15,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     styleUrls: ['./recipe.component.scss'],
     imports: [
         CommonModule,
-        MatTabsModule
+        MatTabsModule,
+        DifficultyReversePipe
     ]
 })
 export class RecipeComponent implements OnInit{
