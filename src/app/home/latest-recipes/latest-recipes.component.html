@@ -1,30 +1,30 @@
 <section class="col latest-recipe-info">
-    <div class="latest-recipe-text">
+    <div class="latest-recipe-text" *ngIf="singleLatestRecipe">
         <legend><span class="title-first-half">Nýjasta </span>uppskriftin</legend>
         <div>
             <div class="single-latest-recipe-category">
-                <img [src]="singleLatestRecipe.cat?.imagePath" alt="">
-                <p>{{ singleLatestRecipe.cat?.icelandicName }}</p>
+                <img [src]="singleLatestRecipe && singleLatestRecipe.cat?.imagePath" alt="">
+                <p>{{ singleLatestRecipe ? singleLatestRecipe.cat?.icelandicName : '' }}</p>
             </div>
-            <h3>{{ singleLatestRecipe.name }}</h3>
+            <h3>{{ singleLatestRecipe ? singleLatestRecipe.name : '' }}</h3>
         </div>
-        <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{singleLatestRecipe.id}}" routerActive>Meira</button>
+        <button class="btn" mat-button routerLink="/uppskriftir/recipe/{{ singleLatestRecipe ? singleLatestRecipe.id : ''}}" routerActive>Meira</button>
     </div>
     <div class="icon-view">
         <div class="icon-group">
             <i class="bi bi-people"></i>
-            <p>{{ singleLatestRecipe.forNumberOfPeople }}</p>
+            <p>{{ singleLatestRecipe ? singleLatestRecipe.forNumberOfPeople : '' }}</p>
         </div>
         <div class="icon-group">
             <i class="bi bi-clock"></i>
-            <p>{{ singleLatestRecipe.timeToCookInMinutes }}</p>
+            <p>{{ singleLatestRecipe ? singleLatestRecipe.timeToCookInMinutes : '' }}</p>
         </div>
         <div class="icon-group">
             <i class="bi bi-speedometer2"></i>
-            <p>{{ singleLatestRecipe.difficulty ? (singleLatestRecipe.difficulty | difficultyReverse) : '1' }}</p>
+            <p>{{ singleLatestRecipe && singleLatestRecipe.difficulty ? (singleLatestRecipe.difficulty | difficultyReverse) : '1' }}</p>
         </div>
     </div>
-    <div class="latest-recipe-image-container">
+    <div class="latest-recipe-image-container" *ngIf="singleLatestRecipe">
         <img [src]="singleLatestRecipe.baseImage ? singleLatestRecipe.baseImage : (singleLatestRecipe.cat?.imagePath ? singleLatestRecipe.cat?.imagePath : '../../assets/pumpkin_pie.jpg')" alt="">
     </div>
 </section>
