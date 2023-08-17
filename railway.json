@@ -1,11 +1,11 @@
 {
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "npm install && ng build --prod"
+    "buildCommand": "npm install && ng build"
   },
   "deploy": {
     "numReplicas": 1,
-    "startCommand": "ng serve",
+    "startCommand": "npx http-server dist",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
