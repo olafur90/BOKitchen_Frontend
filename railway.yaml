@@ -1,0 +1,6 @@
+services:
+  - name: frontend
+    type: static
+    build:
+      # Specify the build command for your Angular app
+      command: npm install && ng build --prod
