@@ -1,0 +1,57 @@
+@import '../../scss-variables';
+
+.recipe-card {
+    @include flexrow;
+    
+    background-color: lighten($color-primary, 8%);
+    justify-content: space-between;
+    margin: 1rem;
+    width: 70%;
+    
+    & a {
+        color: darken($color-primary, 40%);
+        text-decoration: none;
+    }
+
+    @media (width <= 990px) {
+        width: 90%;
+    }
+
+    @media (width <= 470px) {
+        @include flexcolumn;
+    }
+
+    .recipe-card-header {
+        padding-bottom: 1rem;
+        width: 60%;
+    }
+}
+
+.icon-group {
+    @include flexrow;
+
+    justify-content: space-around;
+    padding-right: 2rem;
+    width: 40%;
+
+    @media (width <= 470px) {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-right: 0;
+        width: 100%;
+    }
+}
+
+.icon-view {
+    @include flexrow;
+
+    align-items: center;
+
+    > i {
+        margin-right: 0.5rem;
+
+        @media (width <= 540px) {
+            margin-left: 0.5rem;
+        }
+    }
+}

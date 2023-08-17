@@ -1,1 +1,8 @@
 <!-- Add pagination in case of large data -->
+<div class="category-header">
+    <h2><img [src]="currentCategory?.imagePath" alt="">{{ currentCategory?.icelandicName }}</h2>
+</div>
+
+<app-result-cards-component [recipes]="recipes">
+    
+</app-result-cards-component>

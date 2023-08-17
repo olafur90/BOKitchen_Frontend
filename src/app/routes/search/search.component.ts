@@ -5,6 +5,7 @@ import { API_URL } from 'src/environment/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
 
 @Component({
     selector: 'app-search-component',
@@ -14,7 +15,8 @@ import { MatCardModule } from '@angular/material/card';
     imports: [
         CommonModule,
         MatCardModule,
-        RouterModule
+        RouterModule,
+        ResultCardsComponent
     ]
 })
 export class SearchComponent implements OnInit {
