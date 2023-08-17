@@ -56,8 +56,7 @@ import { CategoriesComponent } from './routes/categories/categories.component';
           path: 'login',
           component: LoginComponent
         }
-      ],
-      { useHash: true }
+      ]
     ),
   ],
   providers: [
