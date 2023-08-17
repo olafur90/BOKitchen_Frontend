@@ -1,0 +1,1 @@
+export const API_URL = 'mathollbackend-production.up.railway.app';

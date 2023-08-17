@@ -4,3 +4,7 @@ services:
     build:
       # Specify the build command for your Angular app
       command: npm install && ng build --prod
+
+routes:
+  - src: /.*  # Adjust the source path to match your deployment subpath
+    dest: frontend
