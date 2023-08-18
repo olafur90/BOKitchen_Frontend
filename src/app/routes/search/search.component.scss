@@ -17,7 +17,7 @@
     background-color: lighten($color-primary, 10%);
     margin-bottom: 1rem;
     margin-left: 2rem;
-    width: 50%;
+    max-width: 50%;
 
     & .recipe-card-content {
         @include flexcolumn;

@@ -7,7 +7,7 @@
     margin: auto;
     padding-top: 5rem;
 
-    @media (width: 1150px) {
+    @media (max-width: 1150px) {
         @include flexcolumn;
     }
 }
@@ -18,7 +18,7 @@ form {
     background-color: lighten($color-primary, 10%);
     margin-left: 1rem;
     padding: 1rem;
-    width: 60%;
+    max-width: 60%;
 
     > input {
         padding: 0.3rem;
@@ -33,11 +33,11 @@ form {
         background-color: darken($color-primary, 15%);
         border: 1px solid $color-primary;
         margin-top: 1rem;
-        width: 9rem;
+        max-width: 9rem;
     }
 
-    @media (width: 1150px) {
-        width: 100%;
+    @media (max-width: 1150px) {
+        max-width: 100%;
     }
 }
 
@@ -48,7 +48,7 @@ form {
     margin-right: 0.5rem;
     padding: 0.5rem;
     word-wrap: break-word;
-    width: 40%;
+    max-width: 40%;
 
     > .icon-preview {
         @include flexrow;
@@ -57,7 +57,7 @@ form {
         justify-content: space-between;
         margin-bottom: 1rem;
         padding: 0.5rem 1rem;
-        width: 100%;
+        max-width: 100%;
 
         > .icon-group {
             @include flexrow;
@@ -73,12 +73,12 @@ form {
     }
 
     & img {
-        max-width: 100%;
+        max-max-width: 100%;
     }
 
-    @media (width: 1150px) {
+    @media (max-width: 1150px) {
         margin: 0;
         margin-top: 1rem;
-        width: 100%;
+        max-width: 100%;
     }
 }

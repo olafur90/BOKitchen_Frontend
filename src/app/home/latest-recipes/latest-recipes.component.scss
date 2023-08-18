@@ -22,7 +22,7 @@
         @include flexcolumn;
 
         justify-content: space-between;
-        max-width: 30%;
+        max-max-width: 30%;
     }
 
     > .icon-view {
@@ -33,19 +33,19 @@
         justify-content: space-between;
         margin-right: 5rem;
         scale: 1.5;
-        width: 20%;
+        max-width: 20%;
 
         > .icon-group {
             @include flexcolumn;
 
-            width: fit-content;
+            max-width: fit-content;
 
             > i {
                 margin: auto;
             }
         }
 
-        @media (width: 990px) {
+        @media (max-width: 990px) {
             @include flexcolumn;
 
             justify-content: center;
@@ -66,7 +66,7 @@
             border-radius: 50%;
             height: 2rem;
             margin-right: 0.5rem;
-            width: 2rem;
+            max-width: 2rem;
         }
 
         > p {
@@ -91,7 +91,7 @@
 
     & p {
         font-family: $font-primary;
-        max-width: 50%;
+        max-max-width: 50%;
     }
 
     & button {
@@ -100,7 +100,7 @@
         background-color: darken($color-primary, 10%);
         color: lighten($color-primary, 10%);
         margin-top: 2rem;
-        width: 15%;
+        max-width: 15%;
 
         &:hover {
             background-color: lighten($color-primary, 10%);
@@ -116,16 +116,16 @@
             border: 2px solid $color-primary;
             box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
             max-height: 25vh;
-            max-width: 300px;
+            max-max-width: 300px;
             margin: auto 0;
         }
 
-        @media (width: 770px) {
+        @media (max-width: 770px) {
             display: none;
         }
     }
 
-    @media (width: 770px) {
+    @media (max-width: 770px) {
         max-height: fit-content;
     }
 }
@@ -175,12 +175,12 @@
     background-color: lighten($color-primary, 16%);
     border: 1px solid $color-primary;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    max-width: 31%;
+    max-max-width: 31%;
     margin: 0.5rem;
 
     & img {
         max-height: 10rem;
-        max-width: 10rem;
+        max-max-width: 10rem;
     }
 
     &:hover {
@@ -221,7 +221,7 @@
 
             align-items: center;
             justify-content: center;
-            width: 33%;
+            max-width: 33%;
 
             > i {
                 font-size: 1.5rem;
@@ -230,11 +230,11 @@
         }
     }
 
-    @media (width: 1400px) {
-        max-width: 45%;
+    @media (max-width: 1400px) {
+        max-max-width: 45%;
     }
 
-    @media (width: 1000px) {
-        max-width: 95%;
+    @media (max-width: 1000px) {
+        max-max-width: 95%;
     }
 }

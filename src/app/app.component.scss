@@ -2,7 +2,7 @@
 
 body {
     background-color: lighten($color-primary, 16%);
-    width: 100%;
+    max-width: 100%;
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
@@ -12,11 +12,11 @@ body {
     margin: auto;
     min-height: 85vh;
     padding-bottom: 1rem;
-    width: 70%;
+    max-width: 70%;
 
     --bs-gutter-x: 0;
 
-    @media (width: 1150px) {
-        width: 100%;
+    @media (max-width: 1150px) {
+        max-width: 100%;
     }
 }
