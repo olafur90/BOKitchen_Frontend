@@ -1,9 +1,23 @@
 <mat-form-field>
-  <mat-label>Tími í mínútúm</mat-label>
-  <mat-select #selectTime [formControl]="selectFormControl" required (ngModelChange)="onChange(selectTime.value)">
-    <mat-option *ngFor="let num of [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 150, 180]" [value]="num">
-      {{num}}
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="timeControl.hasError('required')">Nauðsynlegt að velja flokk</mat-error>
+	<mat-label>Tími í mínútúm</mat-label>
+	<mat-select
+		#selectTime
+		[formControl]="selectFormControl"
+		required
+		(ngModelChange)="onChange(selectTime.value)"
+	>
+		<mat-option
+			*ngFor="
+				let num of [
+					10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 150, 180
+				]
+			"
+			[value]="num"
+		>
+			{{ num }}
+		</mat-option>
+	</mat-select>
+	<mat-error *ngIf="timeControl.hasError('required')"
+		>Nauðsynlegt að velja flokk</mat-error
+	>
 </mat-form-field>

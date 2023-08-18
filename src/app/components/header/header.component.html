@@ -1,37 +1,42 @@
 <header>
-    <nav class="nav">
-        <div class="nav-left">
-            <a class="nav-logo" href="/">BÓLA</a>
-        </div>
-        <div class="nav-middle">
-            <i class="bi bi-search"></i>
-            <input type="text" (keyup.enter)="onSearch()" placeholder="Sláðu inn leitarorð" [(ngModel)]="searchTerm">
-            <button class="btn" (click)="onSearch()">Leita</button>
-        </div>
-        <div class="nav-right">
-            <button mat-button [matMenuTriggerFor]="beforeMenu">
-                Flokkar 
-                <i class="bi bi-chevron-down"></i>
-            </button>
-            <mat-menu #beforeMenu="matMenu" xPosition="before">
-            <!-- TODO: Add menu items dynamically from categories -->
-            <button 
-                mat-menu-item
-                #category
-                (click)="onCategoryClick(category)" 
-                *ngFor="let category of categories">
-                    {{category.icelandicName}}
-                </button>
-            </mat-menu>
+	<nav class="nav">
+		<div class="nav-left">
+			<a class="nav-logo" href="/">BÓLA</a>
+		</div>
+		<div class="nav-middle">
+			<i class="bi bi-search"></i>
+			<input
+				type="text"
+				(keyup.enter)="onSearch()"
+				placeholder="Sláðu inn leitarorð"
+				[(ngModel)]="searchTerm"
+			/>
+			<button class="btn" (click)="onSearch()">Leita</button>
+		</div>
+		<div class="nav-right">
+			<button mat-button [matMenuTriggerFor]="beforeMenu">
+				Flokkar
+				<i class="bi bi-chevron-down"></i>
+			</button>
+			<mat-menu #beforeMenu="matMenu" xPosition="before">
+				<!-- TODO: Add menu items dynamically from categories -->
+				<button
+					mat-menu-item
+					#category
+					(click)="onCategoryClick(category)"
+					*ngFor="let category of categories"
+				>
+					{{ category.icelandicName }}
+				</button>
+			</mat-menu>
 
-            <!-- FIXME: Figure out what's wrong with ngModel, giving the console error:
+			<!-- FIXME: Figure out what's wrong with ngModel, giving the console error:
                 ERROR Error: NG01203: No value accessor for form control unspecified name attribute.
                 <p [(ngModel)]="loginLink">Innskráning</p>
 
                 Will leave login text as visual <p> text just for now
             -->
-            <p>Innskráning</p>
-
-        </div>
-    </nav>
+			<p>Innskráning</p>
+		</div>
+	</nav>
 </header>

@@ -1,6 +1,10 @@
+
+@use 'sass:color';
+@import '../scss-variables';
+
 .container {
-    background-color: lighten(#E3CDB1, 14%);
-    margin: auto;
-    padding-bottom: 1rem;
-    max-width: 70%;
+	background-color: color.adjust($color-primary, $lightness: 14%);
+	margin: auto;
+	padding-bottom: 1rem;
+	max-width: 70%;
 }

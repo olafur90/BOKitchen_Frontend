@@ -10,41 +10,46 @@ import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/environment/environment';
 
 @Component({
-    selector: 'app-header-component',
-    standalone: true,
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    imports: [
-        CommonModule,
-        FormsModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatIconModule
-    ]
+	selector: 'app-header-component',
+	standalone: true,
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.scss'],
+	imports: [
+		CommonModule,
+		FormsModule,
+		MatButtonModule,
+		MatMenuModule,
+		MatIconModule,
+	],
 })
 export class HeaderComponent implements OnInit {
-    public loginLink: string = '';
-    public searchTerm: string = '';
+	public loginLink: string = '';
+	public searchTerm: string = '';
 
-    public categories: Category[] = [];
+	public categories: Category[] = [];
 
-    constructor(private router: Router, private http: HttpClient) { }
+	constructor(
+		private router: Router,
+		private http: HttpClient,
+	) {}
 
-    async onSearch() {
-        this.router.navigate(['/search'], { queryParams: { query: this.searchTerm } });
-    }
+	async onSearch() {
+		this.router.navigate(['/search'], {
+			queryParams: { query: this.searchTerm },
+		});
+	}
 
-    ngOnInit(): void {
-        this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
-            if (data) {
-                this.categories = data;
-            }
-        })
-    }
+	ngOnInit(): void {
+		this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
+			if (data) {
+				this.categories = data;
+			}
+		});
+	}
 
-    onCategoryClick(category: Category) {
-        this.router.navigate(['/']).then(() => {
-            this.router.navigate([`/uppskriftir/flokkar/${category.name}`]);
-        });
-    }
+	onCategoryClick(category: Category) {
+		this.router.navigate(['/']).then(() => {
+			this.router.navigate([`/uppskriftir/flokkar/${category.name}`]);
+		});
+	}
 }

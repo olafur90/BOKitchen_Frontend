@@ -1,5 +1,10 @@
 <div class="search-result-container">
-<p>Leitarniðurstöður fyrir "<strong>{{searchTerm}}</strong>"</p>
+	<p>
+		Leitarniðurstöður fyrir "<strong>{{ searchTerm }}</strong
+		>"
+	</p>
 
-<app-result-cards-component [recipes]="searchResults"></app-result-cards-component>
+	<app-result-cards-component
+		[recipes]="searchResults"
+	></app-result-cards-component>
 </div>

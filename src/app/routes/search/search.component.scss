@@ -1,54 +1,59 @@
-@import '../../scss-variables';
+@use 'sass:color';
+@import "../../scss-variables";
 
 .search-result-container {
-    @include flexcolumn;
+	@include flexcolumn;
 
-    justify-content: center;
-    margin-top: 2rem;
+	justify-content: center;
+	margin-top: 2rem;
 }
 
 .recipe-card-header {
-    @include flexrow;
+	@include flexrow;
 
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 .recipe-card {
-    background-color: lighten($color-primary, 10%);
-    margin-bottom: 1rem;
-    margin-left: 2rem;
-    max-width: 50%;
+	background-color: color.adjust($color-primary, $lightness: 10%);
+	margin-bottom: 1rem;
+	margin-left: 2rem;
+	max-width: 50%;
 
-    & .recipe-card-content {
-        @include flexcolumn;
+	& .recipe-card-content {
+		@include flexcolumn;
 
-        justify-content: space-between;
-        margin-right: 2rem;
-        margin-top: 1rem;
-    }
+		justify-content: space-between;
+		margin-right: 2rem;
+		margin-top: 1rem;
+	}
 
-    & .recipe-icon {
-        @include flexrow;
+	& .recipe-icon {
+		@include flexrow;
 
-        justify-content: space-between;
-        margin-bottom: 0.3rem;
+		justify-content: space-between;
+		margin-bottom: 0.3rem;
 
-        > i {
-            margin-right: 0.5rem;
-        }
+		> i {
+			margin-right: 0.5rem;
+		}
 
-        & a {
-            color: darken($color-primary, 20%);
-            text-decoration: none;
-        }
-    }
+		& a {
+			color: color.adjust($color-primary, $lightness: -20%);
+			text-decoration: none;
+		}
+	}
 
-    & button {
-        background: radial-gradient(circle, lighten($color-primary, 7%), lighten($color-primary, 5%) 99%);
-        border: 1px solid $color-primary;
-    }
+	& button {
+		background: radial-gradient(
+			circle,
+			color.adjust($color-primary, $lightness: 7%),
+			color.adjust($color-primary, $lightness: 5%) 99%
+		);
+		border: 1px solid $color-primary;
+	}
 }
 
 .mat-mdc-card-content:last-child {
-    padding-bottom: 0;
+	padding-bottom: 0;
 }

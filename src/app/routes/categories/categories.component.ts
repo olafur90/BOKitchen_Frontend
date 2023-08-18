@@ -8,35 +8,41 @@ import { ResultCardsComponent } from 'src/app/components/result-cards/result-car
 import { API_URL } from 'src/environment/environment';
 
 @Component({
-    selector: 'app-categories',
-    standalone: true,
-    templateUrl: './categories.component.html',
-    styleUrls: ['./categories.component.scss'],
-    imports: [
-        CommonModule,
-        ResultCardsComponent
-    ]
+	selector: 'app-categories',
+	standalone: true,
+	templateUrl: './categories.component.html',
+	styleUrls: ['./categories.component.scss'],
+	imports: [CommonModule, ResultCardsComponent],
 })
 export class CategoriesComponent implements OnInit {
-    public recipes: Recipe[] = [];
-    public currentCategory: Category | undefined;
+	public recipes: Recipe[] = [];
+	public currentCategory: Category | undefined;
 
-    constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) { }
+	constructor(
+		private http: HttpClient,
+		private activatedRoute: ActivatedRoute,
+	) {}
 
-    ngOnInit(): void {
-        const paramCategory = this.activatedRoute.snapshot.params['category'];
+	ngOnInit(): void {
+		const paramCategory = this.activatedRoute.snapshot.params['category'];
 
-        // Fetch the category object
-        this.http.get<Category>(`${API_URL}/flokkar/${paramCategory}`).subscribe((category) => {
-            this.currentCategory = category;
-        }).add(() => {
-            // Get the recipes for the category after fetching the category object
-            this.http.get<Recipe[]>(`${API_URL}/uppskriftir/flokkar/${paramCategory}`).subscribe((recipes) => {
-                if (recipes) {
-                    this.recipes = recipes;
-                }
-            })
-        })
-
-    }
+		// Fetch the category object
+		this.http
+			.get<Category>(`${API_URL}/flokkar/${paramCategory}`)
+			.subscribe((category) => {
+				this.currentCategory = category;
+			})
+			.add(() => {
+				// Get the recipes for the category after fetching the category object
+				this.http
+					.get<Recipe[]>(
+						`${API_URL}/uppskriftir/flokkar/${paramCategory}`,
+					)
+					.subscribe((recipes) => {
+						if (recipes) {
+							this.recipes = recipes;
+						}
+					});
+			});
+	}
 }

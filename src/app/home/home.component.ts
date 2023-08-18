@@ -4,15 +4,10 @@ import { HeaderComponent } from '../components/header/header.component';
 import { LatestRecipesComponent } from './latest-recipes/latest-recipes.component';
 
 @Component({
-    selector: 'app-home-component',
-    standalone: true,
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    imports: [
-        HeaderComponent,
-        LatestRecipesComponent
-    ]
+	selector: 'app-home-component',
+	standalone: true,
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.scss'],
+	imports: [HeaderComponent, LatestRecipesComponent],
 })
-export class HomeComponent {
-    
-}
+export class HomeComponent {}

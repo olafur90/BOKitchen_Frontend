@@ -1,24 +1,39 @@
 <mat-card class="recipe-card" *ngFor="let recipe of recipes">
-    <mat-card-header class="recipe-card-header">
-        <div 
-            mat-card-avatar 
-            class="card-header-image" 
-            [ngStyle]="{ 'background-image': 'url(' + (recipe.cat?.imagePath ? recipe.cat?.imagePath : '../../assets/pumpkin_pie.jpg') + ')' }">
-        </div>
-        <mat-card-title><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{recipe.name}}</a></mat-card-title>
-    </mat-card-header>
-    <div class="icon-group">
-        <div class="icon-view">
-            <i class="bi bi-people-fill"></i>
-            {{recipe.forNumberOfPeople}}
-        </div>
-        <div class="icon-view">
-            <i class="bi bi-clock-fill"></i>
-            {{recipe.timeToCookInMinutes}}
-        </div>
-        <div class="icon-view">
-            <i class="bi bi-speedometer2"></i>
-            {{ recipe.difficulty ? (recipe.difficulty | difficultyReverse) : '1' }}
-        </div>
-    </div>
+	<mat-card-header class="recipe-card-header">
+		<div
+			mat-card-avatar
+			class="card-header-image"
+			[ngStyle]="{
+				'background-image':
+					'url(' +
+					(recipe.cat?.imagePath
+						? recipe.cat?.imagePath
+						: '../../assets/pumpkin_pie.jpg') +
+					')'
+			}"
+		></div>
+		<mat-card-title
+			><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
+				recipe.name
+			}}</a></mat-card-title
+		>
+	</mat-card-header>
+	<div class="icon-group">
+		<div class="icon-view">
+			<i class="bi bi-people-fill"></i>
+			{{ recipe.forNumberOfPeople }}
+		</div>
+		<div class="icon-view">
+			<i class="bi bi-clock-fill"></i>
+			{{ recipe.timeToCookInMinutes }}
+		</div>
+		<div class="icon-view">
+			<i class="bi bi-speedometer2"></i>
+			{{
+				recipe.difficulty
+					? (recipe.difficulty | difficultyReverse)
+					: "1"
+			}}
+		</div>
+	</div>
 </mat-card>

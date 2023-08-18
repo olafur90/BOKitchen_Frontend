@@ -9,27 +9,27 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 
 @Component({
-    selector: 'app-recipe-component',
-    standalone: true,
-    templateUrl: './recipe.component.html',
-    styleUrls: ['./recipe.component.scss'],
-    imports: [
-        CommonModule,
-        MatTabsModule,
-        DifficultyReversePipe
-    ]
+	selector: 'app-recipe-component',
+	standalone: true,
+	templateUrl: './recipe.component.html',
+	styleUrls: ['./recipe.component.scss'],
+	imports: [CommonModule, MatTabsModule, DifficultyReversePipe],
 })
-export class RecipeComponent implements OnInit{
-    private id: number = 0;
-    public recipe: Recipe = {};
+export class RecipeComponent implements OnInit {
+	private id: number = 0;
+	public recipe: Recipe = {};
 
-    constructor(private route: ActivatedRoute, private http: HttpClient) {
-    }
+	constructor(
+		private route: ActivatedRoute,
+		private http: HttpClient,
+	) {}
 
-    ngOnInit(): void {
-        this.id = this.route.snapshot.params['recipeId'];
-        this.http.get<Recipe>(`${API_URL}/uppskriftir/recipe/${this.id}`).subscribe((data: Recipe) => {
-            this.recipe = data;
-        });
-    }
+	ngOnInit(): void {
+		this.id = this.route.snapshot.params['recipeId'];
+		this.http
+			.get<Recipe>(`${API_URL}/uppskriftir/recipe/${this.id}`)
+			.subscribe((data: Recipe) => {
+				this.recipe = data;
+			});
+	}
 }

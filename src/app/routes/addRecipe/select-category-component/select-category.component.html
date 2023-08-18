@@ -1,9 +1,19 @@
-<mat-form-field style="margin-top: 1rem;">
-  <mat-label>Veldu flokk</mat-label>
-  <mat-select #selectedCategory [formControl]="categoryControl" required (ngModelChange)="onChange(selectedCategory.value)">
-    <mat-option *ngFor="let category of availableCategories" [value]="category">
-      <p>{{category.icelandicName}}</p>
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="categoryControl.hasError('required')">Nauðsynlegt að velja flokk</mat-error>
+<mat-form-field style="margin-top: 1rem">
+	<mat-label>Veldu flokk</mat-label>
+	<mat-select
+		#selectedCategory
+		[formControl]="categoryControl"
+		required
+		(ngModelChange)="onChange(selectedCategory.value)"
+	>
+		<mat-option
+			*ngFor="let category of availableCategories"
+			[value]="category"
+		>
+			<p>{{ category.icelandicName }}</p>
+		</mat-option>
+	</mat-select>
+	<mat-error *ngIf="categoryControl.hasError('required')"
+		>Nauðsynlegt að velja flokk</mat-error
+	>
 </mat-form-field>

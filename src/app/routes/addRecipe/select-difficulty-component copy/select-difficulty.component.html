@@ -1,9 +1,16 @@
 <mat-form-field>
-  <mat-label>Erfiðleikastig</mat-label>
-  <mat-select #selectedDifficulty [formControl]="selectFormControl" required (ngModelChange)="onChange(selectedDifficulty.value)">
-    <mat-option *ngFor="let diff of difficulties" [value]="diff">
-      {{diff | difficultyReverse}}
-    </mat-option>
-  </mat-select>
-  <mat-error *ngIf="categoryControl.hasError('required')">Nauðsynlegt að velja flokk</mat-error>
+	<mat-label>Erfiðleikastig</mat-label>
+	<mat-select
+		#selectedDifficulty
+		[formControl]="selectFormControl"
+		required
+		(ngModelChange)="onChange(selectedDifficulty.value)"
+	>
+		<mat-option *ngFor="let diff of difficulties" [value]="diff">
+			{{ diff | difficultyReverse }}
+		</mat-option>
+	</mat-select>
+	<mat-error *ngIf="categoryControl.hasError('required')"
+		>Nauðsynlegt að velja flokk</mat-error
+	>
 </mat-form-field>

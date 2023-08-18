@@ -1,66 +1,59 @@
-@import '../../scss-variables';
+@import "../../scss-variables";
 
 header {
-    background-color: $color-primary;
-    margin: auto;
-    padding-bottom: 0.5rem;
-    padding-right: 1rem;
+	background-color: $color-primary;
+	margin: auto;
+	padding-bottom: 0.5rem;
+	padding-right: 1rem;
 }
 
 nav {
-    @include flexrow;
-    
-    justify-content: space-between;
-    padding-top: 1.5rem;
+	@include flexrow;
 
-    & 
-    .nav-left,
-    .nav-right {
-        @include flexrow;
-    }
+	justify-content: space-between;
+	padding-top: 1.5rem;
 
-    & .nav-left {
+	& .nav-left,
+	.nav-right {
+		@include flexrow;
+	}
 
-        > .nav-logo {
-            color: black;
-            font-family: $font-logo;
-        }
-    }
+	& .nav-left {
+		> .nav-logo {
+			color: black;
+			font-family: $font-logo;
+			margin-left: 1.5rem;
+		}
+	}
 
-    & .nav-middle {
+	& .nav-middle {
+		> i {
+			font-size: 1.1rem;
+			margin-right: 0.5rem;
+		}
 
-        > i {
-            font-size: 1.1rem;
-            margin-right: 0.5rem;
-        }
+		> input {
+			padding: 0.1rem;
+			padding-left: 0.5rem;
+			max-width: 20rem;
+		}
 
-        > input {
-            padding: 0.1rem;
-            padding-left: 0.5rem;
-            max-width: 20rem;
-        }
+		> button {
+			margin-top: -0.5rem;
+		}
+	}
 
-        > button {
-            margin-top: -0.5rem;
-        }
-    }
+	& .nav-right {
+		> p {
+			color: $header-nav-text-color;
+			margin-left: 1rem;
+		}
 
-    & .nav-right {
-
-        > p {
-            color: $header-nav-text-color;
-            margin-left: 1rem;
-        }
-
-        & button {
-            align-items: flex-start;
-            display: flex;
-            font-family: $font-primary;
-            font-size: 1rem;
-        }
-    }
-
-    & .nav-logo {
-        margin-left: 1.5rem;
-    }
+		& button {
+			align-items: flex-start;
+			display: flex;
+			font-family: $font-primary;
+			font-size: 1rem;
+		}
+	}
 }

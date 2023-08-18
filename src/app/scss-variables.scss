@@ -1,37 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap";
 
 /************************************************************** 
  * Flexbox
  *************************************************************/
 @mixin flexrow {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 @mixin flexrow-r {
-    display: flex;
-    flex-direction: row-reverse;
+	display: flex;
+	flex-direction: row-reverse;
 }
 
 @mixin flexcolumn {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 @mixin flexcolumn-r {
-    display: flex;
-    flex-direction: column-reverse;
+	display: flex;
+	flex-direction: column-reverse;
 }
 
 /************************************************************** 
  * Global
  *************************************************************/
 
- // Colors
-$color-primary: #E3CDB1;
+// Colors
+$color-primary: #e3cdb1;
 
 // Fonts
-$font-primary: 'Open Sans', sans-serif;
+$font-primary: "Open Sans", sans-serif;
 $font-logo: cursive;
 
 /************************************************************** 
@@ -39,6 +39,6 @@ $font-logo: cursive;
  *************************************************************/
 
 // Colors
-$header-nav-text-color: #9B9B9B;
+$header-nav-text-color: #9b9b9b;
 
 // Layout

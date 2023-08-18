@@ -1,22 +1,23 @@
-@import './scss-variables';
+@use 'sass:color';
+@import "./scss-variables";
 
 body {
-    background-color: lighten($color-primary, 16%);
-    max-width: 100%;
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+	background-color: color.adjust($color-primary, $lightness: 16%);
+	max-width: 100%;
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {
-    background-color: lighten($color-primary, 14%);
-    margin: auto;
-    min-height: 85vh;
-    padding-bottom: 1rem;
-    max-width: 70%;
+	background-color: color.adjust($color-primary, $lightness: 14%);
+	margin: auto;
+	min-height: 85vh;
+	padding-bottom: 1rem;
+	max-width: 70%;
 
-    --bs-gutter-x: 0;
+	--bs-gutter-x: 0;
 
-    @media (max-width: 1150px) {
-        max-width: 100%;
-    }
+	@media (width <= 1150px) {
+		max-width: 100%;
+	}
 }

@@ -1,20 +1,26 @@
 <section class="recipe-container">
-    <div class="icon-view">
-        <div class="icon-group">
-            <i class="bi bi-people"></i>
-            <p>{{ recipe.forNumberOfPeople }}</p>
-        </div>
-        <div class="icon-group">
-            <i class="bi bi-clock"></i>
-            <p>{{ recipe.timeToCookInMinutes }}</p>
-        </div>
-        <div class="icon-group">
-            <i class="bi bi-speedometer2"></i>
-            <p>{{ (recipe.difficulty ? (recipe.difficulty | difficultyReverse) : '1') }}</p>
-        </div>
-    </div>
-    <div class="recipe">
-        <h3>{{ recipe.name }}</h3>
-        <p [innerHTML]="recipe.instructions"></p>
-    </div>
+	<div class="icon-view">
+		<div class="icon-group">
+			<i class="bi bi-people"></i>
+			<p>{{ recipe.forNumberOfPeople }}</p>
+		</div>
+		<div class="icon-group">
+			<i class="bi bi-clock"></i>
+			<p>{{ recipe.timeToCookInMinutes }}</p>
+		</div>
+		<div class="icon-group">
+			<i class="bi bi-speedometer2"></i>
+			<p>
+				{{
+					recipe.difficulty
+						? (recipe.difficulty | difficultyReverse)
+						: "1"
+				}}
+			</p>
+		</div>
+	</div>
+	<div class="recipe">
+		<h3>{{ recipe.name }}</h3>
+		<p [innerHTML]="recipe.instructions"></p>
+	</div>
 </section>

@@ -1,5 +1,5 @@
 export class Category {
-    name?: string;
-    icelandicName?: string;
-    imagePath?: string
+	name?: string;
+	icelandicName?: string;
+	imagePath?: string;
 }

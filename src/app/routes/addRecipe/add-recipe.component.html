@@ -1,70 +1,74 @@
 <div class="new-recipe-container">
-    <form [formGroup]="recipeFormGroup">
-        <legend>Bæta við uppskrift</legend>
-        
-        <input 
-            #name 
-            required 
-            formControlName="name" 
-            placeholder="Nafn*"
-            type="text" 
-            (keyup)="onNameChange(name.value)" >
+	<form [formGroup]="recipeFormGroup">
+		<legend>Bæta við uppskrift</legend>
 
-        <div style="display: flex; flex-direction: row;">
-            <app-select-category-component 
-                (selectedCategory)="onCategoryChange($event)"
-                [formControl]="recipeFormGroup.controls['category']"
-                style="margin-right: 1rem;">
-            </app-select-category-component>
+		<input
+			#name
+			required
+			formControlName="name"
+			placeholder="Nafn*"
+			type="text"
+			(keyup)="onNameChange(name.value)"
+		/>
 
-            <app-select-serving-size-component 
-                (selectedServingSize)="onSelectServingSize($event)" 
-                [formControl]="recipeFormGroup.controls['servingSize']">
-            </app-select-serving-size-component>
-        </div>
+		<div style="display: flex; flex-direction: row">
+			<app-select-category-component
+				(selectedCategory)="onCategoryChange($event)"
+				[formControl]="recipeFormGroup.controls['category']"
+				style="margin-right: 1rem"
+			>
+			</app-select-category-component>
 
-        <div style="display: flex; flex-direction: row;">
-            <app-select-time-component 
-                style="margin-right: 1rem;" 
-                (selectedTime)="onSelectTime($event)"
-                [formControl]="recipeFormGroup.controls['time']">
-            </app-select-time-component>
+			<app-select-serving-size-component
+				(selectedServingSize)="onSelectServingSize($event)"
+				[formControl]="recipeFormGroup.controls['servingSize']"
+			>
+			</app-select-serving-size-component>
+		</div>
 
-            <app-select-difficulty-component 
-                (selectedDifficulty)="onSelectDifficulty($event)"
-                [formControl]="recipeFormGroup.controls['difficulty']">
-            </app-select-difficulty-component>
-        </div>
-        
-        <angular-editor 
-            [config]="editorConfig"
-            (keyup)="onContentChange()"
-            style="
-                background-color: white;
-            "
-            formControlName="description" 
-            [placeholder]="'Enter text here...'" 
-            [(ngModel)]="htmlContent">
-        </angular-editor>
+		<div style="display: flex; flex-direction: row">
+			<app-select-time-component
+				style="margin-right: 1rem"
+				(selectedTime)="onSelectTime($event)"
+				[formControl]="recipeFormGroup.controls['time']"
+			>
+			</app-select-time-component>
 
-        <button class="btn" (click)="onAddRecipe()">Bæta við</button>
-    </form>
-    <div class="recipe-preview">
-        <div class="icon-preview">
-            <div class="icon-group">
-                <i class="bi bi-people"></i>
-                <p>{{ selectedServingSize }}</p>
-            </div>
-            <div class="icon-group">
-                <i class="bi bi-clock"></i>
-                <p>{{ selectedTime }}</p>
-            </div>
-            <div class="icon-group">
-                <i class="bi bi-speedometer2"></i>
-                <p>{{ (selectedDifficultyAsText) }}</p>
-            </div>
-        </div>
-        <h1>{{ name.value }}</h1>
-        <p [innerHTML]="previewContent"></p>
-    </div>
+			<app-select-difficulty-component
+				(selectedDifficulty)="onSelectDifficulty($event)"
+				[formControl]="recipeFormGroup.controls['difficulty']"
+			>
+			</app-select-difficulty-component>
+		</div>
+
+		<angular-editor
+			[config]="editorConfig"
+			(keyup)="onContentChange()"
+			style="background-color: white"
+			formControlName="description"
+			[placeholder]="'Enter text here...'"
+			[(ngModel)]="htmlContent"
+		>
+		</angular-editor>
+
+		<button class="btn" (click)="onAddRecipe()">Bæta við</button>
+	</form>
+	<div class="recipe-preview">
+		<div class="icon-preview">
+			<div class="icon-group">
+				<i class="bi bi-people"></i>
+				<p>{{ selectedServingSize }}</p>
+			</div>
+			<div class="icon-group">
+				<i class="bi bi-clock"></i>
+				<p>{{ selectedTime }}</p>
+			</div>
+			<div class="icon-group">
+				<i class="bi bi-speedometer2"></i>
+				<p>{{ selectedDifficultyAsText }}</p>
+			</div>
+		</div>
+		<h1>{{ name.value }}</h1>
+		<p [innerHTML]="previewContent"></p>
+	</div>
 </div>
