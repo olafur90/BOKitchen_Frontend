@@ -18,6 +18,10 @@ section {
 		margin: 1rem;
 		margin-top: 0;
 	}
+
+	@media (max-width: 770px) {
+		max-width: 95%;
+	}
 }
 
 .icon-view {
