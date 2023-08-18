@@ -1,6 +1,7 @@
 {
     "extends": "stylelint-config-standard-scss",
     "rules": {
+        "media-feature-range-notation": [false, { "fontFamily": false }],
     "selector-pseudo-element-no-unknown": [true, { "ignorePseudoElements": ["ng-deep"] }]
     }
   }

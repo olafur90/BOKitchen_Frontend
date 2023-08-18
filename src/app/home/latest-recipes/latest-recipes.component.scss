@@ -33,9 +33,8 @@
 		align-items: center;
 		color: color.adjust($color-primary, $lightness: -50%);
 		justify-content: space-between;
-		margin-right: 5rem;
 		scale: 1.5;
-		max-width: 20%;
+		width: 20%;
 
 		> .icon-group {
 			@include flexcolumn;
@@ -57,6 +56,11 @@
 				margin-bottom: 0.3rem;
 			}
 		}
+	}
+
+	& p {
+		font-family: $font-primary;
+		max-width: 50%;
 	}
 
 	& .single-latest-recipe-category {
@@ -91,11 +95,6 @@
 		margin-top: 1rem;
 	}
 
-	& p {
-		font-family: $font-primary;
-		max-width: 50%;
-	}
-
 	& button {
 		border: 1px solid;
 		border-color: color.adjust($color-primary, $lightness: -10%);
@@ -125,7 +124,7 @@
 			margin: auto 0;
 		}
 
-		@media (max-width: 770px) {
+		@media (max-width: 500px) {
 			display: none;
 		}
 	}
@@ -177,7 +176,7 @@
 }
 
 .card-header-image {
-	//background-image: url('../../../assets/pumpkin_pie.jpg');
+	// background-image: url('../../../assets/pumpkin_pie.jpg');
 	background-size: cover;
 }
 
