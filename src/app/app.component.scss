@@ -17,7 +17,7 @@ body {
 
 	--bs-gutter-x: 0;
 
-	@media (width <= 1150px) {
+	@media (max-width: 1150px) {
 		max-width: 100%;
 	}
 }
