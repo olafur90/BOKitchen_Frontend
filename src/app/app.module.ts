@@ -19,6 +19,7 @@ import { AddRecipeComponent } from './routes/addRecipe/add-recipe.component';
 import { LoginComponent } from './routes/login/login.component';
 import { provideToastr } from 'ngx-toastr';
 import { CategoriesComponent } from './routes/categories/categories.component';
+import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -39,6 +40,10 @@ import { CategoriesComponent } from './routes/categories/categories.component';
 			{
 				path: 'uppskriftir/add',
 				component: AddRecipeComponent,
+			},
+			{
+				path: 'uppskriftir/allaruppskriftir',
+				component: AllRecipesComponent,
 			},
 			{
 				path: 'uppskriftir/recipe/:recipeId',

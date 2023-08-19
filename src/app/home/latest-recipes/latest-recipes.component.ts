@@ -25,12 +25,28 @@ import { Category } from 'src/app/components/models/Category';
 	],
 	providers: [DifficultyReversePipe],
 })
+/**
+ * The latest recipes component, for displaying the most recent recipes on the front page of the website
+ */
 export class LatestRecipesComponent implements OnInit {
+	// The 7 most recent recipes fetched from backend
 	recentRecipes: Recipe[] = [];
+
+	// The single most recent recipe to be displayed at the top of the page
 	singleLatestRecipe: Recipe = {};
 
+	// Whether or not the recipes have been initialized
+	initialized: boolean = false;
+
+	/**
+	 * The constructor
+	 * @param http The HTTP Client Service
+	 */
 	constructor(private http: HttpClient) {}
 
+	/**
+	 * Fetches the components from the API and sets the variables
+	 */
 	ngOnInit(): void {
 		this.http
 			.get<Recipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
@@ -53,6 +69,8 @@ export class LatestRecipesComponent implements OnInit {
 				});
 				this.singleLatestRecipe = this.recentRecipes[0];
 				this.recentRecipes = this.recentRecipes.slice(1);
+
+				this.initialized = true;
 			});
 	}
 }
