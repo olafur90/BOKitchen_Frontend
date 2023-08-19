@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import "../../scss-variables";
 
 header {
@@ -27,6 +28,7 @@ nav {
 	}
 
 	& .nav-middle {
+		margin-left: 2rem;
 		> i {
 			font-size: 1.1rem;
 			margin-right: 0.5rem;
@@ -44,9 +46,14 @@ nav {
 	}
 
 	& .nav-right {
+		> a {
+			color: color.adjust($color-primary, $lightness: -30%);
+		}
+		
 		> p {
-			color: $header-nav-text-color;
+			color: color.adjust($color-primary, $lightness: -30%);
 			margin-left: 1rem;
+			text-decoration: underline;
 		}
 
 		& button {
@@ -54,6 +61,7 @@ nav {
 			display: flex;
 			font-family: $font-primary;
 			font-size: 1rem;
+			margin-right: 1rem;
 		}
 	}
 }

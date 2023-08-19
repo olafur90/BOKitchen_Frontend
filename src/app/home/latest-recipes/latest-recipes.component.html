@@ -1,8 +1,9 @@
+<legend>
+	<span class="title-first-half">Nýjasta </span>uppskriftin
+</legend> 
+
 <section class="col latest-recipe-info">
 	<div class="latest-recipe-text" *ngIf="singleLatestRecipe">
-		<legend>
-			<span class="title-first-half">Nýjasta </span>uppskriftin
-		</legend> 
 		<div>
 			<div class="single-latest-recipe-category">
 				<img
@@ -78,12 +79,14 @@
 	</div>
 </section>
 
+<legend>
+	<span class="title-first-half">Aðrar nýjar</span> uppskriftir
+</legend>
 <section class="row recent-recipes">
-	<legend>
-		<span class="title-first-half">Aðrar nýjar</span> uppskriftir
-	</legend>
+	
 	<div class="row recent-recipe-card-container">
 		<mat-card *ngFor="let recipe of recentRecipes" class="recipe-card">
+			<p>{{ recipe.cat?.icelandicName }}</p>
 			<mat-card-header>
 				<div
 					mat-card-avatar
@@ -91,20 +94,19 @@
 					[ngStyle]="{
 						'background-image':
 							'url(' +
-							(recipe.cat?.imagePath
-								? recipe.cat?.imagePath
-								: '../../assets/pumpkin_pie.jpg') +
+							(recipe.baseImage
+							? recipe.baseImage
+							: recipe.cat?.imagePath
+							? recipe.cat?.imagePath
+							: '../../assets/pumpkin_pie.jpg') +
 							')'
-					}"
-				></div>
+					}">
+				</div>
 				<mat-card-title
 					><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
 						recipe.name
 					}}</a></mat-card-title
 				>
-				<mat-card-subtitle>{{
-					recipe?.cat ? recipe.cat?.icelandicName : ""
-				}}</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content class="recipe-card-content">
 				<div class="recipe-icon">

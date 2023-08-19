@@ -1,6 +1,13 @@
 @use 'sass:color';
 @import "../../scss-variables";
 
+legend {
+	color: color.adjust($color-primary, $lightness: -35%);
+	font-weight: 500;
+	font-size: 1.6rem;
+	margin: 1rem 0 0.5rem 1rem;
+}
+
 .latest-recipe-info {
 	@include flexrow;
 
@@ -15,7 +22,7 @@
 		0 1px 5px 0 rgb(0 0 0 / 12%);
 	justify-content: space-between;
 	margin: 1rem;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 	padding: 1rem;
 	padding-left: 5rem;
 
@@ -53,7 +60,7 @@
 			}
 		}
 
-		@media (max-width: 990px) {
+		@media (max-width: 1280px) {
 			@include flexcolumn;
 
 			justify-content: center;
@@ -67,7 +74,8 @@
 		@media (max-width: 500px) {
 			@include flexrow;
 
-			justify-content: space-between;
+			justify-content: space-around;
+			margin: auto;
 			margin-top: 2rem;
 			width: 70%;
 		}
@@ -96,13 +104,6 @@
 			font-weight: 600;
 			margin: auto 0;
 		}
-	}
-
-	& legend {
-		color: color.adjust($color-primary, $lightness: 35%);
-		font-weight: 500;
-		font-size: 1.3rem;
-		margin: 0;
 	}
 
 	& h3 {
@@ -150,6 +151,8 @@
 
 	@media (max-width: 500px) {
 		@include flexcolumn;
+
+		padding-left: 1rem;
 	}
 }
 
@@ -175,6 +178,31 @@
 		font-weight: 500;
 		font-size: 1.3rem;
 		margin: 0;
+	}
+
+	& .mat-mdc-card {
+		justify-content: space-between;
+	}
+
+	& .mat-mdc-card-actions {
+		padding-top: 0;
+	}
+
+	& .mat-mdc-card-header {
+		padding-top: 0.5rem;
+	}
+
+	& .mat-mdc-card-title {
+		margin-bottom: 0.5rem;
+	}
+
+	& p {
+		color: color.adjust($color-primary, $lightness: -50%);
+		font-weight: 600;
+		margin: 0;
+		margin-bottom: 0.3rem;
+		margin-left: 1rem;
+		margin-top: 0.5rem;
 	}
 
 	> h2 {

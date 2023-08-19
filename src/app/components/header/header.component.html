@@ -2,16 +2,16 @@
 	<nav class="nav">
 		<div class="nav-left">
 			<a class="nav-logo" href="/">BÓ Kitchen</a>
-		</div>
-		<div class="nav-middle">
-			<i class="bi bi-search"></i>
-			<input
-				type="text"
-				(keyup.enter)="onSearch()"
-				placeholder="Sláðu inn leitarorð"
-				[(ngModel)]="searchTerm"
-			/>
-			<button class="btn" (click)="onSearch()">Leita</button>
+			<div class="nav-middle">
+				<i class="bi bi-search"></i>
+				<input
+					type="text"
+					(keyup.enter)="onSearch()"
+					placeholder="Sláðu inn leitarorð"
+					[(ngModel)]="searchTerm"
+				/>
+				<button class="btn" (click)="onSearch()">Leita</button>
+			</div>
 		</div>
 		<div class="nav-right">
 			<button mat-button [matMenuTriggerFor]="beforeMenu">
@@ -30,6 +30,7 @@
 				</button>
 			</mat-menu>
 
+			<a href="/uppsk">Allar uppskriftir</a>
 			<!-- FIXME: Figure out what's wrong with ngModel, giving the console error:
                 ERROR Error: NG01203: No value accessor for form control unspecified name attribute.
                 <p [(ngModel)]="loginLink">Innskráning</p>
