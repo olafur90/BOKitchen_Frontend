@@ -25,6 +25,16 @@ nav {
 			font-family: $font-logo;
 			margin-left: 1.5rem;
 		}
+
+		@media (max-width: 780px) {
+			@include flexcolumn;
+		}
+
+		@media (max-width: 416px) {
+			@include flexrow;
+
+			justify-content: space-between;
+		}
 	}
 
 	& .nav-middle {
@@ -37,12 +47,28 @@ nav {
 		> input {
 			padding: 0.1rem;
 			padding-left: 0.5rem;
-			max-width: 20rem;
+			max-width: 70%;
 		}
 
 		> button {
 			margin-top: -0.5rem;
 		}
+
+		@media (max-width: 780px) {
+			margin-left: 1.5rem;
+			margin-top: 0.5rem;
+
+			& .bi-search {
+				display: none;
+			}
+		}
+
+		@media (max-width: 416px) {
+			@include flexrow;
+
+			margin: 0;
+			max-width: 50%;
+		}		
 	}
 
 	& .nav-right {
@@ -62,6 +88,34 @@ nav {
 			font-family: $font-primary;
 			font-size: 1rem;
 			margin-right: 1rem;
+
+			@media (max-width: 416px) {
+				align-items: flex-end;
+			}
 		}
+
+		@media (max-width: 640px) {
+			align-items: flex-end;
+			display: flex;
+			flex-direction: column-reverse;
+
+			> p {
+				margin-bottom: 0;
+			}
+
+			> button {
+				margin-right: 0;
+				margin-top: 0.5rem;
+			}
+		}
+
+		@media (max-width: 416px) {
+			flex-direction: row-reverse;
+			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 416px) {
+		@include flexcolumn;
 	}
 }
