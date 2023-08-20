@@ -1,11 +1,19 @@
+@import '../../scss-variables';
+
 .login-form {
-    display: flex;
-    flex-direction: column;
+    @include flexcolumn;
+
+    align-items: center;
     margin: 2rem auto;
-    padding: auto;
-  }
-  
-  .login-form-field {
+    margin-top: 4rem;
+}
+
+.login-button {
     margin-left: 1rem;
-    width: 90%;
-  }
+    width: 10rem;
+}
+
+.mat-mdc-form-field {
+    width: 25rem;
+    max-width: 95%;
+}

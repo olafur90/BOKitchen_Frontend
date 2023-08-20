@@ -15,4 +15,6 @@
         <mat-label>Lykilorð</mat-label>
         <input type="password" matInput [formControl]="passwordFormControl">
     </mat-form-field>
+
+    <button class="login-button" type="submit" (click)="onLogin()" mat-raised-button color="primary">Skrá inn</button>
 </form>
