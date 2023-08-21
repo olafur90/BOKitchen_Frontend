@@ -189,6 +189,7 @@ legend {
 	}
 
 	& .mat-mdc-card-header {
+		flex-direction: column-reverse;
 		padding-top: 0.5rem;
 	}
 
@@ -269,7 +270,7 @@ legend {
 	}
 
 	& .recipe-card-content {
-		@include flexrow;
+		@include flexcolumn;
 
 		justify-content: space-between;
 		margin-bottom: 0.5rem;
@@ -278,6 +279,12 @@ legend {
 		> p {
 			margin-right: 0.5rem;
 			word-break: break-word;
+		}
+
+		> .icons {
+			@include flexrow;
+
+			justify-content: space-between
 		}
 
 		> .recipe-icon {

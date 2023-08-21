@@ -85,16 +85,15 @@
 		<span class="title-first-half">Aðrar nýjar</span> uppskriftir
 	</legend>
 	<section class="row recent-recipes">
-		
 		<div class="row recent-recipe-card-container">
 			<mat-card *ngFor="let recipe of recentRecipes" class="recipe-card">
-				<p>{{ recipe.cat?.icelandicName }}</p>
 				<mat-card-header>
-					<div
-						mat-card-avatar
-						class="card-header-image"
-						[ngStyle]="{
-							'background-image':
+					<div style="display: flex; flex-direction: row;">
+						<div
+							mat-card-avatar
+							class="card-header-image"
+							[ngStyle]="{
+								'background-image':
 								'url(' +
 								(recipe.baseImage
 								? recipe.baseImage
@@ -102,41 +101,53 @@
 								? recipe.cat?.imagePath
 								: '../../assets/pumpkin_pie.jpg') +
 								')'
-						}">
+							}">
+						</div>
+						<p>{{ recipe.cat?.icelandicName }}</p>
 					</div>
-					<mat-card-title
-						><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
-							recipe.name
-						}}</a></mat-card-title
-					>
+					
+					<mat-card-title>
+						<a [routerLink]="['/uppskriftir/recipe', recipe.id]">
+							{{ recipe && recipe.name && (
+								recipe.name.length > 60
+								  ? recipe.name.slice(0, 60) + ' ...'
+								  : recipe.name
+							  ) }}
+						</a>
+						<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
+						<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'HH:mm' }}</h6>
+					</mat-card-title>
+
 				</mat-card-header>
 				<mat-card-content class="recipe-card-content">
-					<div class="recipe-icon">
-						<i class="bi bi-people"></i>
-						{{ recipe.forNumberOfPeople }}
+					<div class="icons">
+						<div class="recipe-icon">
+							<i class="bi bi-people"></i>
+							{{ recipe.forNumberOfPeople }}
+						</div>
+						<div class="recipe-icon">
+							<i class="bi bi-clock"></i>
+							{{ recipe.timeToCookInMinutes }}
+						</div>
+						<div class="recipe-icon">
+							<i class="bi bi-speedometer2"></i>
+							{{
+								recipe.difficulty
+									? (recipe.difficulty | difficultyReverse)
+									: "1"
+							}}
+						</div>
 					</div>
-					<div class="recipe-icon">
-						<i class="bi bi-clock"></i>
-						{{ recipe.timeToCookInMinutes }}
-					</div>
-					<div class="recipe-icon">
-						<i class="bi bi-speedometer2"></i>
-						{{
-							recipe.difficulty
-								? (recipe.difficulty | difficultyReverse)
-								: "1"
-						}}
-					</div>
+					<mat-card-actions>
+						<button
+							mat-button
+							routerLink="/uppskriftir/recipe/{{ recipe.id }}"
+							routerActive
+						>
+							Meira
+						</button>
+					</mat-card-actions>
 				</mat-card-content>
-				<mat-card-actions>
-					<button
-						mat-button
-						routerLink="/uppskriftir/recipe/{{ recipe.id }}"
-						routerActive
-					>
-						Meira
-					</button>
-				</mat-card-actions>
 			</mat-card>
 		</div>
 	</section>

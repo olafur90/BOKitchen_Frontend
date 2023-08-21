@@ -34,9 +34,11 @@ export class HeaderComponent implements OnInit {
 	) {}
 
 	async onSearch() {
-		this.router.navigate(['/search'], {
-			queryParams: { query: this.searchTerm },
-		});
+		this.router.navigate(['/']).then(() => {
+			this.router.navigate(['/search'], {
+				queryParams: { query: this.searchTerm },
+			});
+		})
 	}
 
 	ngOnInit(): void {
