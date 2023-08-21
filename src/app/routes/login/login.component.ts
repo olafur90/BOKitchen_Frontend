@@ -13,7 +13,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from 'src/environment/environment';
 import { AuthService } from 'src/app/services/AuthService';
 import { Router } from '@angular/router';
 

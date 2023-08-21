@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 const CUSTOM_VALUE_ACCESSOR = {
 	provide: NG_VALUE_ACCESSOR,
@@ -60,7 +60,7 @@ export class SelectCategoryComponent implements OnInit, ControlValueAccessor {
 	}
 
 	ngOnInit(): void {
-		this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
+		this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe((data) => {
 			if (data) {
 				this.availableCategories = data;
 			}

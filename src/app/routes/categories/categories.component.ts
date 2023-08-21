@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/components/models/Category';
 import { Recipe } from 'src/app/components/models/Recipe';
 import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-categories',
@@ -28,7 +28,7 @@ export class CategoriesComponent implements OnInit {
 
 		// Fetch the category object
 		this.http
-			.get<Category>(`${API_URL}/flokkar/${paramCategory}`)
+			.get<Category>(`${environment.API_URL}/flokkar/${paramCategory}`)
 			.subscribe((category) => {
 				this.currentCategory = category;
 			})
@@ -36,7 +36,7 @@ export class CategoriesComponent implements OnInit {
 				// Get the recipes for the category after fetching the category object
 				this.http
 					.get<Recipe[]>(
-						`${API_URL}/uppskriftir/flokkar/${paramCategory}`,
+						`${environment.API_URL}/uppskriftir/flokkar/${paramCategory}`,
 					)
 					.subscribe((recipes) => {
 						if (recipes) {

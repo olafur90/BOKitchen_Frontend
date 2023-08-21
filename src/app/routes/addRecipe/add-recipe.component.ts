@@ -10,7 +10,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Recipe } from 'src/app/components/models/Recipe';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { SelectServingSizeComponent } from './select-serving-size-component/select-serving-size.component';
@@ -154,7 +154,7 @@ export class AddRecipeComponent {
 		};
 
 		this.http
-			.post<HttpResponse<string>>(`${API_URL}/uppskriftir/add`, recipe)
+			.post<HttpResponse<string>>(`${environment.API_URL}/uppskriftir/add`, recipe)
 			.subscribe((data: HttpResponse<string>) => {
 				if (data.toString() === 'CREATED') {
 					// FIXME: This is no bueno, check better way for response codes

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/components/models/Category';
 import { Recipe } from 'src/app/components/models/Recipe';
 import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-all-recipes-component',
@@ -24,7 +24,7 @@ export class AllRecipesComponent implements OnInit {
 
     ngOnInit(): void {
         this.http
-            .get<Recipe[]>(`${API_URL}/uppskriftir/`)
+            .get<Recipe[]>(`${environment.API_URL}/uppskriftir/`)
             .subscribe((data: Recipe[]) => {
                 if (data) {
                     this.recipes = data;
@@ -34,7 +34,7 @@ export class AllRecipesComponent implements OnInit {
                     if (recipe.category) {
                         this.http
                             .get<Category>(
-                                `${API_URL}/flokkar/` + recipe.category,
+                                `${environment.API_URL}/flokkar/` + recipe.category,
                             )
                             .subscribe((category: Category) => {
                                 recipe.cat = category;

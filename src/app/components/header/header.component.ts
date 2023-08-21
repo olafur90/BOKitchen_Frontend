@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../models/Category';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-header-component',
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.http.get<Category[]>(`${API_URL}/flokkar/`).subscribe((data) => {
+		this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe((data) => {
 			if (data) {
 				this.categories = data;
 			}

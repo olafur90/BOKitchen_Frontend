@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { OnInit } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { Recipe } from 'src/app/components/models/Recipe';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { Category } from 'src/app/components/models/Category';
 
@@ -49,7 +49,7 @@ export class LatestRecipesComponent implements OnInit {
 	 */
 	ngOnInit(): void {
 		this.http
-			.get<Recipe[]>(`${API_URL}/uppskriftir/recentRecipes`)
+			.get<Recipe[]>(`${environment.API_URL}/uppskriftir/recentRecipes`)
 			.subscribe((data: Recipe[]) => {
 				if (data) {
 					this.recentRecipes = data;
@@ -60,7 +60,7 @@ export class LatestRecipesComponent implements OnInit {
 					if (recipe.category) {
 						this.http
 							.get<Category>(
-								`${API_URL}/flokkar/` + recipe.category,
+								`${environment.API_URL}/flokkar/` + recipe.category,
 							)
 							.subscribe((category: Category) => {
 								recipe.cat = category;

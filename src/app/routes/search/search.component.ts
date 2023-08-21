@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../components/models/Recipe';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
 		const searchParam: string = (this.searchTerm =
 			this.route.snapshot.queryParams['query']);
 		await this.http
-			.get<Recipe[]>(`${API_URL}/uppskriftir/search`, {
+			.get<Recipe[]>(`${environment.API_URL}/uppskriftir/search`, {
 				params: { query: searchParam },
 			})
 			.subscribe((data: Recipe[]) => {

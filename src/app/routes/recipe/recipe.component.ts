@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../../components/models/Recipe';
-import { API_URL } from 'src/environment/environment';
+import { environment } from 'src/environments/environment';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -42,11 +42,11 @@ export class RecipeComponent implements OnInit {
 	ngOnInit(): void {
 		this.id = this.route.snapshot.params['recipeId'];
 		this.http
-			.get<Recipe>(`${API_URL}/uppskriftir/recipe/${this.id}`)
+			.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`)
 			.subscribe((data: Recipe) => {
 				this.recipe = data;
 			}).add(() => {
-				this.http.get<Comment[]>(`${API_URL}/uppskriftir/recipe/${this.id}/comments`).subscribe((data) => {
+				this.http.get<Comment[]>(`${environment.API_URL}/uppskriftir/recipe/${this.id}/comments`).subscribe((data) => {
 					this.comments = data;
 					console.log('comments >> ', this.comments);
 				})
