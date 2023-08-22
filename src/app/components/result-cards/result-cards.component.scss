@@ -24,8 +24,11 @@
 
 	.recipe-card-header {
 		padding-bottom: 1rem;
-		max-width: 60%;
 	}
+}
+
+.card-header-image {
+	margin:auto;
 }
 
 .icon-group {
@@ -55,4 +58,9 @@
 			margin-left: 0.5rem;
 		}
 	}
+}
+
+h2 {
+	margin-left: 1rem;
+	margin-top: 2rem;
 }

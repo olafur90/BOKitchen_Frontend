@@ -1,5 +1,7 @@
-<app-result-cards-component *ngIf="initialized; else loading" [recipes]="recipes">
-</app-result-cards-component>
+<div class="result-cards-container">
+    <app-result-cards-component *ngIf="initialized; else loading" [categoryRecipes]="recipes">
+    </app-result-cards-component>
+</div>
 
 <ng-template #loading>
     Hleð uppskriftum...

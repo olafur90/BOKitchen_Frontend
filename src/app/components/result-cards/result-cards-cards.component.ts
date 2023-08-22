@@ -15,4 +15,7 @@ import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 export class ResultCardsComponent {
 	@Input()
 	public recipes: Recipe[] = [];
+
+	@Input()
+	public categoryRecipes: Recipe[][] = [];
 }

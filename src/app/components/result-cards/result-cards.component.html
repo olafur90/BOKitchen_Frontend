@@ -1,39 +1,52 @@
-<mat-card class="recipe-card" *ngFor="let recipe of recipes">
-	<mat-card-header class="recipe-card-header">
-		<div
-			mat-card-avatar
-			class="card-header-image"
-			[ngStyle]="{
-				'background-image':
-					'url(' +
-					(recipe.cat?.imagePath
-						? recipe.cat?.imagePath
-						: '../../assets/pumpkin_pie.jpg') +
-					')'
-			}"
-		></div>
-		<mat-card-title
-			><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
-				recipe.name
-			}}</a></mat-card-title
-		>
-	</mat-card-header>
-	<div class="icon-group">
-		<div class="icon-view">
-			<i class="bi bi-people-fill"></i>
-			{{ recipe.forNumberOfPeople }}
-		</div>
-		<div class="icon-view">
-			<i class="bi bi-clock-fill"></i>
-			{{ recipe.timeToCookInMinutes }}
-		</div>
-		<div class="icon-view">
-			<i class="bi bi-speedometer2"></i>
-			{{
-				recipe.difficulty
-					? (recipe.difficulty | difficultyReverse)
-					: "1"
-			}}
-		</div>
+<div *ngIf="recipes.length > 0; else catRecipesTemplate">
+	<mat-card class="recipe-card" *ngFor="let recipe of recipes">
+		<mat-card-header class="recipe-card-header">
+			<div
+				mat-card-avatar
+				class="card-header-image"
+				[ngStyle]="{
+					'background-image':
+						'url(' +
+						(recipe.baseImage
+							? recipe.baseImage
+							: '../../assets/pumpkin_pie.jpg') +
+						')',
+						'background-size': 'cover'
+				}"
+			></div>
+			<mat-card-title
+				><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
+					recipe.name
+				}}</a></mat-card-title
+			>
+		</mat-card-header>
+	</mat-card>
+</div>
+
+<ng-template #catRecipesTemplate>
+	<div *ngFor="let recipeGroup of categoryRecipes; let i = index">
+		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}</h2>
+		<mat-card class="recipe-card" *ngFor="let recipe of recipeGroup">
+			<mat-card-header class="recipe-card-header" [ngStyle]="{'display': 'flex'}">
+				<div
+					mat-card-avatar
+					class="card-header-image"
+					[ngStyle]="{
+						'background-image':
+							'url(' +
+							(recipe.baseImage
+								? recipe.baseImage
+								: '../../assets/pumpkin_pie.jpg') +
+							')',
+							'background-size': 'cover'
+					}"
+				></div>
+				<mat-card-title style="margin: auto;"
+					><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
+						recipe.name
+					}}</a></mat-card-title
+				>
+			</mat-card-header>
+		</mat-card>
 	</div>
-</mat-card>
+</ng-template>

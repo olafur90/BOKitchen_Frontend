@@ -17,31 +17,33 @@ import { environment } from 'src/environments/environment';
     ]
 })
 export class AllRecipesComponent implements OnInit {
-    recipes: Recipe[] = [];
+    recipes: Recipe[][] = [];
     initialized: boolean = false;
+    availableCategories: Category[] = [];
 
     constructor(private http: HttpClient) {}
 
-    ngOnInit(): void {
-        this.http
-            .get<Recipe[]>(`${environment.API_URL}/uppskriftir/`)
-            .subscribe((data: Recipe[]) => {
-                if (data) {
-                    this.recipes = data;
-                }
-            }).add(() => {
-                this.recipes.forEach((recipe) => {
-                    if (recipe.category) {
-                        this.http
-                            .get<Category>(
-                                `${environment.API_URL}/flokkar/` + recipe.category,
-                            )
-                            .subscribe((category: Category) => {
-                                recipe.cat = category;
-                            });
+    async ngOnInit(): Promise<void> {
+        await this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe(async (data) => {
+            if (data) {
+                this.availableCategories = data;
+    
+                for (const category of this.availableCategories) {
+                    const categoryRecipes = await this.http.get<Recipe[]>(`${environment.API_URL}/uppskriftir/flokkar/${category.name}`).toPromise();
+                    if (categoryRecipes) {
+                        categoryRecipes.forEach((recipe) => {
+                            recipe.cat = category;
+                        });
+                        this.recipes.push(categoryRecipes);
                     }
+                }
+                
+                this.recipes.sort((a, b) => {
+                    return b.length - a.length;
                 });
+    
                 this.initialized = true;
-            })
+            }
+        });
     }
 }
