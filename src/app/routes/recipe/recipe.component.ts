@@ -10,9 +10,7 @@ import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { Comment } from 'src/app/components/models/Comment';
 import { MatButtonModule } from '@angular/material/button';
-import { ToastrService } from 'ngx-toastr';
 import { CommentsComponent } from './comments/comments.component';
 
 @Component({
