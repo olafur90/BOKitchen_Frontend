@@ -8,9 +8,12 @@ import { environment } from 'src/environments/environment';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { Comment } from 'src/app/components/models/Comment';
+import { MatButtonModule } from '@angular/material/button';
+import { ToastrService } from 'ngx-toastr';
+import { CommentsComponent } from './comments/comments.component';
 
 @Component({
 	selector: 'app-recipe-component',
@@ -23,33 +26,28 @@ import { Comment } from 'src/app/components/models/Comment';
 		FormsModule,
 		MatInputModule,
 		DifficultyReversePipe, 
-		MatFormFieldModule
+		MatFormFieldModule,
+		ReactiveFormsModule,
+		MatButtonModule,
+		CommentsComponent
 	],
 })
 export class RecipeComponent implements OnInit {
-	private id: number = 0;
+	public id: number = 0;
 	
 	public recipe: Recipe = {};
-	public comments: Comment[] = [];
-
-	// TODO: Add comments
 
 	constructor(
 		private route: ActivatedRoute,
-		private http: HttpClient,
+		private http: HttpClient
 	) {}
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
 		this.id = this.route.snapshot.params['recipeId'];
-		this.http
+		await this.http
 			.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`)
 			.subscribe((data: Recipe) => {
 				this.recipe = data;
-			}).add(() => {
-				this.http.get<Comment[]>(`${environment.API_URL}/uppskriftir/recipe/${this.id}/comments`).subscribe((data) => {
-					this.comments = data;
-					console.log('comments >> ', this.comments);
-				})
-			});
+			})
 	}
 }

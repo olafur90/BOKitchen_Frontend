@@ -25,12 +25,9 @@
 	</div>
 </section>
 
-<section class="comment-section">
-	<mat-form-field class="new-comment-field">
-		<mat-label>Skildu eftir athugasemd</mat-label>
-		<textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-	</mat-form-field>
-	<div class="comments-container">
-		<p *ngFor="let comment of comments">{{ comment.commentBody }}</p>
-	</div>
-</section>
+<h4>
+	Ef þú hefur einhverjar ábendingar eða athugasemdir við þessa uppskrift, endilega skildu eftir ummæli hér fyrir neðan.
+</h4>
+<hr>
+
+<app-comments-component [recipeId]="id" />

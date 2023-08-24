@@ -46,19 +46,16 @@
 	}
 }
 
-.comment-section {
-	@include flexcolumn;
-
+h4 {
 	margin: auto;
-	max-width: 60%; 
+	margin-bottom: 0.5rem;
+	margin-top: 5rem;
+	max-width: 70%;
+	text-align: center;
+}
 
-	& .new-comment-field {
-		display: flex;
-
-		width: 70%;
-	}
-
-	@media (max-width: 770px) {
-		max-width: 95%;
-	}
+hr {
+	margin: auto;
+	margin-bottom: 2rem;
+	width: 80%;
 }
