@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Check if user bobokitchen is logged in by checking localstorage
+		// This is temporary until real login can be configured just so that
+		// at least ppl that don't know about devtools can't use the app :')
 		if (localStorage.getItem('username') === environment.username) {
 			this.initialized = true;
 		}
