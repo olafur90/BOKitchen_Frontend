@@ -20,6 +20,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { provideToastr } from 'ngx-toastr';
 import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
+import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -61,6 +62,10 @@ import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 				path: 'login',
 				component: LoginComponent,
 			},
+			{
+				path: 'sousvide',
+				component: SousVideComponent,
+			}
 		]),
 	],
 	providers: [
