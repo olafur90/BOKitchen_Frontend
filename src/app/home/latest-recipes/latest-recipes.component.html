@@ -1,6 +1,11 @@
-<div *ngIf="initialized; else loading">
+<div style="
+		background-repeat: repeat-y; 
+		background-size: 100%;
+		border: 3px solid white;
+		"
+		*ngIf="initialized; else loading">
 	<legend>
-		<span class="title-first-half">Nýjasta </span>uppskriftin
+		Nýjasta uppskriftin
 	</legend> 
 
 	<section class="col latest-recipe-info">
@@ -82,7 +87,7 @@
 	</section>
 
 	<legend>
-		<span class="title-first-half">Aðrar nýjar</span> uppskriftir
+		Aðrar nýjar uppskriftir
 	</legend>
 	<section class="row recent-recipes">
 		<div class="row recent-recipe-card-container">

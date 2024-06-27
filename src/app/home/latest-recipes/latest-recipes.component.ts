@@ -52,7 +52,6 @@ export class LatestRecipesComponent implements OnInit {
 			.get<Recipe[]>(`${environment.API_URL}/uppskriftir/recentRecipes`)
 			.subscribe((data: Recipe[]) => {
 				if (data) {
-					console.log('data >> ', data);
 					this.recentRecipes = data;
 				}
 			})

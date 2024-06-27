@@ -2,10 +2,14 @@
 @import "./scss-variables";
 
 body {
-	background-color: color.adjust($color-primary, $lightness: 16%);
+	//background-color: color.adjust($color-primary, $lightness: 16%);
+	//background-image: url('../assets/brick_background.jpg');
+	//background-repeat: repeat-y;
+	//background-size: 100%;
+	background-color: black;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
 	max-width: 100%;
 	margin: 0;
-	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {
@@ -13,7 +17,7 @@ body {
 	margin: auto;
 	min-height: 85vh;
 	padding-bottom: 1rem;
-	max-width: 70%;
+	//max-width: 70%;
 
 	--bs-gutter-x: 0;
 

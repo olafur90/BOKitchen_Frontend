@@ -1,10 +1,14 @@
 @use 'sass:color';
 @import "../../scss-variables";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 legend {
-	color: color.adjust($color-primary, $lightness: -35%);
-	font-weight: 500;
-	font-size: 1.6rem;
+	color: rgb(108, 238, 104);
+	font-family: "Oswald", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: bold;
+	font-size: 3rem;
+	font-style: normal;
 	margin: 1rem 0 0.5rem 1rem;
 }
 
@@ -15,13 +19,13 @@ legend {
 	background-position: right;
 	background-color: color.adjust($color-primary, $lightness: 10%);
 	background-size: 20% 100%;
-	border-radius: 3px;
+	border-radius: 12px;
 	box-shadow:
 		1px 2px 2px 1px rgb(0 0 0 / 14%),
 		0 3px 1px -2px rgb(0 0 0 / 20%),
 		0 1px 5px 0 rgb(0 0 0 / 12%);
 	justify-content: space-between;
-	margin: 1rem;
+	margin: 2rem;
 	margin-bottom: 1rem;
 	padding: 1rem;
 	padding-left: 5rem;
@@ -169,7 +173,7 @@ legend {
 		1px 2px 2px 1px rgb(0 0 0 / 14%),
 		0 3px 1px -2px rgb(0 0 0 / 20%),
 		0 1px 5px 0 rgb(0 0 0 / 12%);
-	margin: 1rem;
+	margin: 2rem;
 	padding-left: 4rem;
 	padding-top: 2rem;
 

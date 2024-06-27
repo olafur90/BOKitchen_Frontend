@@ -1,6 +1,6 @@
 <body>
+	<app-header-component />
 	<div *ngIf="initialized; else loading" class="container">
-		<app-header-component />
 		<router-outlet> </router-outlet>
 	</div>
 	<app-footer-component />

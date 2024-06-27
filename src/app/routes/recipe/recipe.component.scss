@@ -4,7 +4,7 @@
 .recipe-container {
 	@include flexcolumn;
 
-	background-color: color.adjust($color-primary, $lightness: 18%);
+	background-color: color.adjust($color-primary, $lightness: 88%);
 	border: 1px solid $color-primary;
 	box-shadow:
 		0 2px 1px -1px rgb(0 0 0 / 20%),

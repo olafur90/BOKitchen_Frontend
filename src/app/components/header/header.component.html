@@ -1,16 +1,27 @@
 <header>
 	<nav class="nav">
+		
 		<div class="nav-left">
-			<a class="nav-logo" href="/">BÓ Kitchen</a>
-			<div class="nav-middle">
+			<!--
+			<div>
 				<i class="bi bi-search"></i>
 				<input
-					type="text"
-					(keyup.enter)="onSearch()"
-					placeholder="Sláðu inn leitarorð"
-					[(ngModel)]="searchTerm"
+				type="text"
+				(keyup.enter)="onSearch()"
+				placeholder="Sláðu inn leitarorð"
+				[(ngModel)]="searchTerm"
 				/>
 				<button class="btn" (click)="onSearch()">Leita</button>
+			</div>
+			-->
+		</div>
+		<div class="nav-middle">
+			<img src="../../../assets/bola_logo.png" alt="logo">
+			<div class="nav-links">
+				<a href="/" alt="heim">Heim</a>
+				<a href="/uppskriftir/allaruppskriftir">Uppskriftir</a>
+				<a href="/contactus">Hafa samband</a>
+				<a href="/login">Innskráning</a>
 			</div>
 		</div>
 		<div class="nav-right">
@@ -30,9 +41,7 @@
 				</button>
 			</mat-menu>
 		
-		<a href="/sousvide" alt="asdf">Sous Vide</a>
-			<a href="/uppskriftir/allaruppskriftir">Allar uppskriftir</a>
-			<a href="/login">Innskráning</a>
+			
 		</div>
 	</nav>
 </header>

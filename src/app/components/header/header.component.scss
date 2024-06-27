@@ -2,17 +2,23 @@
 @import "../../scss-variables";
 
 header {
-	background-color: $color-primary;
+	background-color: black; //$color-primary;
 	margin: auto;
 	padding-bottom: 0.5rem;
 	padding-right: 1rem;
+}
+
+.nav-logo {
+	& img {
+		margin-top: -1.5rem;
+		width: 8rem;
+	}
 }
 
 nav {
 	@include flexrow;
 
 	justify-content: space-between;
-	padding-top: 1.5rem;
 
 	& .nav-left,
 	.nav-right {
@@ -20,6 +26,7 @@ nav {
 	}
 
 	& .nav-left {
+		flex: 1;
 		> .nav-logo {
 			color: black;
 			font-family: $font-logo;
@@ -38,6 +45,42 @@ nav {
 	}
 
 	& .nav-middle {
+		display: flex;
+		flex-direction: column;
+		flex: 2;
+
+		& img {
+			align-self: center;
+			justify-self: center;
+			width: 10rem;
+		}
+
+		& .nav-logo {
+			margin: auto;
+			text-align: center;
+		}
+
+		> .nav-links {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			> a {
+				color: color.adjust(white, $lightness: -10%);
+				font-weight: bold;
+				white-space: nowrap;
+				font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+				text-decoration: none;
+				text-transform: uppercase;
+				margin-left: 2rem;
+				margin-bottom: 0.5rem;
+
+				// No margin on first
+				&:first {
+					margin-left: 0;
+				}
+			}
+		}
+		/*
 		margin-left: 2rem;
 		> i {
 			font-size: 1.1rem;
@@ -68,10 +111,12 @@ nav {
 
 			margin: 0;
 			max-width: 50%;
-		}		
+		}
+		*/
 	}
 
 	& .nav-right {
+		flex: 1;
 		> a {
 			color: color.adjust($color-primary, $lightness: -30%);
 			margin-left: 1rem;
