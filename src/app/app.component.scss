@@ -6,15 +6,18 @@ body {
 	//background-image: url('../assets/brick_background.jpg');
 	//background-repeat: repeat-y;
 	//background-size: 100%;
-	background-color: black;
+	background-color: rgb(243, 243, 243);
+	//box-shadow: inset 0 0 0 1000px rgba(5, 26, 3, 0.438);
+	//background-color: black;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 	max-width: 100%;
 	margin: 0;
 }
 
 .container {
-	background-color: color.adjust($color-primary, $lightness: 14%);
-	margin: auto;
+	background-color: black;
+	flex:2;
+	margin: 2rem 1rem;
 	min-height: 85vh;
 	padding-bottom: 1rem;
 	//max-width: 70%;
@@ -24,4 +27,18 @@ body {
 	@media (max-width: 1150px) {
 		max-width: 100%;
 	}
+}
+
+
+#content {
+	display: flex;
+	flex-direction: row;
+}
+
+.content-sidebar {
+	background-color: black;
+	border: 2px solid white;
+	color: white;
+	flex: 1;
+	margin: 2rem;
 }

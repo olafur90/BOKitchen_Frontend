@@ -21,6 +21,7 @@ import { provideToastr } from 'ngx-toastr';
 import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 import { SousVideComponent } from './routes/sousvide/sous-vide.component';
+import { LatestRecipesComponent } from './home/latest-recipes/latest-recipes.component';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -31,12 +32,11 @@ import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 		AppRoutingModule,
 		CommonModule,
 		HttpClientModule,
-		HomeComponent,
 		BrowserAnimationsModule,
 		RouterModule.forRoot([
 			{
 				path: '',
-				component: HomeComponent,
+				component: LatestRecipesComponent,
 			},
 			{
 				path: 'uppskriftir/add',

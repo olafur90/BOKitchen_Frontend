@@ -1,7 +1,19 @@
 <body>
 	<app-header-component />
-	<div *ngIf="initialized; else loading" class="container">
-		<router-outlet> </router-outlet>
+	<div id="content">
+		<!--  LEFT CONTENT -->
+		<div class="content-sidebar"><h1>SOUS VIDE HITATAFLA</h1></div>
+		<!--  END LEFT CONTENT -->
+
+		<!--  CENTER CONTENT -->
+		<div *ngIf="initialized; else loading" class="container">
+			<router-outlet> </router-outlet>
+		</div>
+		<!--  END CENTER CONTENT -->
+		
+		<!--  RIGHT CONTENT -->
+		<div class="content-sidebar"><h1>AÐRAR NYTSAMLEGAR UPPLYSINGAR</h1></div>
+		<!--  END RIGHT CONTENT -->
 	</div>
 	<app-footer-component />
 </body>
