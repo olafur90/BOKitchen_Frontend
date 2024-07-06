@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-	background-color: black;
+	background-color: color.adjust(rgb(184, 182, 182), $lightness: 10%);
 	flex:2;
 	margin: 2rem 1rem;
 	min-height: 85vh;
@@ -36,9 +36,9 @@ body {
 }
 
 .content-sidebar {
-	background-color: black;
+	background-color: color.adjust(rgb(184, 182, 182), $lightness: 10%);
 	border: 2px solid white;
-	color: white;
+	color: black;
 	flex: 1;
 	margin: 2rem;
 }

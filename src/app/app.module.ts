@@ -29,6 +29,7 @@ import { LatestRecipesComponent } from './home/latest-recipes/latest-recipes.com
 		BrowserModule,
 		FooterComponent,
 		HeaderComponent,
+		SousVideComponent,
 		AppRoutingModule,
 		CommonModule,
 		HttpClientModule,
