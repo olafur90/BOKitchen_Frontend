@@ -25,7 +25,8 @@
 
 <ng-template #catRecipesTemplate>
 	<div *ngFor="let recipeGroup of categoryRecipes; let i = index">
-		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}</h2>
+		<!-- TODO: Láta bakenda frekar filtera tóma flokka burt. Skoða svo hvort það sé flott að hafa dropdown fyrir hvern flokk  -->
+		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}<i *ngIf="recipeGroup.length > 0" class="bi-chevron-up" style="margin-left: 0.5rem; font-size: 1.5rem;"></i></h2>
 		<mat-card class="recipe-card" *ngFor="let recipe of recipeGroup">
 			<mat-card-header class="recipe-card-header" [ngStyle]="{'display': 'flex'}">
 				<div

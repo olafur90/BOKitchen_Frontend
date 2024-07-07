@@ -1,8 +1,9 @@
 <form [formGroup]="commentForm" #formDirective="ngForm" class="comment-form">
 	<mat-form-field class="new-comment-field">
 		<mat-label [ngStyle]=" errors ? { color: 'red' } : { color: 'gray'}">Nafn</mat-label>
-		<input formControlName="name" type="text" required matInput />
+		<input formControlName="name" type="text" matInput [disabled]="isAnonymous" />
 	</mat-form-field>
+	<mat-checkbox formControlName="isAnonymous" class="checkbox-anonymous-comment" (change)="checkedAnon()">Nafnlaust</mat-checkbox>
 	<mat-form-field class="new-comment-field">
 		<mat-label [ngStyle]=" errors ? { color: 'red' } : { color: 'gray'}">Athugasemd</mat-label>
 		<textarea formControlName="commentBody" rows="4" required matInput></textarea>

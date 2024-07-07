@@ -6,11 +6,11 @@
 
 	margin: auto;
 	margin-top: 2rem;
-	max-width: 60%; 
+	max-width: 60%;
 
 	& .new-comment-field {
 		display: flex;
-
+		margin: 0;
 		width: 70%;
 	}
 
@@ -55,7 +55,7 @@
                 margin: 0;
             }
 		}
-		
+
 		> .comment-body {
 			border-left: 2px solid color.adjust($color-primary, $lightness: 5%);
             max-width: 60%;
@@ -74,4 +74,11 @@
 
 .mat-mdc-form-field-required-marker {
     color: green;
+}
+
+.checkbox-anonymous-comment {
+	margin-bottom: 1rem;
+	margin-top: -1rem;
+	color: red;
+
 }

@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 
+
 @Component({
 	selector: 'app-result-cards-component',
 	standalone: true,
