@@ -1,12 +1,12 @@
 <div style="
-		background-repeat: repeat-y; 
+		background-repeat: repeat-y;
 		background-size: 100%;
 		border: 3px solid white;
 		"
 		*ngIf="initialized; else loading">
 	<legend>
 		Nýjasta uppskriftin
-	</legend> 
+	</legend>
 
 	<section class="col latest-recipe-info">
 		<div class="latest-recipe-text" *ngIf="singleLatestRecipe">
@@ -87,40 +87,24 @@
 	</section>
 
 	<legend>
-		Aðrar nýjar uppskriftir
+		Meira nýlegt
 	</legend>
-	<section class="row recent-recipes">
 		<div class="row recent-recipe-card-container">
 			<mat-card  *ngFor="let recipe of recentRecipes" class="recipe-card">
-				<mat-card-header>
-					<div style="display: flex; flex-direction: row;">
-						<div
-							mat-card-avatar
-							class="card-header-image"
-							[ngStyle]="{
-								'background-image':
-								'url(' +
-								(recipe.baseImage
-								? recipe.baseImage
-								: recipe.cat?.imagePath
-								? recipe.cat?.imagePath
-								: '../../assets/pumpkin_pie.jpg') +
-								')'
-							}">
-						</div>
-						<p>{{ recipe.cat?.icelandicName }}</p>
-					</div>
-					
+				<mat-card-header style="padding:0; display:flex; flex-direction:column">
 					<mat-card-title>
-						<a [routerLink]="['/uppskriftir/recipe', recipe.id]">
-							{{ recipe && recipe.name && (
-								recipe.name.length > 60
-								  ? recipe.name.slice(0, 60) + ' ...'
-								  : recipe.name
-							  ) }}
-						</a>
-						<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
-						<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'HH:mm' }}</h6>
+						<div style="display: flex; border-bottom: 1px solid rgb(0, 0, 54); padding: 0.5rem; margin-bottom: 0.5rem; background: hsla(34, 75%, 81%, 0.4); color: rgb(0, 0, 0); width:100%; ">
+							<a style="font-size: 1.5rem; font-weight: 100; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" [routerLink]="['/flokkar', recipe && recipe.cat && recipe.cat.name]">
+								{{ recipe && recipe.cat && recipe.cat.icelandicName | uppercase }}
+							</a>
+						</div>
+						<div style="margin-left: 0.5rem;">
+							<a [routerLink]="['/uppskriftir/recipe', recipe.id && recipe.id]">
+								{{ recipe && recipe.name  }}
+							</a>
+							<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
+							<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'HH:mm' }}</h6>
+						</div>
 					</mat-card-title>
 
 				</mat-card-header>
@@ -130,7 +114,7 @@
 							<i class="bi bi-people"></i>
 							{{ recipe.forNumberOfPeople }}
 						</div>
-						<div class="recipe-icon">
+						<div class="recipe-icon" style="padding-left: 1.5rem;">
 							<i class="bi bi-clock"></i>
 							{{ recipe.timeToCookInMinutes }}
 						</div>
@@ -143,6 +127,7 @@
 							}}
 						</div>
 					</div>
+					<!--
 					<mat-card-actions>
 						<button
 							mat-button
@@ -152,10 +137,10 @@
 							Meira
 						</button>
 					</mat-card-actions>
+					-->
 				</mat-card-content>
 			</mat-card>
 		</div>
-	</section>
 </div>
 
 <ng-template #loading>

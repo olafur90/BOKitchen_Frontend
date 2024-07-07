@@ -7,14 +7,15 @@ legend {
 	font-family: "Oswald", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: bold;
-	font-size: 3rem;
+	font-size: 2rem;
 	font-style: normal;
-	margin: 1rem 0 0.5rem 1rem;
+	margin: 1rem 0 0.5rem 2rem;
 }
 
 .latest-recipe-info {
 	@include flexrow;
 	background-color: color.adjust($color-primary, $lightness: 10%);
+	border: 2px solid black;
 	border-radius: 12px;
 	box-shadow:
 		1px 2px 2px 1px rgb(0 0 0 / 14%),
@@ -170,9 +171,8 @@ legend {
 		1px 2px 2px 1px rgb(0 0 0 / 14%),
 		0 3px 1px -2px rgb(0 0 0 / 20%),
 		0 1px 5px 0 rgb(0 0 0 / 12%);
-	margin: 2rem;
-	padding-left: 4rem;
-	padding-top: 2rem;
+	padding-top: 1rem;
+	justify-content: space-between;
 
 	& legend {
 		color: color.adjust($color-primary, $lightness: -35%);
@@ -190,8 +190,8 @@ legend {
 	}
 
 	& .mat-mdc-card-header {
-		flex-direction: column-reverse;
-		padding-top: 0.5rem;
+		flex-direction: column;
+		padding: 0;
 	}
 
 	& .mat-mdc-card-title {
@@ -221,6 +221,10 @@ legend {
 }
 
 .recent-recipe-card-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 	margin-bottom: 1rem;
 }
 
@@ -236,13 +240,17 @@ legend {
 
 .recipe-card {
 	background-color: color.adjust($color-primary, $lightness: 16%);
-	border: 1px solid $color-primary;
+	border: 3px solid black;
+	border-radius: 7px;
 	box-shadow:
 		0 2px 1px -1px rgb(0 0 0 / 20%),
 		0 1px 1px 0 rgb(0 0 0 / 14%),
 		0 1px 3px 0 rgb(0 0 0 / 12%);
 	max-width: 31%;
 	margin: 0.5rem;
+	padding:0;
+	@include flexcolumn;
+	justify-content: space-between;
 
 	& img {
 		max-height: 10rem;
@@ -272,32 +280,37 @@ legend {
 
 	& .recipe-card-content {
 		@include flexcolumn;
-
-		justify-content: space-between;
-		margin-bottom: 0.5rem;
-		margin-top: 0.5rem;
+		background-color: #e5e5f7;
+		opacity: 0.8;
+		background-image:  repeating-linear-gradient(45deg, #d8d8d8 25%, transparent 25%, transparent 75%, #d8d8d8 75%, #d8d8d8), repeating-linear-gradient(45deg, #d8d8d8 25%, #e5e5f7 25%, #e5e5f7 75%, #d8d8d8 75%, #d8d8d8);
+		background-position: 0 0, 10px 10px;
+		background-size: 20px 20px;
+		border-top: 1px solid black;
+		margin-top: 0.3rem;
+		padding: 0;
 
 		> p {
-			margin-right: 0.5rem;
 			word-break: break-word;
 		}
 
 		> .icons {
 			@include flexrow;
 
-			justify-content: space-between
+			justify-content: space-between;
+			margin: 1rem;
 		}
 
-		> .recipe-icon {
+		& .recipe-icon {
 			@include flexrow;
 
 			align-items: center;
+			font-size: 1.5rem;
 			justify-content: center;
 			max-width: 33%;
 
 			> i {
-				font-size: 1.5rem;
-				margin-right: 0.3rem;
+				font-size: 2rem;
+				margin-right: 0.5rem;
 			}
 		}
 	}

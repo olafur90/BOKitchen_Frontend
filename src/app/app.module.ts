@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
 import {
 	BrowserAnimationsModule,
 	provideAnimations,
@@ -21,7 +20,7 @@ import { provideToastr } from 'ngx-toastr';
 import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 import { SousVideComponent } from './routes/sousvide/sous-vide.component';
-import { LatestRecipesComponent } from './home/latest-recipes/latest-recipes.component';
+import { LatestRecipesComponent } from './components/latest-recipes/latest-recipes.component';
 
 @NgModule({
 	declarations: [AppComponent],

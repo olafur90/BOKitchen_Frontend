@@ -2,21 +2,21 @@
 	<app-header-component />
 	<div id="content">
 
-		<!--  LEFT CONTENT -->
+		<!--  LEFT CONTENT
 		<div class="content-sidebar">
 			<app-sous-vide />
 		</div>
-		<!--  END LEFT CONTENT -->
+		 END LEFT CONTENT -->
 
 		<!--  CENTER CONTENT -->
 		<div *ngIf="initialized; else loading" class="container">
 			<router-outlet> </router-outlet>
 		</div>
 		<!--  END CENTER CONTENT -->
-		
-		<!--  RIGHT CONTENT -->
+
+		<!--  RIGHT CONTENT
 		<div class="content-sidebar"><h1>AÐRAR NYTSAMLEGAR UPPLYSINGAR</h1></div>
-		<!--  END RIGHT CONTENT -->
+		END RIGHT CONTENT -->
 
 	</div>
 	<app-footer-component />
