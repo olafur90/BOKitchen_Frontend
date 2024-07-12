@@ -1,3 +1,11 @@
 .result-cards-container {
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    padding-top: 1rem;
+}
+.recipe-cards-container {
+    flex: 3;
+}
+.filter-container {
+    flex: 1;
 }

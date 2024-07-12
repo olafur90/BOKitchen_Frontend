@@ -21,6 +21,7 @@ import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 import { LatestRecipesComponent } from './components/latest-recipes/latest-recipes.component';
+import { FilterRecipesComponent } from './components/filter-recipes/filter-recipes.component';
 
 @NgModule({
 	declarations: [AppComponent],
