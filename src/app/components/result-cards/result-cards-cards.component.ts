@@ -18,5 +18,5 @@ export class ResultCardsComponent {
 	public recipes: Recipe[] = [];
 
 	@Input()
-	public categoryRecipes: Recipe[][] = [];
+	public recipeCategories: Recipe[][] = [];
 }

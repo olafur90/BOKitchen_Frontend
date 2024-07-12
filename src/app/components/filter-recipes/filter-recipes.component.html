@@ -1,0 +1,9 @@
+<form [formGroup]="filterForm" #formDirective="ngForm" class="filter-form">
+    <legend>Síur</legend>
+    <div class="checkbox-filters-container">
+        <mat-checkbox [formControlName]="'all'">Allt</mat-checkbox>
+        <mat-checkbox *ngFor="let category of filteredCategories" [formControlName]="category.name">
+            {{ category.icelandicName }}
+        </mat-checkbox>
+    </div>
+</form>

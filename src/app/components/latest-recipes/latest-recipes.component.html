@@ -1,11 +1,6 @@
-<div style="
-		background-repeat: repeat-y;
-		background-size: 100%;
-		border: 3px solid white;
-		"
-		*ngIf="initialized; else loading">
+<div id="latest-recipes" *ngIf="initialized; else loading">
 	<legend>
-		Nýjasta uppskriftin
+		Nýtt
 	</legend>
 
 	<section class="col latest-recipe-info">
@@ -27,7 +22,7 @@
 					</p>
 				</div>
 				<h3>{{ singleLatestRecipe ? singleLatestRecipe.name : "" }}</h3>
-				<p style="font-size: 0.8rem;">{{ singleLatestRecipe ? (singleLatestRecipe.dateAdded | date) : "" }}</p>
+				<p class="date-added-text">{{ singleLatestRecipe ? (singleLatestRecipe.dateAdded | date) : "" }}</p>
 			</div>
 			<button
 				class="btn"
@@ -91,22 +86,27 @@
 	</legend>
 		<div class="row recent-recipe-card-container">
 			<mat-card  *ngFor="let recipe of recentRecipes" class="recipe-card">
-				<mat-card-header style="padding:0; display:flex; flex-direction:column">
-					<mat-card-title>
-						<div style="display: flex; border-bottom: 1px solid rgb(0, 0, 54); padding: 0.5rem; margin-bottom: 0.5rem; background: hsla(34, 75%, 81%, 0.4); color: rgb(0, 0, 0); width:100%; ">
-							<a style="font-size: 1.5rem; font-weight: 100; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;" [routerLink]="['/uppskriftir/flokkar', recipe && recipe.cat && recipe.cat.name]">
+				<mat-card-header class="card-header">
+					<mat-card-title class="card-title">
+						<div class="card-category">
+							<img
+								class="card-header-image"
+								[src]="
+									recipe.cat?.imagePath
+								"
+								alt=""
+							/>
+							<a [routerLink]="['/uppskriftir/flokkar', recipe && recipe.cat && recipe.cat.name]">
 								{{ recipe && recipe.cat && recipe.cat.icelandicName | uppercase }}
 							</a>
 						</div>
-						<div style="margin-left: 0.5rem;">
+						<div class="card-recipe-name-and-date-added">
 							<a [routerLink]="['/uppskriftir/recipe', recipe.id && recipe.id]">
 								{{ recipe && recipe.name  }}
 							</a>
-							<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
-							<h6 style="margin-top: 0.5rem;">{{ recipe.dateAdded | date: 'HH:mm' }}</h6>
+							<h6 class="date-added-text">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
 						</div>
 					</mat-card-title>
-
 				</mat-card-header>
 				<mat-card-content class="recipe-card-content">
 					<div class="icons">
@@ -114,7 +114,7 @@
 							<i class="bi bi-people"></i>
 							{{ recipe.forNumberOfPeople }}
 						</div>
-						<div class="recipe-icon" style="padding-left: 1.5rem;">
+						<div class="recipe-icon">
 							<i class="bi bi-clock"></i>
 							{{ recipe.timeToCookInMinutes }}
 						</div>

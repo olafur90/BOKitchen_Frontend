@@ -1,32 +1,15 @@
-<div *ngIf="recipes.length > 0; else catRecipesTemplate">
-	<mat-card class="recipe-card" *ngFor="let recipe of recipes">
-		<mat-card-header class="recipe-card-header">
-			<div
-				mat-card-avatar
-				class="card-header-image"
-				[ngStyle]="{
-					'background-image':
-						'url(' +
-						(recipe.baseImage
-							? recipe.baseImage
-							: '../../assets/pumpkin_pie.jpg') +
-						')',
-						'background-size': 'cover'
-				}"
-			></div>
-			<mat-card-title
-				><a [routerLink]="['/uppskriftir/recipe', recipe.id]">{{
-					recipe.name
-				}}</a></mat-card-title
-			>
-		</mat-card-header>
-	</mat-card>
-</div>
-
-<ng-template #catRecipesTemplate>
-	<div *ngFor="let recipeGroup of categoryRecipes; let i = index">
+<div>
+	<div *ngFor="let recipeGroup of recipeCategories; let i = index">
 		<!-- TODO: Láta bakenda frekar filtera tóma flokka burt. Skoða svo hvort það sé flott að hafa dropdown fyrir hvern flokk  -->
-		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}<i *ngIf="recipeGroup.length > 0" class="bi-chevron-up" style="margin-left: 0.5rem; font-size: 1.5rem;"></i></h2>
+		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}
+			<!-- TODO: Taka út þetta % 2 == 0 tjekk. Er bara til að sjá fyrir mér hvernig upp/niður örvarnar eru  -->
+			<i 
+				*ngIf="recipeGroup.length > 0" 
+				[ngClass]="{'bi-chevron-down': i % 2 === 0, 'bi-chevron-up': i % 2 !== 0}"
+				style="margin-left: 0.5rem; font-size: 1.5rem;"
+				>
+			</i>
+		</h2>
 		<mat-card class="recipe-card" *ngFor="let recipe of recipeGroup">
 			<mat-card-header class="recipe-card-header" [ngStyle]="{'display': 'flex'}">
 				<div
@@ -50,4 +33,4 @@
 			</mat-card-header>
 		</mat-card>
 	</div>
-</ng-template>
+</div>

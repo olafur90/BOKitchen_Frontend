@@ -69,8 +69,6 @@ export class LatestRecipesComponent implements OnInit {
 				});
 				this.singleLatestRecipe = this.recentRecipes[this.recentRecipes.length - 1];
 				this.recentRecipes = this.recentRecipes.slice(0, this.recentRecipes.length - 1);
-				this.recentRecipes.reverse();
-
 				this.initialized = true;
 			});
 	}
