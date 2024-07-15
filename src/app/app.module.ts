@@ -21,7 +21,7 @@ import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 import { LatestRecipesComponent } from './components/latest-recipes/latest-recipes.component';
-import { FilterRecipesComponent } from './components/filter-recipes/filter-recipes.component';
+import { provideAuth0 } from '@auth0/auth0-angular';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -72,6 +72,7 @@ import { FilterRecipesComponent } from './components/filter-recipes/filter-recip
 	providers: [
 		provideAnimations(), // required animations providers
 		provideToastr(),
+		provideAuth0({ domain: 'dev-72yh0oy5imbdaqx8.eu.auth0.com', clientId: 'RyMDE9sOWPzw6ob3ztLdOmwmeWvfsh5U', authorizationParams: { redirect_uri: window.location.origin } }),
 	],
 	bootstrap: [AppComponent],
 })

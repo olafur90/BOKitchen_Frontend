@@ -14,9 +14,11 @@ import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 	imports: [CommonModule, MatCardModule, RouterModule, DifficultyReversePipe],
 })
 export class ResultCardsComponent {
+	// Input from parent FIXME: I have no idea from looking at code what this is
 	@Input()
 	public recipes: Recipe[] = [];
 
+	// Input from parent FIXME: I have no idea from looking at code what this is
 	@Input()
 	public recipeCategories: Recipe[][] = [];
 }

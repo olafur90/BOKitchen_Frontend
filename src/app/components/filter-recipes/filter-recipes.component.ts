@@ -18,19 +18,24 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     CommonModule
-  ]
+  ],
 })
-
 export class FilterRecipesComponent implements OnInit {
   @Output() filterChange = new EventEmitter<string[]>();
 
   allCategories: Category[] = [];
+  checkedFilters: string[] = [];
   filteredCategories: Category[] = [];
   filterForm: FormGroup = new FormGroup<CategoryFormControls>({} as CategoryFormControls);
-  checkedFilters: string[] = [];
+  
+  difficultyFilterForm: FormGroup = new FormGroup({"difficulty": new FormControl("")});
+  difficulties: string[] = ["Auðvelt", "Meðal", "Erfitt"];
 
   constructor(private http: HttpClient) { }
   
+  // FIXME: Ekki nota API til að filtera, er nú þegar með allar uppskriftir svo nóg að client geri það
+  // útaf því að 'Allt' er valið til að byrja með.
+  // Mögulega byrja þennan component alveg upp á nýtt
   async ngOnInit(): Promise<void> {
     this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe(data => {
       if (data) {
@@ -50,6 +55,14 @@ export class FilterRecipesComponent implements OnInit {
         });
       }
     });
+
+    this.difficulties.forEach(difficulty => {
+      const control = new FormControl(false);
+      this.difficultyFilterForm.addControl(difficulty, control);
+      control.valueChanges.subscribe(() => {
+        //this.updateSelectedCategories();
+      });
+    })
   }
 
   updateSelectedCategories(): void {

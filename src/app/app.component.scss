@@ -33,11 +33,3 @@ body {
 	display: flex;
 	justify-content: center;
 }
-
-.content-sidebar {
-	background-color: color.adjust(rgb(184, 182, 182), $lightness: 10%);
-	border: 2px solid white;
-	color: black;
-	flex: 1;
-	margin: 2rem;
-}

@@ -7,6 +7,9 @@ import { Recipe } from 'src/app/components/models/Recipe';
 import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
 import { environment } from 'src/environments/environment';
 
+/**
+ * Component for all recipes - Allar Uppskriftir
+ */
 @Component({
     selector: 'app-all-recipes-component',
     standalone: true,
@@ -19,12 +22,28 @@ import { environment } from 'src/environments/environment';
     ]
 })
 export class AllRecipesComponent implements OnInit {
-    recipes: Recipe[][] = [];
+    // Initialized is false while data is being fetched from API - Loading state while !initialized
     initialized: boolean = false;
+
+    // All recipes from API
+    recipes: Recipe[][] = [];
+
+    // Available categories from API
     availableCategories: Category[] = [];
 
+    // Filtered categories based on selected checkboxes
+    filteredCategories: Category[] = [];
+
+    /**
+     * The constructor - Initializes DI
+     * @param http - Dependency Injection for Angular HttpClient
+     */
     constructor(private http: HttpClient) {}
 
+    /**
+     * Initializes data from API and sets variables
+     * @returns a promise of void
+     */
     async ngOnInit(): Promise<void> {
         await this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe(async (data) => {
             if (data) {
@@ -46,6 +65,12 @@ export class AllRecipesComponent implements OnInit {
     
                 this.initialized = true;
             }
+        });
+    }
+
+    filterByCategories(categories: string[]) {
+        this.filteredCategories = this.availableCategories.filter((category) => {
+            return categories.includes(category.name);
         });
     }
 }

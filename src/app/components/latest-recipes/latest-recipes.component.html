@@ -1,146 +1,19 @@
+<!-- 
+  Component: Latest Recipes
+  Description: This component acts as the home component, which displays the latest recipes. 
+  Author: Ólafur Pálsson
+  Usage: <app-latest-recipes></app-latest-recipes> or just <app-latest-recipes />
+  Notes: 
+    - Displays a loading message until the recipes are initialized.
+    - Uses <app-most-recent-recipe> to display the single latest recipe.
+    - Uses <app-more-recent-recipes> to display a list of recent recipes.
+-->
+
 <div id="latest-recipes" *ngIf="initialized; else loading">
-	<legend>
-		Nýtt
-	</legend>
-
-	<section class="col latest-recipe-info">
-		<div class="latest-recipe-text" *ngIf="singleLatestRecipe">
-			<div>
-				<div class="single-latest-recipe-category">
-					<img
-						[src]="
-							singleLatestRecipe && singleLatestRecipe.cat?.imagePath
-						"
-						alt=""
-					/>
-					<p>
-						{{
-							singleLatestRecipe
-								? singleLatestRecipe.cat?.icelandicName
-								: ""
-						}}
-					</p>
-				</div>
-				<h3>{{ singleLatestRecipe ? singleLatestRecipe.name : "" }}</h3>
-				<p class="date-added-text">{{ singleLatestRecipe ? (singleLatestRecipe.dateAdded | date) : "" }}</p>
-			</div>
-			<button
-				class="btn"
-				mat-button
-				routerLink="/uppskriftir/recipe/{{
-					singleLatestRecipe ? singleLatestRecipe.id : ''
-				}}"
-				routerActive
-			>
-				Meira
-			</button>
-		</div>
-		<div class="icon-view">
-			<div class="icon-group">
-				<i class="bi bi-people"></i>
-				<p>
-					{{
-						singleLatestRecipe
-							? singleLatestRecipe.forNumberOfPeople
-							: ""
-					}}
-				</p>
-			</div>
-			<div class="icon-group">
-				<i class="bi bi-clock"></i>
-				<p>
-					{{
-						singleLatestRecipe
-							? singleLatestRecipe.timeToCookInMinutes
-							: ""
-					}}
-				</p>
-			</div>
-			<div class="icon-group">
-				<i class="bi bi-speedometer2"></i>
-				<p>
-					{{
-						singleLatestRecipe && singleLatestRecipe.difficulty
-							? (singleLatestRecipe.difficulty | difficultyReverse)
-							: "1"
-					}}
-				</p>
-			</div>
-		</div>
-		<div class="latest-recipe-image-container" *ngIf="singleLatestRecipe">
-			<img
-				[src]="
-					singleLatestRecipe.baseImage
-						? singleLatestRecipe.baseImage
-						: singleLatestRecipe.cat?.imagePath
-						? singleLatestRecipe.cat?.imagePath
-						: '../../assets/pumpkin_pie.jpg'
-				"
-				alt=""
-			/>
-		</div>
-	</section>
-
-	<legend>
-		Meira nýlegt
-	</legend>
-		<div class="row recent-recipe-card-container">
-			<mat-card  *ngFor="let recipe of recentRecipes" class="recipe-card">
-				<mat-card-header class="card-header">
-					<mat-card-title class="card-title">
-						<div class="card-category">
-							<img
-								class="card-header-image"
-								[src]="
-									recipe.cat?.imagePath
-								"
-								alt=""
-							/>
-							<a [routerLink]="['/uppskriftir/flokkar', recipe && recipe.cat && recipe.cat.name]">
-								{{ recipe && recipe.cat && recipe.cat.icelandicName | uppercase }}
-							</a>
-						</div>
-						<div class="card-recipe-name-and-date-added">
-							<a [routerLink]="['/uppskriftir/recipe', recipe.id && recipe.id]">
-								{{ recipe && recipe.name  }}
-							</a>
-							<h6 class="date-added-text">{{ recipe.dateAdded | date: 'd/MM/yyyy' }}</h6>
-						</div>
-					</mat-card-title>
-				</mat-card-header>
-				<mat-card-content class="recipe-card-content">
-					<div class="icons">
-						<div class="recipe-icon">
-							<i class="bi bi-people"></i>
-							{{ recipe.forNumberOfPeople }}
-						</div>
-						<div class="recipe-icon">
-							<i class="bi bi-clock"></i>
-							{{ recipe.timeToCookInMinutes }}
-						</div>
-						<div class="recipe-icon">
-							<i class="bi bi-speedometer2"></i>
-							{{
-								recipe.difficulty
-									? (recipe.difficulty | difficultyReverse)
-									: "1"
-							}}
-						</div>
-					</div>
-					<!--
-					<mat-card-actions>
-						<button
-							mat-button
-							routerLink="/uppskriftir/recipe/{{ recipe.id }}"
-							routerActive
-						>
-							Meira
-						</button>
-					</mat-card-actions>
-					-->
-				</mat-card-content>
-			</mat-card>
-		</div>
+	<legend>Nýtt</legend>
+	<app-most-recent-recipe *ngIf="singleLatestRecipe" [singleLatestRecipe]="singleLatestRecipe" />
+	<legend>Meira nýlegt</legend>
+	<app-more-recent-recipes [recentRecipes]="recentRecipes" />
 </div>
 
 <ng-template #loading>

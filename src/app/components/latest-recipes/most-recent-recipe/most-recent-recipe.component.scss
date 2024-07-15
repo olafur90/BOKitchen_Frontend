@@ -1,0 +1,154 @@
+@use 'sass:color';
+@import "../../../scss-variables";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+.latest-recipe-info {
+	@include flexrow;
+	background-color: color.adjust($color-primary, $lightness: 10%);
+	border: 2px solid black;
+	border-radius: 12px;
+	box-shadow:
+		1px 2px 2px 1px rgb(0 0 0 / 14%),
+		0 3px 1px -2px rgb(0 0 0 / 20%),
+		0 1px 5px 0 rgb(0 0 0 / 12%);
+	justify-content: space-between;
+	margin: 2rem;
+	margin-bottom: 1rem;
+	margin-top: 0;
+	padding: 1rem;
+	padding-left: 5rem;
+
+	> .latest-recipe-text {
+		@include flexcolumn;
+
+		justify-content: space-between;
+		max-width: 30%;
+
+		& .date-added-text {
+			font-size: 0.8rem;
+			margin-top: 0.2rem;
+		}
+
+		@media (max-width: 770px) {
+			max-width: 70%;
+		}
+
+		@media (max-width: 500px) {
+			max-width: 100%;
+		}
+	}
+
+	> .icon-view {
+		@include flexrow;
+
+		align-items: center;
+		color: color.adjust($color-primary, $lightness: -50%);
+		justify-content: space-between;
+		scale: 1.5;
+		width: 20%;
+
+		> .icon-group {
+			@include flexcolumn;
+
+			max-width: fit-content;
+
+			> i {
+				margin: auto;
+			}
+		}
+
+		@media (max-width: 1280px) {
+			@include flexcolumn;
+
+			justify-content: center;
+			margin-right: 1rem;
+
+			& p {
+				margin-bottom: 0.3rem;
+			}
+		}
+
+		@media (max-width: 500px) {
+			@include flexrow;
+
+			justify-content: space-around;
+			margin: auto;
+			margin-top: 2rem;
+			width: 70%;
+		}
+	}
+
+	& p {
+		font-family: $font-primary;
+		max-width: 50%;
+	}
+
+	& .single-latest-recipe-category {
+		@include flexrow;
+
+		margin-top: 1rem;
+
+		> img {
+			border-radius: 50%;
+			height: 2rem;
+			margin-right: 0.5rem;
+			max-width: 2rem;
+		}
+
+		> p {
+			color: color.adjust($color-primary, $lightness: -50%);
+			font-size: 1rem;
+			font-weight: 600;
+			margin: auto 0;
+		}
+	}
+
+	& h3 {
+		font-family: $font-primary;
+		margin-top: 1rem;
+	}
+
+	& button {
+		border: 1px solid;
+		border-color: color.adjust($color-primary, $lightness: -10%);
+		background-color: color.adjust($color-primary, $lightness: -10%);
+		color: color.adjust($color-primary, $lightness: 10%);
+		margin-top: 2rem;
+		max-width: 15%;
+
+		&:hover {
+			background-color: color.adjust($color-primary, $lightness: 10%);
+			border-color: color.adjust($color-primary, $lightness: -10%);
+			color: color.adjust($color-primary, $lightness: -10%);
+		}
+	}
+
+	> .latest-recipe-image-container {
+		display: flex;
+
+		> img {
+			border: 2px solid $color-primary;
+			box-shadow:
+				0 2px 1px -1px rgb(0 0 0 / 20%),
+				0 1px 1px 0 rgb(0 0 0 / 14%),
+				0 1px 3px 0 rgb(0 0 0 / 12%);
+			max-height: 25vh;
+			max-width: 300px;
+			margin: auto 0;
+		}
+
+		@media (max-width: 770px) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 770px) {
+		max-height: fit-content;
+	}
+
+	@media (max-width: 500px) {
+		@include flexcolumn;
+
+		padding-left: 1rem;
+	}
+}

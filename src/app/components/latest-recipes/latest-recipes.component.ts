@@ -9,6 +9,9 @@ import { Recipe } from 'src/app/components/models/Recipe';
 import { environment } from 'src/environments/environment';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { Category } from 'src/app/components/models/Category';
+import { MostRecentRecipeComponent } from './most-recent-recipe/most-recent-recipe.component';
+import { MoreRecentRecipesComponent } from "./more-recent-recipes/more-recent-recipes.component";
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
 	selector: 'app-latest-recipes',
@@ -19,9 +22,8 @@ import { Category } from 'src/app/components/models/Category';
 		CommonModule,
 		MatButtonModule,
 		MatCardModule,
-		RouterLink,
-		RouterModule,
-		DifficultyReversePipe,
+		MostRecentRecipeComponent,
+		MoreRecentRecipesComponent
 	],
 	providers: [DifficultyReversePipe],
 })
@@ -38,16 +40,25 @@ export class LatestRecipesComponent implements OnInit {
 	// Whether or not the recipes have been initialized
 	initialized: boolean = false;
 
+	// TODO: Authentication
+	// authenticated: boolean = false;
+
 	/**
 	 * The constructor
 	 * @param http The HTTP Client Service
 	 */
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private authService: AuthService) {}
 
 	/**
 	 * Fetches the components from the API and sets the variables
 	 */
 	ngOnInit(): void {
+
+		// TODO: Is showing false even when should be logged in
+		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
+			console.log(authenticated);
+		});
+
 		this.http
 			.get<Recipe[]>(`${environment.API_URL}/uppskriftir/recentRecipes`)
 			.subscribe((data: Recipe[]) => {

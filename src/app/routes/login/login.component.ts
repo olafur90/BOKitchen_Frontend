@@ -13,8 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/services/AuthService';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -47,21 +47,14 @@ export class LoginComponent {
 
 	constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
 
-	async onLogin() {
-		const email = this.emailFormControl.value;
-		// const password = bcrypt.hashSync(this.passwordFormControl.value);
-
-		// Will not use encryption / decription for now. 
-		// TODO: Implement password hash with new user process
-		const password = this.passwordFormControl.value;
-
-		if (email && password) {
-			await this.authService.Login(email, password).subscribe({
-				next: (result) => {
-					this.authenticated = true;
-					this.router.navigate(['/']);
-				}
-			})
-		}
+	async login() {
+		this.authService.loginWithRedirect();
+		/*
+		this.authService.logout({
+			logoutParams: {
+				returnTo: window.location.origin
+			}
+		})
+		*/
 	}
 }
