@@ -1,19 +1,9 @@
 <body>
 	<app-header-component />
 	<div id="content">
-		<div *ngIf="initialized; else loading" class="container">
+		<div class="container">
 			<router-outlet> </router-outlet>
 		</div>
 	</div>
 	<app-footer-component />
 </body>
-
-<!-- TODO: Þetta er ekki notað eins og er. -->
-<ng-template #loading>
-	<h2>Þú verður að skrá þig inn</h2>
-	<form>
-		<input type="text" placeholder="Notendanafn" #username />
-		<input type="password" placeholder="Lykilorð" #password />
-		<button (click)="onLogin(username.value, password.value)">Skrá inn</button>
-	</form>
-</ng-template>

@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { OnInit } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
 import { Recipe } from 'src/app/components/models/Recipe';
 import { environment } from 'src/environments/environment';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
@@ -23,7 +23,8 @@ import { AuthService } from '@auth0/auth0-angular';
 		MatButtonModule,
 		MatCardModule,
 		MostRecentRecipeComponent,
-		MoreRecentRecipesComponent
+		MoreRecentRecipesComponent,
+		MatProgressSpinnerModule
 	],
 	providers: [DifficultyReversePipe],
 })
@@ -40,8 +41,7 @@ export class LatestRecipesComponent implements OnInit {
 	// Whether or not the recipes have been initialized
 	initialized: boolean = false;
 
-	// TODO: Authentication
-	// authenticated: boolean = false;
+	authenticated: boolean = false;
 
 	/**
 	 * The constructor
@@ -56,7 +56,11 @@ export class LatestRecipesComponent implements OnInit {
 
 		// TODO: Is showing false even when should be logged in
 		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
-			console.log(authenticated);
+			this.authenticated = authenticated;
+		});
+
+		this.authService.user$.pipe().subscribe((user) => {
+			console.log(user);
 		});
 
 		this.http

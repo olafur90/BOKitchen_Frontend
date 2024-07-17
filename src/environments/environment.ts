@@ -4,6 +4,4 @@ export const API_URL = 'http://localhost:8080'
 export const environment = {
     production: false,
     API_URL: API_URL,
-    username: 'bobokitchen',
-    password: 'mathollbola'
 }

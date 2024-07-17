@@ -15,33 +15,42 @@
 			</div>
 			-->
 		</div>
+
 		<div class="nav-middle">
 			<img src="../../../assets/bola_logo.png" alt="logo">
 			<div class="nav-links">
-				<a href="/" alt="heim">Heim</a>
-				<a href="/uppskriftir/allaruppskriftir">Uppskriftir</a>
-				<a href="/contactus">Hafa samband</a>
-				<a href="/login">Innskráning</a>
+			  <a [routerLink]="['/']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{ exact: true }" alt="heim">Heim</a>
+			  <a [routerLink]="['/uppskriftir/allaruppskriftir']" routerLinkActive="active-link" alt="uppskriftir">Uppskriftir</a>
+			  <a [routerLink]="['/contactus']" [routerLinkActive]="['active-link']" alt="hafa samband">Hafa samband</a>
+			</div>
+		  </div>
+
+		<div class="nav-right">
+			<div style="display: flex; flex-direction: row; align-self: self-end; justify-items: center;">
+				<button *ngIf="!authenticated" (click)="login()">Skrá inn</button>
+				<button *ngIf="authenticated" mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
+					<mat-icon style="font-size: 36px; overflow:visible;">menu</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+				<button mat-menu-item>
+					<mat-icon>dialpad</mat-icon>
+					<span>Prófíll</span>
+				</button>
+				<button mat-menu-item disabled>
+					<mat-icon>voicemail</mat-icon>
+					<span>Check voice mail</span>
+				</button>
+				<button mat-menu-item>
+					<mat-icon>notifications_off</mat-icon>
+					<span>Disable alerts</span>
+				</button>
+				<button mat-menu-item *ngIf="authenticated" (click)="logout()">
+					<mat-icon>power_settings_new</mat-icon>
+					<span>Skrá út</span>
+				</button>
+				</mat-menu>
 			</div>
 		</div>
-		<div class="nav-right">
-			<button mat-button [matMenuTriggerFor]="beforeMenu">
-				Flokkar
-				<i class="bi bi-chevron-down"></i>
-			</button>
-			<mat-menu #beforeMenu="matMenu" xPosition="before">
-				<!-- TODO: Add menu items dynamically from categories -->
-				<button
-					mat-menu-item
-					#category
-					(click)="onCategoryClick(category)"
-					*ngFor="let category of categories"
-					>
-					{{ category.icelandicName }}
-				</button>
-			</mat-menu>
-		
-			
-		</div>
+
 	</nav>
 </header>

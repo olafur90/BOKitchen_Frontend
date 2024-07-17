@@ -17,21 +17,16 @@
 	@media (max-width: 770px) {
 		max-width: 95%;
 	}
-
-	> button {
-		margin-bottom: 1rem;
-		margin-top: -1rem;
-		width: fit-content;
-	}
 }
 
 .comments-container {
 	@include flexcolumn;
 
-	background-color: color.adjust($color-primary, $lightness: 8%);
+	background-color: color.adjust($color-primary, $lightness: 38%);
 	border: 1px solid $color-primary;
 	box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
 	margin: auto;
+	margin-bottom: 2rem;
 	margin-top: 1rem;
 	padding: 1rem;
 	width: 60%;
@@ -77,8 +72,5 @@
 }
 
 .checkbox-anonymous-comment {
-	margin-bottom: 1rem;
-	margin-top: -1rem;
 	color: red;
-
 }

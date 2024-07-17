@@ -56,6 +56,10 @@ nav {
 			width: 10rem;
 		}
 
+		& .active-link {
+			color: #ff0000; /* Change this to the color you want for the active link */
+		}
+
 		& .nav-logo {
 			margin: auto;
 			text-align: center;
@@ -79,60 +83,43 @@ nav {
 				&:first {
 					margin-left: 0;
 				}
+
+				&:hover {
+					color: white;
+					scale: 1.1;
+				}
+			}
+			& .active-link {
+				text-decoration: underline;
+				text-decoration-thickness: 3px;
+				text-underline-offset: 7px;
 			}
 		}
-		/*
-		margin-left: 2rem;
-		> i {
-			font-size: 1.1rem;
-			margin-right: 0.5rem;
-		}
-
-		> input {
-			padding: 0.1rem;
-			padding-left: 0.5rem;
-			max-width: 70%;
-		}
-
-		> button {
-			margin-top: -0.5rem;
-		}
-
-		@media (max-width: 780px) {
-			margin-left: 1.5rem;
-			margin-top: 0.5rem;
-
-			& .bi-search {
-				display: none;
-			}
-		}
-
-		@media (max-width: 416px) {
-			@include flexrow;
-
-			margin: 0;
-			max-width: 50%;
-		}
-		*/
 	}
 
 	& .nav-right {
+		color: white;
 		flex: 1;
+		flex-direction: column;
+
 		> a {
 			color: color.adjust($color-primary, $lightness: -30%);
 			margin-left: 1rem;
 			text-decoration: underline;
 		}
 
-		& button {
-			align-items: flex-start;
-			display: flex;
-			font-family: $font-primary;
-			font-size: 1rem;
+		& .logged-in-user {
+			align-self: center;
+			justify-self: center;
+		}
+		
+		& p {
+			text-align: right;
+		}
 
-			@media (max-width: 416px) {
-				align-items: flex-end;
-			}
+		& button {
+			align-self: flex-end;
+			width: 5rem;
 		}
 
 		@media (max-width: 640px) {
@@ -160,3 +147,5 @@ nav {
 		@include flexcolumn;
 	}
 }
+
+

@@ -1,14 +1,15 @@
-<form [formGroup]="commentForm" #formDirective="ngForm" class="comment-form">
-	<mat-form-field class="new-comment-field">
-		<mat-label [ngStyle]=" errors ? { color: 'red' } : { color: 'gray'}">Nafn</mat-label>
-		<input formControlName="name" type="text" matInput [disabled]="isAnonymous" />
-	</mat-form-field>
-	<mat-checkbox formControlName="isAnonymous" class="checkbox-anonymous-comment" (change)="checkedAnon()">Nafnlaust</mat-checkbox>
+<form *ngIf="authenticated && initialized" [formGroup]="commentForm" #formDirective="ngForm" class="comment-form">
+	<legend *ngIf="authenticated else notAuthenticated">
+		Skildu eftir ummæli
+	</legend>
 	<mat-form-field class="new-comment-field">
 		<mat-label [ngStyle]=" errors ? { color: 'red' } : { color: 'gray'}">Athugasemd</mat-label>
 		<textarea formControlName="commentBody" rows="4" required matInput></textarea>
 	</mat-form-field>
-	<button type="submit" (click)="onSubmit()" mat-raised-button color="primary">Senda</button>
+	<div style="display: flex; flex-direction: row;">
+		<button type="submit" (click)="onSubmit()" mat-raised-button color="primary" style="margin-right: 2rem;">Senda</button>
+		<mat-checkbox formControlName="isAnonymous" class="checkbox-anonymous-comment">Nafnlaust</mat-checkbox>
+	</div>
 </form>
 
 <div *ngIf="comments.length > 0" class="comments-container">
@@ -23,3 +24,7 @@
 		</div>
 	</div>
 </div>
+
+<ng-template #notAuthenticated>
+	<h4>Vinsamlega skráðu þig inn ef þú vilt skilja eftir ummæli um þessa uppskrift.</h4>
+</ng-template>

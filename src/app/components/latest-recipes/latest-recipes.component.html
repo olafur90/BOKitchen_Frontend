@@ -10,12 +10,15 @@
 -->
 
 <div id="latest-recipes" *ngIf="initialized; else loading">
-	<legend>Nýtt</legend>
-	<app-most-recent-recipe *ngIf="singleLatestRecipe" [singleLatestRecipe]="singleLatestRecipe" />
-	<legend>Meira nýlegt</legend>
-	<app-more-recent-recipes [recentRecipes]="recentRecipes" />
+  <legend>Nýtt</legend>
+  <app-most-recent-recipe *ngIf="singleLatestRecipe" [singleLatestRecipe]="singleLatestRecipe" />
+  <legend>Meira nýlegt</legend>
+  <app-more-recent-recipes [recentRecipes]="recentRecipes" />
 </div>
 
 <ng-template #loading>
-	<h2 class="loading-text">Hleð uppskriftum...</h2>
+  <div style="display: flex; flex-direction: row; padding-left: 2rem;">
+    <mat-progress-spinner style="max-width: 30px; margin: 0; padding: 0;" color="primary" mode="indeterminate"></mat-progress-spinner>
+    <h2 class="loading-text">Hleð uppskriftum...</h2>
+  </div>
 </ng-template>

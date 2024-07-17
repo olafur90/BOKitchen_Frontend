@@ -1,7 +1,7 @@
 export class Comment {
-    id?: number;
-    userName?: string;
-    commentBody?: string;
+    id!: number;
+    userName!: string;
+    commentBody!: string;
     dateCreated?: Date;
-    recipeID?: number;
+    recipeID!: number;
 }

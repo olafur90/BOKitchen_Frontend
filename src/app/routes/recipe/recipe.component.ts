@@ -12,6 +12,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommentsComponent } from './comments/comments.component';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
 	selector: 'app-recipe-component',
@@ -35,9 +36,12 @@ export class RecipeComponent implements OnInit {
 	
 	public recipe: Recipe = {};
 
+	authenticated = false;
+
 	constructor(
 		private route: ActivatedRoute,
-		private http: HttpClient
+		private http: HttpClient,
+		private authService: AuthService
 	) {}
 
 	async ngOnInit(): Promise<void> {
@@ -46,6 +50,12 @@ export class RecipeComponent implements OnInit {
 			.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`)
 			.subscribe((data: Recipe) => {
 				this.recipe = data;
-			})
+		});
+
+		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
+			this.authenticated = authenticated;
+			console.log(this.authenticated)
+		});
+		console.log("Authenticated: " + this.authenticated)
 	}
 }

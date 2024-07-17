@@ -4,10 +4,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { Category } from '../models/Category';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
 	selector: 'app-header-component',
@@ -19,6 +20,7 @@ import { environment } from 'src/environments/environment';
 		FormsModule,
 		MatButtonModule,
 		MatMenuModule,
+		RouterModule,
 		MatIconModule,
 	],
 })
@@ -27,10 +29,14 @@ export class HeaderComponent implements OnInit {
 	public searchTerm: string = '';
 
 	public categories: Category[] = [];
+	public username: string = '';
+	
+	public authenticated: boolean = false;
 
 	constructor(
 		private router: Router,
 		private http: HttpClient,
+		private authService: AuthService
 	) {}
 
 	async onSearch() {
@@ -47,11 +53,31 @@ export class HeaderComponent implements OnInit {
 				this.categories = data;
 			}
 		});
+
+		this.authService.isAuthenticated$.subscribe((authenticated) => {
+			this.authenticated = authenticated;
+
+			this.authService.user$.subscribe((user) => {
+				if (user) {
+					this.username = user.name as string;
+				}
+			});
+		});
 	}
 
-	onCategoryClick(category: Category) {
-		this.router.navigate(['/']).then(() => {
-			this.router.navigate([`/uppskriftir/flokkar/${category.name}`]);
+	login() {
+		this.authService.loginWithPopup({
+			authorizationParams: {
+				redirect_uri: window.location.origin
+			}
 		});
+	}
+
+	logout() {
+		this.authService.logout({
+			logoutParams: {
+				returnTo: window.location.origin
+			}
+		})
 	}
 }
