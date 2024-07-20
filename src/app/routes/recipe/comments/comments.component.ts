@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -99,9 +99,9 @@ export class CommentsComponent implements OnInit {
 
     /**
      * Refreshes the comments component when it is called after updates have been made
-     * this.ngOnInit() could be called directly, but I find the code more readable with this method name
+     * @returns void
      */
-    refreshComments() {
+    refreshComments(): void {
         this.ngOnInit();
     }
 

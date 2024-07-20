@@ -4,11 +4,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Category } from '../models/Category';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
 
 @Component({
 	selector: 'app-header-component',
@@ -25,13 +25,15 @@ import { AuthService } from '@auth0/auth0-angular';
 	],
 })
 export class HeaderComponent implements OnInit {
-	public loginLink: string = '';
 	public searchTerm: string = '';
 
 	public categories: Category[] = [];
-	public username: string = '';
+	public username: string = ''; // TODO: Get the username from the auth0 service
 	
 	public authenticated: boolean = false;
+
+	// Will store the user from the auth0 service
+	public user?: User;
 
 	constructor(
 		private router: Router,
@@ -39,6 +41,10 @@ export class HeaderComponent implements OnInit {
 		private authService: AuthService
 	) {}
 
+	/**
+	 * Navigates to the search page with the search term
+	 * FIXME: Currently not using
+	 */
 	async onSearch() {
 		this.router.navigate(['/']).then(() => {
 			this.router.navigate(['/search'], {
@@ -47,6 +53,10 @@ export class HeaderComponent implements OnInit {
 		})
 	}
 
+	/**
+	 * Fetches the components from the API and sets the variables before 
+	 * the component is initialized
+	 */
 	ngOnInit(): void {
 		this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe((data) => {
 			if (data) {
@@ -59,12 +69,16 @@ export class HeaderComponent implements OnInit {
 
 			this.authService.user$.subscribe((user) => {
 				if (user) {
-					this.username = user.name as string;
+					this.user = user;
+					console.log(user.profile);
 				}
 			});
 		});
 	}
 
+	/**
+	 * Logs the user in using the Auth0 service
+	 */
 	login() {
 		this.authService.loginWithPopup({
 			authorizationParams: {
@@ -73,6 +87,9 @@ export class HeaderComponent implements OnInit {
 		});
 	}
 
+	/**
+	 * Logs the user out using the Auth0 service
+	 */
 	logout() {
 		this.authService.logout({
 			logoutParams: {

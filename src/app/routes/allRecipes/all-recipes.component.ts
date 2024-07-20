@@ -31,9 +31,6 @@ export class AllRecipesComponent implements OnInit {
     // Available categories from API
     availableCategories: Category[] = [];
 
-    // Filtered categories based on selected checkboxes
-    filteredCategories: Category[] = [];
-
     /**
      * The constructor - Initializes DI
      * @param http - Dependency Injection for Angular HttpClient
@@ -44,8 +41,8 @@ export class AllRecipesComponent implements OnInit {
      * Initializes data from API and sets variables
      * @returns a promise of void
      */
-    async ngOnInit(): Promise<void> {
-        await this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe(async (data) => {
+    ngOnInit(): void {
+        this.http.get<Category[]>(`${environment.API_URL}/flokkar/`).subscribe(async (data) => {
             if (data) {
                 this.availableCategories = data;
     
@@ -65,12 +62,6 @@ export class AllRecipesComponent implements OnInit {
     
                 this.initialized = true;
             }
-        });
-    }
-
-    filterByCategories(categories: string[]) {
-        this.filteredCategories = this.availableCategories.filter((category) => {
-            return categories.includes(category.name);
         });
     }
 }

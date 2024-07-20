@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 .recent-recipe-card-container {
-	display: flex;
-	flex-direction: row;
+	@include flexrow;
+
 	flex-wrap: wrap;
 	justify-content: center;
 	margin-bottom: 1rem;
@@ -19,7 +19,7 @@
 }
 
 .recipe-card {
-	background-color: color.adjust($color-primary, $lightness: 16%);
+	background-color: $color-recipe-card-background;
 	border: 3px solid black;
 	border-radius: 7px;
 	box-shadow:
@@ -61,14 +61,14 @@
 	}
 
 	& .card-header {
-		display:flex; 
+		@include flexcolumn;
+
 		flex: 5;
-		flex-direction: column; 
 		padding:0;
 
 		& .card-title {
-			display: flex; 
-			flex-direction: column; 
+			@include flexcolumn;
+
 			justify-content: space-between;
 
 			> .card-category {
@@ -80,14 +80,14 @@
 
 				> a {
 					color: white; font-size: 1.5rem; 
-					font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+					font-family: $font-recipe-card-title;
 					font-weight: 100; 
 				}
 			}
 
 			> .card-recipe-name-and-date-added {
-				display: flex;
-				flex-direction: column;
+				@include flexcolumn;
+
 				justify-content: space-around;
 				margin-left: 0.5rem;
 			
@@ -102,7 +102,7 @@
 	& .recipe-card-content {
 		@include flexcolumn;
 		
-		background-color: #abffa0;
+		background-color: $color-recipe-card-footer-background;
 		border-top: 1px solid black;
 		flex: 1;
 		margin-top: 1.2rem;

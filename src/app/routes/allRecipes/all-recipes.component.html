@@ -1,11 +1,14 @@
+<h1 style="margin-bottom: 2rem; margin-top: 2rem; text-align: center;">Uppskriftir</h1>
 <div class="result-cards-container">
     <div class="recipe-cards-container">
         <app-result-cards-component *ngIf="initialized; else loading" [recipeCategories]="recipes">
         </app-result-cards-component>
     </div>
+    <!--
     <div class="filter-container">
         <app-filter-recipes *ngIf="initialized"></app-filter-recipes>
     </div>
+    -->
 </div>
 
 <ng-template #loading>

@@ -41,6 +41,7 @@ export class LatestRecipesComponent implements OnInit {
 	// Whether or not the recipes have been initialized
 	initialized: boolean = false;
 
+	// Whether or not the user is logged in
 	authenticated: boolean = false;
 
 	/**
@@ -58,11 +59,7 @@ export class LatestRecipesComponent implements OnInit {
 		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
 			this.authenticated = authenticated;
 		});
-
-		this.authService.user$.pipe().subscribe((user) => {
-			console.log(user);
-		});
-
+		
 		this.http
 			.get<Recipe[]>(`${environment.API_URL}/uppskriftir/recentRecipes`)
 			.subscribe((data: Recipe[]) => {

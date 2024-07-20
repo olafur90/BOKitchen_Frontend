@@ -1,8 +1,32 @@
+
+<div class="accordion-container" *ngIf="recipeCategories.length !== 0">
+	<mat-accordion *ngFor="let recipeGroup of recipeCategories; let i = index" >
+		<mat-expansion-panel 
+			style="margin-bottom: 0.5rem; border: 1px solid rgb(67, 88, 62);"
+			*ngIf="recipeGroup.length > 0"
+			(opened)="setPanelState(i, true)" 
+			(closed)="setPanelState(i, false)"
+			[ngClass]="isPanelOpen(i) ? 'active' : ''">
+		<mat-expansion-panel-header>
+			<mat-panel-title class="food-name" [ngClass]="isPanelOpen(i) ? 'active' : ''"> {{ recipeGroup !== null && recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }} </mat-panel-title>
+		</mat-expansion-panel-header>
+		<table class="table table-striped table-hover">
+			<thead>
+			</thead>
+			<tbody class="table-group-divider">
+				<tr *ngFor="let recipe of recipeGroup">
+					<td style="font-size: 1.4rem; line-height: 3rem; cursor: pointer; text-decoration: underline;" [routerLink]="['/uppskriftir/recipe', recipe.id]">{{ recipe.name }}</td>
+				</tr>
+			</tbody>
+		</table>
+		</mat-expansion-panel>
+	</mat-accordion>
+</div>
+
+<!--
 <div>
 	<div *ngFor="let recipeGroup of recipeCategories; let i = index">
-		<!-- TODO: Láta bakenda frekar filtera tóma flokka burt. Skoða svo hvort það sé flott að hafa dropdown fyrir hvern flokk  -->
 		<h2>{{ recipeGroup.length > 0 ? recipeGroup[0].cat?.icelandicName : '' }}
-			<!-- TODO: Taka út þetta % 2 == 0 tjekk. Er bara til að sjá fyrir mér hvernig upp/niður örvarnar eru  -->
 			<i 
 				*ngIf="recipeGroup.length > 0" 
 				[ngClass]="{'bi-chevron-down': i % 2 === 0, 'bi-chevron-up': i % 2 !== 0}"
@@ -34,3 +58,4 @@
 		</mat-card>
 	</div>
 </div>
+-->

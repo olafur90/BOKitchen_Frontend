@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap";
 
 /************************************************************** 
@@ -28,11 +29,21 @@
  *************************************************************/
 
 // Colors
+$color-dark: #000000;
 $color-primary: #cacaca;
+$color-recipe-card-background: color.adjust($color-primary, $lightness: 16%);
+$color-recipe-card-footer-background: #abffa0;
+$color-text-footer: #ababab;
+
+// FIXME: Change variable name to be consistent with the rest of the project
+$color-main-container-background: color.adjust(rgb(229, 255, 216), $lightness: 10%);
 
 // Fonts
-$font-primary: "Open Sans", sans-serif;
+$font-home-text-legend: "Oswald", sans-serif;
 $font-logo: cursive;
+$font-nav-links: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+$font-primary: "Open Sans", sans-serif;
+$font-recipe-card-title: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 /************************************************************** 
  * Header

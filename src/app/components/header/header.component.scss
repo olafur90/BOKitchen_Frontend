@@ -2,7 +2,7 @@
 @import "../../scss-variables";
 
 header {
-	background-color: black; //$color-primary;
+	background-color: $color-dark; //$color-primary;
 	border-bottom: 3px solid rgb(206, 206, 206);
 	margin: auto;
 	padding-bottom: 0.5rem;
@@ -21,7 +21,8 @@ nav {
 
 	justify-content: space-between;
 
-	& .nav-left,
+	& 
+	.nav-left,
 	.nav-right {
 		@include flexrow;
 	}
@@ -46,8 +47,8 @@ nav {
 	}
 
 	& .nav-middle {
-		display: flex;
-		flex-direction: column;
+		@include flexcolumn;
+
 		flex: 2;
 
 		& img {
@@ -66,18 +67,18 @@ nav {
 		}
 
 		> .nav-links {
-			display: flex;
-			flex-direction: row;
+			@include flexrow;
+
 			justify-content: center;
 			> a {
 				color: color.adjust(white, $lightness: -10%);
 				font-weight: bold;
-				white-space: nowrap;
-				font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-				text-decoration: none;
-				text-transform: uppercase;
+				font-family: $font-nav-links;
 				margin-left: 2rem;
 				margin-bottom: 0.5rem;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: nowrap;
 
 				// No margin on first
 				&:first {
@@ -98,30 +99,28 @@ nav {
 	}
 
 	& .nav-right {
+		align-items: self-end;
+		justify-items: self-end;
 		color: white;
+		display: flex;
 		flex: 1;
-		flex-direction: column;
-
-		> a {
-			color: color.adjust($color-primary, $lightness: -30%);
-			margin-left: 1rem;
-			text-decoration: underline;
-		}
+		flex-direction: row-reverse;
 
 		& .logged-in-user {
 			align-self: center;
 			justify-self: center;
 		}
 		
-		& p {
-			text-align: right;
+		& .mat-icon-custom {
+			font-size: 36px;
+			overflow: visible;
 		}
 
 		& button {
 			align-self: flex-end;
 			width: 5rem;
 		}
-
+		
 		@media (max-width: 640px) {
 			align-items: flex-end;
 			display: flex;

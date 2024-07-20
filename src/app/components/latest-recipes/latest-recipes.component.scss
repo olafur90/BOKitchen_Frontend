@@ -4,7 +4,7 @@
 
 legend {
 	color: rgb(1, 34, 0);
-	font-family: "Oswald", sans-serif;
+	font-family: $font-home-text-legend;
 	font-optical-sizing: auto;
 	font-weight: bold;
 	font-size: 2rem;
@@ -17,3 +17,14 @@ legend {
 	margin-left: 1rem;
 }
 
+.loading-container {
+	@include flexrow;
+	
+	padding-left: 2rem;
+}
+
+.loading-spinner {
+	max-width: 30px;
+	margin: 0;
+	padding: 0;
+}

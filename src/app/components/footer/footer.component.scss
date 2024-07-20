@@ -1,11 +1,14 @@
+@use 'sass:color';
+@import "../../scss-variables";
+
 footer {
-	background-color: rgb(0, 0, 0);
+	background-color: $color-dark;
 	border-top: 3px solid rgb(206, 206, 206);
 	display: flex;
 	height: 12vh;
 
 	> p {
-		color: rgb(172 172 172);
+		color: $color-text-footer;
 		margin: auto;
 		text-align: center;
 	}

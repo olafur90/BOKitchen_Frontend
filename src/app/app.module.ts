@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -21,7 +20,8 @@ import { CategoriesComponent } from './routes/categories/categories.component';
 import { AllRecipesComponent } from './routes/allRecipes/all-recipes.component';
 import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 import { LatestRecipesComponent } from './components/latest-recipes/latest-recipes.component';
-import { AuthModule, provideAuth0 } from '@auth0/auth0-angular';
+import { AuthModule } from '@auth0/auth0-angular';
+import { ProfileComponent } from './routes/profile/profile.component';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -73,6 +73,10 @@ import { AuthModule, provideAuth0 } from '@auth0/auth0-angular';
 			{
 				path: 'sousvide',
 				component: SousVideComponent,
+			},
+			{
+				path: 'profile',
+				component: ProfileComponent
 			}
 		]),
 	],

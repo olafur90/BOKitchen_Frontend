@@ -1,3 +1,7 @@
+<!-- Comment form component -->
+
+<!-- Displays a comment for and text input for authorized users. -->
+<!-- Non logged in users will be able to see existing comments but cannot add their own-->
 <form *ngIf="authenticated && initialized" [formGroup]="commentForm" #formDirective="ngForm" class="comment-form">
 	<legend *ngIf="authenticated else notAuthenticated">
 		Skildu eftir ummæli
@@ -6,12 +10,13 @@
 		<mat-label [ngStyle]=" errors ? { color: 'red' } : { color: 'gray'}">Athugasemd</mat-label>
 		<textarea formControlName="commentBody" rows="4" required matInput></textarea>
 	</mat-form-field>
-	<div style="display: flex; flex-direction: row;">
-		<button type="submit" (click)="onSubmit()" mat-raised-button color="primary" style="margin-right: 2rem;">Senda</button>
+	<div class="submit">
+		<button type="submit" (click)="onSubmit()" mat-raised-button color="primary" class="submit-button">Senda</button>
 		<mat-checkbox formControlName="isAnonymous" class="checkbox-anonymous-comment">Nafnlaust</mat-checkbox>
 	</div>
 </form>
 
+<!-- Displays all comments for this recipe if there are any. -->
 <div *ngIf="comments.length > 0" class="comments-container">
 	<div class="comment" *ngFor="let comment of comments">
 		<div class="comment-info">
@@ -25,6 +30,7 @@
 	</div>
 </div>
 
+<!-- Display this message if the user is not authenticated -->
 <ng-template #notAuthenticated>
 	<h4>Vinsamlega skráðu þig inn ef þú vilt skilja eftir ummæli um þessa uppskrift.</h4>
 </ng-template>

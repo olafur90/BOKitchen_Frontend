@@ -14,6 +14,15 @@
 		width: 70%;
 	}
 
+	> .submit {
+		display: flex;
+		flex-direction: row;
+
+		> .submit-button {
+			margin-right: 1rem;
+		}
+	}
+
 	@media (max-width: 770px) {
 		max-width: 95%;
 	}
