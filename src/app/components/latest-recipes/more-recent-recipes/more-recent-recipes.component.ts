@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Recipe } from '../../models/Recipe';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +21,11 @@ import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
     DifficultyReversePipe
 	],
 })
-export class MoreRecentRecipesComponent {
+export class MoreRecentRecipesComponent implements OnInit {
   @Input()
   recentRecipes: Recipe[] = [];
+
+  ngOnInit(): void {
+    console.log(this.recentRecipes);
+  }
 }

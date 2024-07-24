@@ -23,6 +23,7 @@ import { Difficulty } from 'src/app/components/models/Difficulty';
 import { DifficultyPipe } from 'src/app/pipes/difficulty.pipe';
 import { DifficultyReversePipe } from 'src/app/pipes/difficulty-reverse.pipe';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService, User } from '@auth0/auth0-angular';
 
 @Component({
 	selector: 'app-add-recipe-component',
@@ -44,7 +45,7 @@ import { ToastrService } from 'ngx-toastr';
 	],
 	providers: [DifficultyPipe, DifficultyReversePipe],
 })
-export class AddRecipeComponent {
+export class AddRecipeComponent implements OnInit {
 	public name: string = '';
 	public shortDescription: string = '';
 	public htmlContent = '';
@@ -56,6 +57,11 @@ export class AddRecipeComponent {
 	public selectedDifficultyAsText: string = '';
 
 	public previewContent: SafeHtml = '';
+
+	private user: User = {
+		name: '-',
+		picture: '-',
+	};
 
 	// Form group for controlling the input fields
 	recipeFormGroup = new FormGroup({
@@ -105,35 +111,76 @@ export class AddRecipeComponent {
 		],
 	};
 
+	/**
+	 * The constructor for the component - Initialize services
+	 * @param sanitizer The sanitizer service for sanitizing HTML
+	 * @param http The http client
+	 * @param diffPipe The difficulty pipe
+	 * @param toastService The toast service
+	 * @param authService The Auth0 auth service
+	 */
 	constructor(
 		private sanitizer: DomSanitizer,
 		private http: HttpClient,
 		private diffPipe: DifficultyReversePipe,
 		private toastService: ToastrService,
+		private authService: AuthService
 	) {}
 
+	/**
+	 * Called when the component is initialized
+	 */
+	ngOnInit(): void {
+		this.authService.user$.subscribe((user) => {
+			this.user = user ? user : this.user;
+		});
+	}
+
+	/**
+	 * Called when the name input is changed
+	 * @param input The name input
+	 */
 	onNameChange(input: string) {
 		this.name = input;
 	}
 
+	/**
+	 * Called when the content of the editor is changed
+	 */
 	onContentChange() {
 		this.previewContent = this.sanitizer.bypassSecurityTrustHtml(
 			this.htmlContent,
 		);
 	}
 
+	/**
+	 * Called when a category is selected in the form.
+	 * @param event The selected category
+	 */
 	onCategoryChange(event: any): void {
 		this.selectedCategory = event as Category;
 	}
 
+	/**
+	 * Called when a serving size is selected in the form.
+	 * @param event The selected serving size
+	 */
 	onSelectServingSize(event: any): void {
 		this.selectedServingSize = event as number;
 	}
 
+	/**
+	 * Called when a time is selected in the form.
+	 * @param event The selected time
+	 */
 	onSelectTime(event: any): void {
 		this.selectedTime = event as number;
 	}
 
+	/**
+	 * Called when a difficulty is selected in the form.
+	 * @param event The selected difficulty
+	 */
 	onSelectDifficulty(event: any): void {
 		this.selectedDifficulty = event as Difficulty;
 		this.selectedDifficultyAsText = this.diffPipe.transform(
@@ -141,26 +188,33 @@ export class AddRecipeComponent {
 		);
 	}
 
+	/**
+	 * The handler for sending the recipe to the backend when the add button is clicked
+	 */
 	onAddRecipe() {
+		// Create a local recipe to send with the POST request
 		const recipe: Recipe = {
 			name: this.name,
 			instructions: this.htmlContent,
-			category: this.selectedCategory
-				? this.selectedCategory.name
-				: undefined,
 			timeToCookInMinutes: this.selectedTime,
 			forNumberOfPeople: this.selectedServingSize,
+			cat: this.selectedCategory
+				? this.selectedCategory
+				: undefined,
 			difficulty: this.selectedDifficulty,
+			user: this.user,
+			category: this.selectedCategory?.name
 		};
 
+		// Send the POST request to the API with the local recipe
+		// Then show a success or error message depending on the response from the API
 		this.http
 			.post<HttpResponse<string>>(`${environment.API_URL}/uppskriftir/add`, recipe)
 			.subscribe((data: HttpResponse<string>) => {
 				if (data.toString() === 'CREATED') {
-					// FIXME: This is no bueno, check better way for response codes
-					this.toastService.success('Recipe added', 'Success');
+					this.toastService.success('Uppskrift móttekin.', 'Success');
 				} else {
-					this.toastService.error('Recipe not added', 'Error');
+					this.toastService.error('Villa kom upp.', 'Error');
 				}
 			});
 	}
