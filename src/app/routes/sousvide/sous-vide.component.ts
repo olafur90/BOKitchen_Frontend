@@ -3,7 +3,7 @@ import * as JsonCategories from './hitatafla.json';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
-import { MeatType as FoodType } from 'src/app/components/models/MeatType';
+import { SouseVideFoodType as FoodType } from './MeatType';
 
 /**
  * The sous-vide component that displays and holds the logic for the sous-vide
