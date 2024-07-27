@@ -1,0 +1,70 @@
+<div class="sous-vide-container">
+    <h1 class="page-title">
+        Air Fryer hita- og tímatafla
+    </h1>
+    <div class="accordion-container">
+        <mat-accordion>
+            <mat-expansion-panel 
+                *ngFor="let item of foodTypes; let i = index" 
+                (opened)="setPanelState(i, true)" 
+                (closed)="setPanelState(i, false)"
+                [ngClass]="isPanelOpen(i) ? 'active' : ''">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="food-name" [ngClass]="isPanelOpen(i) ? 'active' : ''"> {{ item.name }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Hráefni
+                        </th>
+                        <th>
+                            Hitastig (°C)
+                        </th>
+                        <th>
+                            Tími
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let temp of item.temperatures">
+                    <td>
+                        {{ temp.label }}
+                    </td>
+                    <td>
+                        {{ temp.temperature }}
+                    </td>
+                    <td>
+                        {{ temp.time }}
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
+<!--
+<table class="table table-striped" *ngFor="let item of foodTypes">
+        <th>
+            {{ item.name }}
+        </th>
+        <tr *ngFor="let temp of item.temperatures">
+            <td>
+                {{ temp.label }}
+            </td>
+            <td>
+                {{ temp.celsius }}
+            </td>
+            <td>
+                {{ temp.minimum }}
+            </td>
+            <td>
+                {{ temp.medium }}
+            </td>
+            <td>
+                {{ temp.maximum }}
+            </td>
+        </tr>
+</table>
+-->

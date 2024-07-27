@@ -1,0 +1,175 @@
+{
+    "name": "Air Fryer eldunartafla",
+    "data": [
+        {
+            "name": "Kjúklingur",
+            "temperatures": [
+                {
+                    "label": "Kjúklingabringur - úrbeinaðar",
+                    "temperature": "190°C",
+                    "time": "18-22 mín"
+                },
+                {
+                    "label": "Kjúklingalæri - Með beini",
+                    "temperature": "200°C",
+                    "time": "22-28 mín"
+                },
+                {
+                    "label": "Kjúklingalæri - Úrbeinað",
+                    "temperature": "200°C",
+                    "time": "18-22 mín"
+                },
+                {
+                    "label": "Kjúklingavængir",
+                    "temperature": "195°C",
+                    "time": "22-26 mín"
+                },
+                {
+                    "label": "Kjúklingur (heill 2-2,5 kg)",
+                    "temperature": "180°C",
+                    "time": "55-70 mín"
+                }
+            ]
+        },
+        {
+            "name": "Frosinn Kjúklingur",
+            "temperatures": [
+                {
+                    "label": "Kjúklinganaggar - foreldað",
+                    "temperature": "200°C",
+                    "time": "15-18 mín"
+                },
+                {
+                    "label": "Kjúklinganaggar - óeldað",
+                    "temperature": "200°C",
+                    "time": "20-22 mín"
+                }
+            ]
+        },
+        {
+            "name": "Fiskur",
+            "temperatures": [
+                {
+                    "label": "Laxaflök",
+                    "temperature": "200°C",
+                    "time": "8-12 mín"
+                },
+                {
+                    "label": "Þorskhnakkar",
+                    "temperature": "200°C",
+                    "time": "12-15 mín"
+                }
+            ]
+        },
+        {
+            "name": "Frosinn Fiskur",
+            "temperatures": [
+                {
+                    "label": "Fiskistangir",
+                    "temperature": "190°C",
+                    "time": "12-14 mín"
+                },
+                {
+                    "label": "Fiskiflök",
+                    "temperature": "200°C",
+                    "time": "14-16 mín"
+                }
+            ]
+        },
+        {
+            "name": "Kjöt",
+            "temperatures": [
+                {
+                    "label": "Hamborgarar (4 kjötborgarar)",
+                    "temperature": "190°C",
+                    "time": "8-10 mín"
+                },
+                {
+                    "label": "Nautakjötbollur (2-3 cm)",
+                    "temperature": "190°C",
+                    "time": "7-9 mín"
+                },
+                {
+                    "label": "Nautasteik (2 steikur, 230gr hver)",
+                    "temperature": "200°C",
+                    "time": "10-18 mín"
+                }
+            ]
+        },
+        {
+            "name": "Svínakjöt",
+            "temperatures": [
+                {
+                    "label": "Beikon",
+                    "temperature": "190°C",
+                    "time": "6-8 mín"
+                },
+                {
+                    "label": "Svínakótiletta",
+                    "temperature": "190°C",
+                    "time": "14-17 mín"
+                },
+                {
+                    "label": "Grísalund (450-700 gr)",
+                    "temperature": "190°C",
+                    "time": "25-30 mín"
+                }
+            ]
+        },
+        {
+            "name": "Grænmeti",
+            "temperatures": [
+                {
+                    "label": "Blómkál (Skorið í bita)",
+                    "temperature": "200°C",
+                    "time": "10-15 mín"
+                },
+                {
+                    "label": "Maísstönglar",
+                    "temperature": "200°C",
+                    "time": "12-15 mín"
+                },
+                {
+                    "label": "Kartöflur - handskornar franskar",
+                    "temperature": "200°C",
+                    "time": "20-24 mín"
+                },
+                {
+                    "label": "Kartöflur - Heilar (170-220 gr)",
+                    "temperature": "200°C",
+                    "time": "30-35 mín"
+                },
+                {
+                    "label": "Sætar kartöflur - heilar (170-220 gr)",
+                    "temperature": "200°C",
+                    "time": "12-15 mín"
+                }
+            ]
+        },
+        {
+            "name": "Annar frosinn matur",
+            "temperatures": [
+                {
+                    "label": "Franskar - þunnar",
+                    "temperature": "180°C",
+                    "time": "15-17 mín"
+                },
+                {
+                    "label": "Franskar - þykkar",
+                    "temperature": "185°C",
+                    "time": "20-27 mín"
+                },
+                {
+                    "label": "Sætkartöflufranskar",
+                    "temperature": "190°C",
+                    "time": "20-22 mín"
+                },
+                {
+                    "label": "Ostastangir (Mozzarella)",
+                    "temperature": "190°C",
+                    "time": "9-10 mín"
+                }
+            ]
+        }
+    ]
+}

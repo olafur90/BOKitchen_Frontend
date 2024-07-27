@@ -48,6 +48,8 @@ export class CommentsComponent implements OnInit {
     public authenticated: boolean = false;
     // False while checking if a user is logged in to prevent commenting without being logged in
     public initialized: boolean = false;
+    // For checking if a user is an admin
+    public isAdmin: boolean = false;
     /****************** End of User Data ******************/
 
     public user: User = {
