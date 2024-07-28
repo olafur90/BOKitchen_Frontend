@@ -21,34 +21,34 @@
 			<div class="nav-links">
 			  <a [routerLink]="['/']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{ exact: true }" alt="heim">Heim</a>
 			  <a [routerLink]="['/uppskriftir/allaruppskriftir']" routerLinkActive="active-link" alt="uppskriftir">Uppskriftir</a>
-			  <!--<a [routerLink]="['/contactus']" [routerLinkActive]="['active-link']" alt="hafa samband">Hafa samband</a>-->
-			  <a [routerLink]="['/sousvide']" [routerLinkActive]="['active-link']" alt="hafa samband">Sous Vide</a>
+			  <a [routerLink]="['/sousvide']" [routerLinkActive]="['active-link']" alt="Sous Vide hita og tímatafla">Sous Vide</a>
+			  <a [routerLink]="['/airfryer']" [routerLinkActive]="['active-link']" alt="Air Fryer hita og tímatafla">Air Fryer</a>
 			</div>
-		  </div>
+		</div>
 
 		<div class="nav-right">
-			<button *ngIf="!authenticated" (click)="login()">Skrá inn</button>
+			<p class="login-button" *ngIf="!authenticated" (click)="login()">Innskráning</p>
 			<button *ngIf="authenticated" mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
 				<mat-icon class="mat-icon-custom">menu</mat-icon>
 			</button>
 			<mat-menu #menu="matMenu">
 				<!-- Navigate to /profile -->
-			<button [routerLink]="['/profile']" mat-menu-item>
-				<mat-icon>dialpad</mat-icon>
-				<span>Prófíll</span>
-			</button>
-			<button mat-menu-item disabled>
-				<mat-icon>voicemail</mat-icon>
-				<span>Check voice mail</span>
-			</button>
-			<button mat-menu-item>
-				<mat-icon>notifications_off</mat-icon>
-				<span>Disable alerts</span>
-			</button>
-			<button mat-menu-item *ngIf="authenticated" (click)="logout()">
-				<mat-icon>power_settings_new</mat-icon>
-				<span>Skrá út</span>
-			</button>
+				<button [routerLink]="['/profile']" mat-menu-item>
+					<mat-icon>dialpad</mat-icon>
+					<span>Prófíll</span>
+				</button>
+				<button mat-menu-item disabled>
+					<mat-icon>voicemail</mat-icon>
+					<span>Check voice mail</span>
+				</button>
+				<button mat-menu-item>
+					<mat-icon>notifications_off</mat-icon>
+					<span>Disable alerts</span>
+				</button>
+				<button mat-menu-item *ngIf="authenticated" (click)="logout()">
+					<mat-icon>power_settings_new</mat-icon>
+					<span>Skrá út</span>
+				</button>
 			</mat-menu>
 		</div>
 

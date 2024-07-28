@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/components/models/Category';
 import { Recipe } from 'src/app/components/models/Recipe';
 import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
+import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -19,30 +20,25 @@ export class CategoriesComponent implements OnInit {
 	public currentCategory: Category | undefined;
 
 	constructor(
-		private http: HttpClient,
+		private apiService: ApiService,
 		private activatedRoute: ActivatedRoute,
 	) {}
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
 		const paramCategory = this.activatedRoute.snapshot.params['category'];
 
-		// Fetch the category object
-		this.http
-			.get<Category>(`${environment.API_URL}/flokkar/${paramCategory}`)
-			.subscribe((category) => {
-				this.currentCategory = category;
-			})
-			.add(() => {
-				// Get the recipes for the category after fetching the category object
-				this.http
-					.get<Recipe[]>(
-						`${environment.API_URL}/uppskriftir/flokkar/${paramCategory}`,
-					)
-					.subscribe((recipes) => {
-						if (recipes) {
-							this.recipes = recipes;
-						}
-					});
-			});
+		try {
+			// Fetch the category object
+			const category = await this.apiService.get<Category>(`${environment.API_URL}/flokkar/${paramCategory}`).toPromise();
+			this.currentCategory = category;
+
+			// Get the recipes for the category
+			const recipes = await this.apiService.get<Recipe[]>(`${environment.API_URL}/uppskriftir/flokkar/${paramCategory}`).toPromise();
+			if (recipes) {
+				this.recipes = recipes;
+			}
+		} catch (error) {
+			console.error('Error fetching category or recipes', error);
+		}
 	}
 }

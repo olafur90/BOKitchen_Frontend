@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommentsComponent } from './comments/comments.component';
 import { AuthService } from '@auth0/auth0-angular';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
 	selector: 'app-recipe-component',
@@ -34,28 +35,29 @@ import { AuthService } from '@auth0/auth0-angular';
 export class RecipeComponent implements OnInit {
 	public id: number = 0;
 	
-	public recipe: Recipe = {};
+	public recipe: Recipe | undefined;
 
 	authenticated = false;
 
 	constructor(
 		private route: ActivatedRoute,
-		private http: HttpClient,
+		private apiService: ApiService,
 		private authService: AuthService
 	) {}
 
 	async ngOnInit(): Promise<void> {
 		this.id = this.route.snapshot.params['recipeId'];
-		await this.http
-			.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`)
-			.subscribe((data: Recipe) => {
-				this.recipe = data;
-		});
 
-		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
+		try {
+			// Fetch the recipe data
+			this.recipe = await this.apiService.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`).toPromise();
+		} catch (error) {
+			console.error('Error fetching recipe', error);
+		}
+
+		// Handle authentication status
+		this.authService.isAuthenticated$.subscribe((authenticated) => {
 			this.authenticated = authenticated;
-			console.log(this.authenticated)
 		});
-		console.log("Authenticated: " + this.authenticated)
 	}
 }

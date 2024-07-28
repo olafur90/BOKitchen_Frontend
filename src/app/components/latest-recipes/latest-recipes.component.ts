@@ -54,8 +54,6 @@ export class LatestRecipesComponent implements OnInit {
 	 * Fetches the components from the API and sets the variables
 	 */
 	ngOnInit(): void {
-
-		// TODO: Is showing false even when should be logged in
 		this.authService.isAuthenticated$.pipe().subscribe((authenticated) => {
 			this.authenticated = authenticated;
 		});
