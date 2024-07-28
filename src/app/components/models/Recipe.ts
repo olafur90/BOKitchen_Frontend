@@ -9,7 +9,7 @@ export class Recipe {
 	public forNumberOfPeople?: number;
 	public dateAdded?: Date;
 	public user?: User
-	public difficulty?: Difficulty;
+	public difficulty?: Difficulty | undefined;
 	public category?: string;
 	public instructions?: string;
 	public baseImage?: string;

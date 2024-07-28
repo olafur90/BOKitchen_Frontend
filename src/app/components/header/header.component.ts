@@ -70,9 +70,11 @@ export class HeaderComponent implements OnInit {
 			this.authService.user$.subscribe((user) => {
 				if (user) {
 					this.user = user;
-					console.log(user.profile);
 				}
 			});
+			this.authService.idTokenClaims$.subscribe((user) => {
+				console.log(user);
+			})
 		});
 	}
 

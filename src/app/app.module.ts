@@ -22,6 +22,7 @@ import { SousVideComponent } from './routes/sousvide/sous-vide.component';
 import { LatestRecipesComponent } from './components/latest-recipes/latest-recipes.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ProfileComponent } from './routes/profile/profile.component';
+import { AirFryerComponent } from './routes/air-fryer/air-fryer.component';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -77,6 +78,10 @@ import { ProfileComponent } from './routes/profile/profile.component';
 			{
 				path: 'profile',
 				component: ProfileComponent
+			},
+			{
+				path: 'airfryer',
+				component: AirFryerComponent
 			}
 		]),
 	],

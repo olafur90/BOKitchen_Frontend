@@ -22,7 +22,9 @@ export class ProfileComponent implements OnInit {
       if (user) {
         this.user = user;
         this.authenticated = true;
-        console.log(user);
+      }
+      else {
+        window.location.href = '/';
       }
     });
   }
