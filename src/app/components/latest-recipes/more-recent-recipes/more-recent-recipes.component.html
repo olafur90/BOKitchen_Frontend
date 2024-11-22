@@ -8,7 +8,7 @@
                         [src]="
                             recipe.cat?.imagePath
                         "
-                        alt=""
+                        alt="Image representing the category of the recipe"
                     />
                     <a [routerLink]="['/uppskriftir/flokkar', recipe && recipe.cat && recipe.cat.name]">
                         {{ recipe && recipe.cat && recipe.cat.icelandicName | uppercase }}
@@ -41,17 +41,6 @@
                     }}
                 </div>
             </div>
-            <!--
-            <mat-card-actions>
-                <button
-                    mat-button
-                    routerLink="/uppskriftir/recipe/{{ recipe.id }}"
-                    routerActive
-                >
-                    Meira
-                </button>
-            </mat-card-actions>
-            -->
         </mat-card-content>
     </mat-card>
 </div>

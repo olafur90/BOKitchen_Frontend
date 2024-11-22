@@ -13,7 +13,14 @@
   <legend>Nýtt</legend>
   <app-most-recent-recipe *ngIf="singleLatestRecipe" [singleLatestRecipe]="singleLatestRecipe" />
   <legend>Meira nýlegt</legend>
+
   <app-more-recent-recipes [recentRecipes]="recentRecipes" />
+  <mat-paginator [length]="length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      (page)="handlePageEvent($event)"
+      aria-label="Select page">
+  </mat-paginator>
 </div>
 
 <ng-template #loading>

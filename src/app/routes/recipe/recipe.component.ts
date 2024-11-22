@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommentsComponent } from './comments/comments.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { ApiService } from 'src/app/services/api.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
 	selector: 'app-recipe-component',
@@ -50,7 +51,7 @@ export class RecipeComponent implements OnInit {
 
 		try {
 			// Fetch the recipe data
-			this.recipe = await this.apiService.get<Recipe>(`${environment.API_URL}/uppskriftir/recipe/${this.id}`).toPromise();
+			this.recipe = await firstValueFrom(this.apiService.get<Recipe>(`uppskriftir/recipe/${this.id}`));
 		} catch (error) {
 			console.error('Error fetching recipe', error);
 		}

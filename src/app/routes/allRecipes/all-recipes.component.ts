@@ -6,6 +6,7 @@ import { Recipe } from 'src/app/components/models/Recipe';
 import { ResultCardsComponent } from 'src/app/components/result-cards/result-cards-cards.component';
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/services/api.service';
+import { firstValueFrom } from 'rxjs';
 
 /**
  * Component for all recipes - Allar Uppskriftir
@@ -43,12 +44,12 @@ export class AllRecipesComponent implements OnInit {
      */
     async ngOnInit(): Promise<void> {
         try {
-            const categories = await this.apiService.get<Category[]>(`${environment.API_URL}/flokkar/`).toPromise();
+            const categories = await firstValueFrom(this.apiService.get<Category[]>(`flokkar/`));
             if (categories) {
                 this.availableCategories = categories;
 
                 for (const category of this.availableCategories) {
-                    const categoryRecipes = await this.apiService.get<Recipe[]>(`${environment.API_URL}/uppskriftir/flokkar/${category.name}`).toPromise();
+                    const categoryRecipes = await firstValueFrom(this.apiService.get<Recipe[]>(`uppskriftir/flokkar/${category.name}`));
                     if (categoryRecipes) {
                         categoryRecipes.forEach((recipe) => {
                             recipe.cat = category;
